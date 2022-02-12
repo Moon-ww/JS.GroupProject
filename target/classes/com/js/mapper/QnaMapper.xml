@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.js.mapper.QnaMapper">
+
+	<select id="getList" resultType="com.js.domain.QnaVO">
+		select * from qa order by qbno desc
+	</select>
+	<select id="qnaview" resultType="com.js.domain.QnaVO">
+		select q.qbno, q.writer, q.title, q.qcontent, q.regdate, q.viewcount, q.status, a.qno, a.abno, a.acontent from qa q, answer a where qbno=#{qbno} and qno(+)=qbno
+	</select>
+	<update id="viewcount">
+		update qa  set viewcount=viewcount+1 where qbno=#{qbno}
+	</update>
+	<insert id="answerwrite">
+		<selectKey  keyProperty="abno" order="BEFORE" resultType="int" >
+			select ans_seq.nextval from dual
+		</selectKey>
+			insert into answer (abno, qno, acontent) 
+			values (#{abno}, #{qbno}, #{acontent})
+	</insert>
+	<update id="status">
+		update qa  set status=1 where qbno=#{qbno}
+	</update>
+</mapper>

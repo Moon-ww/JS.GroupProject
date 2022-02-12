@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.js.mapper.HotelMapper">
+	<insert id="insert">
+		<selectKey keyProperty="hseq" order="BEFORE" resultType="int">
+			select hotel_seq.nextval from dual
+		</selectKey>
+			insert into hotel (hseq, name, content, image, location, hgrade, 
+			roomcount, hash, place, thema) 
+			values (#{hseq}, #{name}, #{content}, #{image}, #{location}, 
+			#{hgrade}, #{roomcount}, #{hash}, #{place}, #{thema})
+	</insert>
+	<select id="getList" resultType="com.js.domain.HotelVO">
+		select * from hotel order by hseq
+	</select>
+	<select id="modifyview" resultType="com.js.domain.HotelVO">
+		select * from hotel where hseq=#{hseq}
+	</select>
+	<update id="modify">
+		update hotel set name=#{name}, content=#{content}, image=#{image}, 
+		location=#{location}, hgrade=#{hgrade}, hash=#{hash} where hseq=#{hseq}
+	</update>
+	<delete id="delete">
+		delete from hotel where hseq=#{hseq}
+	</delete>
+	
+	<insert id="roominsert">
+		<selectKey keyProperty="rseq" order="BEFORE" resultType="int">
+			select room_seq.nextval from dual
+		</selectKey>
+			insert into hotel_room (hbno, rseq, title, options, price, content, image) 
+			values (#{hseq}, #{rseq}, #{title}, #{options}, #{price}, #{content}, #{image})
+	</insert>
+	<select id="getroomList" resultType="com.js.domain.HotelVO">
+		<![CDATA[
+		select * from hotel_room where hbno=#{hseq} order by price
+		]]>
+	</select>
+	<select id="roommodifyview" resultType="com.js.domain.HotelVO">
+		select * from hotel_room where title=#{title}
+	</select>
+	<update id="roommodify">
+			update hotel_room set title=#{title}, option=#{option}, content=#{content}, price=#{price}, image=#{image} 
+			where  title=#{title}
+	</update>
+	<delete id="roomdelete">
+		delete from hotel_room where title=#{title}
+	</delete>
+	<select id="getDetailList" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno and h.thema='조식')
+	</select>
+	<select id="getDetailList2" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno and h.thema='이국적인')
+	</select>
+	<select id="getDetailList3" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno and h.thema='가족')
+	</select>
+	
+	<select id="getDetailView" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq}order by r.price
+	</select>
+	<select id="getDetailView2" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq}and r.price = 
+		(select min(r.price) from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq})
+	</select>
+</mapper>
