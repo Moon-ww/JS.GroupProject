@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
     
     <%@ include file="header.jsp" %>
-	<!--확인  -->
+
+<!-- 제가 한번 git을 써보겠습니다. -->	
+
 <section>
 <div class="container-fluid">
 	<div class="row mainvisual">
