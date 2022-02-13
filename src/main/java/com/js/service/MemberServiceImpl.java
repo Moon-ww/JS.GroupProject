@@ -31,5 +31,9 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> getList() {
 		return mapper.getList();
 	}
-
+	@Override
+	public MemberVO getOne(String id) {
+		
+		return mapper.getOne(id);
+	}
 }

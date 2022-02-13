@@ -10,4 +10,5 @@ public interface MemberMapper {
 	public void insert(MemberVO member);
 	public int insert_auth(MemberVO member);
 	public List<MemberVO> getList();
+	public MemberVO getOne(String id);
 }

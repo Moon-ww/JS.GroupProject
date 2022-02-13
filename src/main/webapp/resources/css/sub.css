@@ -14,8 +14,8 @@ ul, ol {list-style:none;}
 }
 
 .minus, .plus {
-	width:21px;
-	height:21px;
+	width:33px;
+	height:33px;
 	line-height:21px;
 	background:#fff;
 	border:1px solid #dadada;
@@ -23,7 +23,7 @@ ul, ol {list-style:none;}
 }
 .quantity {
 	width:40px;
-	height:21px;
+	height:33px;
 	padding:2px 4px 2px;
 	border:1px solid #dadada;
 	line-height:21px;
@@ -32,9 +32,15 @@ ul, ol {list-style:none;}
 	text-align:center;
 }
 .total {
-	color:#ff0000;
-	font-size:20px;
-	font-weight:500;
+	color:#47abff;
+	font-size:25px;
+	font-weight:600;
+	padding:20px 0;
+}
+.total2 {
+	color:#47abff;
+	font-size:25px;
+	font-weight:600;
 	padding:20px 0;
 }
 .col-md-10 > h2 {

@@ -638,3 +638,17 @@ a:hover {
 .qnaform label {
 	line-height: 30px;
 }
+,detail-wrap {
+	width:100%;
+	height:2000px;
+}
+.detail-left {
+	display: inline-block;
+  	position: relative;
+}
+.detail-right {
+	display: inline-block;
+	position:sticky;
+	top:0;
+}
+.in { text-indent: 30px; }

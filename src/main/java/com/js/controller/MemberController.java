@@ -18,6 +18,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.js.domain.MemberVO;
 import com.js.service.MemberService;
+import com.js.service.ProductService;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -39,6 +41,7 @@ public class MemberController {
 	
 	@Setter(onMethod_ =@Autowired)
 	private MemberService service;
+	private ProductService service2;
 	
 	@Setter(onMethod_ =@Autowired)
 	private PasswordEncoder pwencoder;
@@ -166,6 +169,11 @@ public class MemberController {
 	      response.setCharacterEncoding("utf-8");
 	      response.setContentType("application/x-json,charset=utf-8");
 	      response.getWriter().print(obj);
+	}
+	@GetMapping("/reservationviewp.do")
+	public void reservationview(Model model, String pcode, String id) {
+		model.addAttribute("mlist", service.getOne(id));
+		model.addAttribute("list2", service2.productDetailView(pcode));
 	}
 
 	}

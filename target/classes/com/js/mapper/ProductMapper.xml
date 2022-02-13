@@ -102,7 +102,13 @@
 	</select>
 		<select id="productDetailView" resultType="com.js.domain.ProductVO">			
 		<![CDATA[	
-			select * from product_detail where pcode = #{pcode}
+			select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+			p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
+			d.kind dkind, d.name dname, d.content dcontent, d.price1, 
+			d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
+			d.airline, d.rentent, d.rentcar, d.hgrade, d.hotel, d.count 
+			from product p, product_detail d 
+			where  d.pcode = #{pcode} and p.pseq=d.pseq
 		]]>	
 	</select>	
 	

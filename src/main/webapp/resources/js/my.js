@@ -1,6 +1,6 @@
 $(function() {			
 	var total = function(n) {		
-		var price = $(".product .rightCol p span").attr("class");	
+		var price = $(".product .rightCol span span").attr("class");	
 		var amount = $(".quantity").attr("value");	
 		var amount = parseInt(amount);	
 		var amount = amount + n;	
@@ -22,4 +22,7 @@ $(function() {
 		$(".minus").on("click",function(){	
 			total(-1);
 		});	
+		
 	})		
+	
+	

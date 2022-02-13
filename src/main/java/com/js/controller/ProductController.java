@@ -66,7 +66,7 @@ public class ProductController {
 			
 		}	
 			
-		model.addAttribute("oneProductDetail", pvo);	
+		model.addAttribute("list", pvo);	
 	}		
 
 }
