@@ -33,6 +33,10 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getList();
 	}
 	@Override
+	public void delete(String id) {
+		mapper.delete(id);
+	}
+	@Override
 	public MemberVO getOne(String id) {
 		
 		return mapper.getOne(id);

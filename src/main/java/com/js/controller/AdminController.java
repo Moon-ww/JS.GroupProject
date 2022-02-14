@@ -62,22 +62,17 @@ public class AdminController {
 		public void adminmain() {
 			/* model.addAttribute("list", service.getList()); */
 	}
-	//관리자페이지 템플릿 상품리스트
-	@GetMapping("/product/productlist")
-		public void adminproductlist(Model model) {
-		model.addAttribute("list", service.getList());
+	//폴더 생성
+		private String getFolder() {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = new Date();
+			String str = sdf.format(date);
+			return str.replace("-", File.separator);
 		}
-	
 	//상품등록화면
 	@GetMapping("/product/productwrite")
 	public void productwriteform() {
 		
-	}
-	private String getFolder() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
-		String str = sdf.format(date);
-		return str.replace("-", File.separator);
 	}
 	//상품등록
 	@PostMapping("/admin_product_write.do")
@@ -111,7 +106,7 @@ public class AdminController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/adm/admin";
+		return "redirect:/adm/product/productlist.do";
 	}
 	//상품수정화면
 	@GetMapping("/product/productmodify")
@@ -155,18 +150,20 @@ public class AdminController {
 			e.printStackTrace();
 		}
 	}
-		return "redirect:/adm/admin";
+		return "redirect:/adm/product/productlist.do";
 	}
 	//상품삭제
-	@PostMapping("/admin_product_delete.do")
-	public void AdminProductDelete(int pseq) {
+	@GetMapping("/admin_product_delete.do")
+	public String AdminProductDelete(int pseq) {
 		service.delete(pseq);
+		return "redirect:/adm/product/productlist.do";
 	}
 	//옵션리스트
 	@GetMapping("/product/poptionlist.do")
 	public void AdminPoptionList(int pseq, Model model) {
 	model.addAttribute("list", service.getpoptionList(pseq));
 	}
+	//옵션등록 화면
 	@GetMapping("/product/poptionwrite")
 	public void poptionwriteform() {
 		
@@ -191,9 +188,10 @@ public class AdminController {
 		return "redirect:/adm/admin_poption_list.do?pseq="+product.getPseq();
 	}
 	//옵션삭제
-	@PostMapping("/admin_poption_delete.do")
-	public void AdminpoptionDelete(String pcode) {
+	@GetMapping("/admin_poption_delete.do")
+	public String AdminpoptionDelete(String pcode) {
 		service.poptiondelete(pcode);
+		return "redirect:/adm/product/poptionlist.do";
 	}
 	
 	//호텔리스트
@@ -285,9 +283,10 @@ public class AdminController {
 		return "redirect:/adm/hotel/hotellist";
 	}
 	//호텔삭제
-	@PostMapping("/admin_hotel_delete.do")
-	public void AdminHotelDelete(int hseq) {
+	@GetMapping("/admin_hotel_delete.do")
+	public String AdminHotelDelete(int hseq) {
 		service2.delete(hseq);
+		return "redirect:/adm/hotel/hotellist.do";
 	}
 	//객실리스트
 	@GetMapping("/hotel/roomlist.do")
@@ -346,9 +345,10 @@ public class AdminController {
 		return "redirect:/adm/admin_room_list.do?hseq="+hotel.getHseq();
 	}
 	//객실삭제
-	@PostMapping("/admin_room_delete.do")
-	public void AdminroomDelete(String title) {
+	@GetMapping("/admin_room_delete.do")
+	public String AdminroomDelete(String title) {
 		service2.roomdelete(title);
+		return "redirect:/adm/hotel/roomlist.do";
 	}
 	
 	//회원리스트
@@ -356,6 +356,12 @@ public class AdminController {
 		public void MemberList(Model model) {
 		model.addAttribute("list", service3.getList());
 	}
+	//회원삭제
+		@GetMapping("/memberdelete.do")
+		public String MemberDelete(String id) {
+			service3.delete(id);
+			return "redirect:/adm/memberlist.do";
+		}
 	//질문리스트
 	@GetMapping("/qna/adminqnalist")
 	public void AdminQnaList(Model model) {
@@ -408,7 +414,7 @@ public class AdminController {
 		return "redirect:/adm/notice/adminnotice";
 	}
 	//공지사항삭제
-		@PostMapping("/admin_notice_delete.do")
+		@GetMapping("/admin_notice_delete.do")
 		public String AdminNoticeDelete(int nseq) {
 			service5.delete(nseq);
 			return "redirect:/adm/notice/adminnotice";

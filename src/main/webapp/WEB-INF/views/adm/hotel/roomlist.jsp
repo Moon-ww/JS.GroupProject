@@ -2,76 +2,76 @@
     pageEncoding="UTF-8"%>
     
 	<%@ include file="../adminheader2.jsp" %>
-<ul class="nav nav-primary">
-						<li class="nav-item">
-							<a href="/adm/adminmain" id="item">
-								<i class="fas fa-home"></i>
-								<p>판매현황</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="/adm/product/productlist" id="item">
-								<i class="fas fa-home"></i>
-								<p>상품관리</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item active">
-							<a href="/adm/hotel/hotellist" id="item">
-								<i class="fas fa-home"></i>
-								<p>호텔관리</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="" id="item">
-								<i class="fas fa-home"></i>
-								<p>예약관리</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="/adm/memberlist" id="item">
-								<i class="fas fa-home"></i>
-								<p>회원관리</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="/adm/qna/adminqnalist" id="item">
-								<i class="fas fa-home"></i>
-								<p>문의관리</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="/adm/notice/adminnotice" id="item">
-								<i class="fas fa-home"></i>
-								<p>공지사항</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" onclick="document.getElementById('logout-form').submit();">
-								<i class="fas fa-home"></i>
-								<form id="logout-form" action='<c:url value='/adm/adminlogout'/>' method="POST">
-   								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/></form>
-								<p>로그아웃</p>
-								<span class=""></span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="/">
-								<i class="fas fa-home"></i>
-								<p>홈</p>
-								<span class=""></span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+		<ul class="nav nav-primary">
+				<li class="nav-item">
+					<a href="/adm/adminmain" id="item">
+						<i class="fas fa-chart-bar"></i>
+						<p>판매현황</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/adm/product/productlist" id="item">
+						<i class="fas fa-gift"></i>
+						<p>상품관리</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a href="/adm/hotel/hotellist" id="item">
+						<i class="fas fa-building"></i>
+						<p>호텔관리</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="" id="item">
+						<i class="fas fa-passport"></i>
+						<p>예약관리</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/adm/memberlist" id="item">
+						<i class="fas fa-user"></i>
+						<p>회원관리</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/adm/qna/adminqnalist" id="item">
+						<i class="fas fa-question"></i>
+						<p>문의관리</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/adm/notice/adminnotice" id="item">
+						<i class="fas fa-bell"></i>
+						<p>공지사항</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" onclick="document.getElementById('logout-form').submit();">
+						<i class="fas fa-share"></i>
+						<form id="logout-form" action='<c:url value='/adm/adminlogout'/>' method="POST">
+ 								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/></form>
+						<p>로그아웃</p>
+						<span class=""></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/">
+						<i class="fas fa-home"></i>
+						<p>홈</p>
+						<span class=""></span>
+					</a>
+				</li>
+			</ul>
 		</div>
+	</div>
+</div>
 		<!-- End Sidebar -->
 		<div class="main-panel">
 			<div class="content">

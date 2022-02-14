@@ -31,35 +31,18 @@
                <div class="col-md-8">
                <div class="content">
     			<span class="tit">내역조회</span>
-    			<div class="panel panel-default">
-				  <div class="panel-body">
-				    <div>
-					    <%=name %>님의 사용 가능한 마일리지는 <br>
-					     ${list.mileage } 입니다.
+				    <div  class="col-md-12" style="padding: 10px; margin-bottom: 30px; border: 2px solid #47abff;">
+					     <div class="col-md-2">
+					     <img src="/resources/images/mileage.png" style="width: 120px;">
+					     </div>
+					     <div class="col-md-10" style="margin-top: 30px;">
+					     <span style="font-size: 15pt;"><%=name %> 님의 사용 가능한 마일리지는 </span>
+					     <span style="font-size: 20pt;color: #47abff;">${list.mileage }</span> 입니다.<br>
+					     <span>누적 마일리지 ${list.mileage }</span>
+					     </div>
 				     </div>
-				  </div>
-				</div>
     			
-    				<div role="tabpanel" class="category-tab">
-                 <!-- Tab panes -->
                  <div class="tab-content">
-                   <div role="tabpanel" class="tab-pane active" id="package">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-		           <div class="calandar">
-		           		<div class="calandarform pull-right">
-		           		<span>예약기간 선택하여 조회 </span> <input type="text" style="border-radius:10px;"/> ~ <input type="text"  style="border-radius:10px;"/>
-		           		<br><button type="button" class="btn-d">조회</button>
-		           		</div>
-		           </div>
-                 <div class="tab-content">
-                 <!--  -->
-                 <div role="tabpanel" class="tab-pane active" id="res">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">출발일 최신순</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>일자</th>
@@ -71,96 +54,14 @@
 		    					<th>비고</th>
 		    				</tr>
 		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">해당 기간 내 사용 내역이 없습니다.</td>
+		    					<td style="line-height:50px;" colspan="7">해당 기간 내 사용 내역이 없습니다.</td>
 		    				</tr>
 		    			</table>
                       </div>
-                    </div>
+                     </div>
+                   </div> 
                   </div>
-                 </div>
                 </div>
-               </div>
-              </div>
-             </div>
-            </div><!-- 패키지 엔드 -->
-                 
-            <div role="tabpanel" class="tab-pane" id="air">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-
-                 <!-- Nav tabs -->
-                 <ul class="nav nav-tabs n2" role="tablist">
-		          <li style="margin-top:40px;" role="presentation" class="active"><a href="#res3" aria-controls="res3" role="tab" data-toggle="tab">예약내역</a></li>
-		          <li style="margin-top:40px;" role="presentation"><a href="#cancel3" aria-controls="cancel3" role="tab" data-toggle="tab">취소내역</a></li>
-		           <li style="margin-top:40px;" role="presentation"><a href="#last3" aria-controls="last3" role="tab" data-toggle="tab">지난내역</a></li>
-		           </ul>
-		           <div class="calandar">
-		           		<div class="calandarform pull-right">
-		           		<span>예약기간 선택하여 조회 </span> <input type="text" style="border-radius:10px;"/> ~ <input type="text"  style="border-radius:10px;"/>
-		           		<br><button type="button" class="btn-d">조회</button>
-		           		</div>
-		           </div>
-                 <div class="tab-content">
-                 <!--  -->
-                 <div role="tabpanel" class="tab-pane active" id="res3">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">출발일 최신순</span>
-		    			<table class="table pack_table" style="margin-top: 10px;">
-		    				<tr>
-		    					<th>예약일/예약코드</th>
-		    					<th>상품명</th>
-		    					<th>결제금액</th>
-		    					<th>인원</th>
-		    					<th>출발일</th>
-		    				</tr>
-		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">예약 내역이 없습니다.</td>
-		    				</tr>
-		    			</table>
-                      </div>
-                    </div>
-                  </div>
-                 </div>
-                 <!--  -->
-                 <div role="tabpanel" class="tab-pane" id="cancel3">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">취소일 최신순</span>
-		    			<table class="table pack_table" style="margin-top: 10px;">
-		    				<tr>
-		    					<th>예약일/예약코드</th>
-		    					<th>상품명</th>
-		    					<th>결제금액</th>
-		    					<th>인원</th>
-		    					<th>출발일</th>
-		    				</tr>
-		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">취소 내역이 없습니다.</td>
-		    				</tr>
-		    			</table>
-                      </div>
-                    </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div><!--탭 엔드  -->
-    		
-    		
-		</div>
-               </div>
-               <div class="col-md-1">
-               </div>
-	</div>
-	</div>
-</div>
 <script>
  	$(function() {
 	 	var actionForm = $("#actionForm");
