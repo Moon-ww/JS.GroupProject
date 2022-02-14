@@ -1,7 +1,7 @@
 package com.js.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.security.Principal;
 import java.util.Properties;
 import java.util.Random;
 
@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.js.domain.MemberVO;
+import com.js.domain.OrderVO;
 import com.js.service.MemberService;
 import com.js.service.ProductService;
 
@@ -175,7 +177,22 @@ public class MemberController {
 		model.addAttribute("mlist", service.getOne(id));
 		model.addAttribute("list2", service2.productDetailView(pcode));
 	}
-
+	@PostMapping("/orderinsert.do")
+	public String orderinsert(Model model, OrderVO order, String id) {
+		service.Order(order);
+		return "redirect:/member/orders.do";
 	}
+	
+	@GetMapping("/orders.do") 
+	 public String orders() {
+	 return "redirect:/member/ordercomplete.do";
+	 }
+	
+	@GetMapping("/ordercomplete.do")
+	public void orsercomp(Model model, OrderVO order, Principal principal) {
+		String id = principal.getName();
+		model.addAttribute("list", service.getOrderinfo(id)); 
+	}
+}
 
 

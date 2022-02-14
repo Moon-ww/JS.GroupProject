@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.js.domain.MemberVO;
+import com.js.domain.OrderVO;
 import com.js.mapper.MemberMapper;
 
 import lombok.AllArgsConstructor;
@@ -35,5 +36,15 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO getOne(String id) {
 		
 		return mapper.getOne(id);
+	}
+	@Override
+	public void Order(OrderVO order) {
+		
+		mapper.Order(order);
+	}
+	@Override
+	public OrderVO getOrderinfo(String id) {
+		//mapper.Order(order);
+		return mapper.getOrderinfo(id);
 	}
 }

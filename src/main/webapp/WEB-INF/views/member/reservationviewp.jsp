@@ -6,10 +6,11 @@
 		<div class="row">
 			<div class="col-md-10">
 				<div class="content">
-    					<p class="tit2" style="padding-bottom: 7px;">예약하기</p>
-						<form class="form-horizontal" name="frm" method="post" enctype="" action="/adm/admin_notice_write.do">
-					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-					  <div class="form-group" style="margin-top: 30px;">
+    				<p class="tit2" style="padding-bottom: 7px;">예약하기</p>
+						<form class="form-horizontal" name="frm" method="post" enctype="" action="">
+							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+					  		<div class="form-group" style="margin-top: 30px;">
+					  	<input type="hidden" name="pname" id="pname" value="${list2.name }">
 					    <label for="title" class="ml-4 mr-4 w100 in" style="float:left;">여행기간</label>
 					    <div class="col-sm-10">
 					      <fmt:parseDate var="startdate" value="${list2.startdate }" pattern="yyyy-MM-dd"/>
@@ -35,14 +36,14 @@
 					    <label for="content" class="w100" style="float: left;">이름</label>
 					    </div>
 					    <div class="col-sm-4">
-					    <input type="text" name="title" class="form-control2"value="${mlist.name }" style="margin-bottom: 30px;float: left;">
+					    <input type="text" name="name" class="form-control2"value="${mlist.name }" id="name" style="margin-bottom: 30px;float: left;">
 					    </div>
 					    <div class="">
 					    <label for="content" class="" style="float: left;"></label>
 					    <label for="content" class="w100" style="float: left;">생년월일</label>
 					    </div>
 					    <div class="col-sm-4">
-					    <input type="text" name="title" class="form-control2"value="${mlist.birth }" style="margin-bottom: 30px;float: left;">
+					    <input type="text" name="birth" class="form-control2"value="${mlist.birth }" id="birth" style="margin-bottom: 30px;float: left;">
 					    </div>
 					    <div class="" style="margin-bottom: 30px;">
 					    <div class="">
@@ -50,31 +51,34 @@
 					    <label for="content" class="w100" style="float: left;">이메일</label>
 					    </div>
 					    <div class="col-sm-4">
-					    <input type="text" name="title" class="form-control2"value="${mlist.email }" style="margin-bottom: 30px;float: left;">
+					    <input type="text" name="email" class="form-control2"value="${mlist.email }" id="email" style="margin-bottom: 30px;float: left;">
 					    </div>
 					    <div class="">
 					    <label for="content" class="" style="float: left;"></label>
 					    <label for="content" class="w100" style="float: left;">휴대폰번호</label>
 					    </div>
 					    <div class="col-sm-4">
-					    <input type="text" name="title" class="form-control2"value="${mlist.phone }" style="margin-bottom: 30px;float: left;">
+					    <input type="text" name="phone" class="form-control2"value="${mlist.phone }" id="phone" style="margin-bottom: 30px;float: left;">
 					    </div>
 					    <div class="form-group">
 					    <label for="content" class="ml-4 mr-4 in" style="float:left;font-size: 15pt;">인원 정보</label>
 					    </div>
-					    <div class="col-sm-12" style="margin-bottom: 100px;">
+					    <div class="col-sm-12" style="margin-bottom: 25px;">
 					    	<ul>
-					    		<li style="font-size: 13pt;"><span style="margin-right: 5px;">성인</span><span id="qnt2"></span><span style="margin-left: 5px;">명</span>
+					    		<li style="font-size: 13pt; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid #ccc;"><span style="margin-right: 5px;">성인</span><span id="qnt2"></span><span style="margin-left: 5px;">명</span>
 									<input type="hidden" name="qnt" id="qnt" value="" readonly>
 								</li>	
-								<li style="font-size: 13pt; margin-top: 30px;"><span style="margin-right: 5px;font-weight: 600;">총 금액</span><span class="total2" id="total2"></span><span style="margin-left: 5px;">원</span>
+								<li style="font-size: 13pt; margin-top: 30px;"><span style="margin-right: 5px;font-weight: 600;">결제 금액</span><span class="total2" id="total2"></span><span style="margin-left: 5px;">원</span>
 									<input type="hidden" name="total" id="total" value="" readonly>
 								</li>	
-							</ul>		
+							</ul>
 				 		</div>
+				 		<img alt="" src="/resources/images/resnoti.png" style="width: 100%;">
 				 		<div class="col-sm-12" style="margin-top: 20px;text-align: center;">
 				 		<a href="javascript:history.go(-1)" class = "btn btn-default">취소</a>	
-				 		<a href="/member/reservationviewp.do?pcode=${list.pcode }" class = "btn btn-default">예약하기</a>	
+				 		<a href="javascript:void(0)" id="check_module" class = "btn btn-default xxx">예약하기</a>
+				 		<input type="hidden" name="id" id=""value="${mlist.id }">
+				 		<input type="hidden" name="pcode" id=""value="${list2.pcode }">
 					   </div>
 					   </div>
 					  </div>
@@ -122,12 +126,63 @@
  	}
  		var qnt = $.urlParam('qnt'); 
  		var total = $.urlParam('total'); 
+ 		var id = $.urlParam('id'); 
  		console.log(qnt);
  		
 		$("#qnt").val(qnt);
-		$("#qnt2").text(qnt);
+		$("#qnt2").text(qnt)
 		$("#total").val(total);
-		$("#total2").text(total)
-
+		$("#total2").text(total);
+		$("#id").val(id);
 	 </script>
+	 
+	 <!-- <script>
+				$("#check_module").click(function () {
+				var pname = $("#pname").val();
+				var total = $("#total").val();
+				var name = $("#name").val();
+				/* var address = $("#address").val();
+				var zip = $("#zip_num").val(); */
+				var email = $("#email").val();
+				var phone = $("#phone").val();
+				var IMP = window.IMP; // 생략가능
+				IMP.init('imp65405219');
+				IMP.request_pay({
+				pg: 'inicis', // version 1.1.0부터 지원.
+				pay_method: 'card',
+				merchant_uid: 'merchant_' + new Date().getTime(),
+				name: pname,
+				amount: total,
+				buyer_email: email ,
+				buyer_name: name,
+				buyer_tel: phone,
+				/* buyer_addr: address,
+				buyer_postcode: zip, */
+				m_redirect_url: 'http://localhost:7777/'
+				}, function (rsp) {
+				console.log(rsp);
+				if (rsp.success) {
+				var msg = '결제가 완료되었습니다.';
+				msg += '고유ID : ' + rsp.imp_uid;
+				msg += '상점 거래ID : ' + rsp.merchant_uid;
+				msg += '결제 금액 : ' + rsp.paid_amount;
+				msg += '카드 승인번호 : ' + rsp.apply_num;
+				document.frm.action="/member/orderinsert.do";
+				document.frm.submit();
+				} else {
+				var msg = '결제에 실패하였습니다.';
+				msg += '에러내용 : ' + rsp.error_msg;
+				alert(msg);
+				}
+				
+				});
+				});
+				</script> -->
+<script type="text/javascript">
+$(".xxx").click(function () {
+	document.frm.action="/member/orderinsert.do";
+	document.frm.submit();
+	//location.href = "/member/ordercomplete.do"
+})
+</script>
     	<%@include file="../footer.jsp" %>
