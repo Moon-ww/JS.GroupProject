@@ -69,6 +69,11 @@ public class AdminController {
 			String str = sdf.format(date);
 			return str.replace("-", File.separator);
 		}
+	//상품리스트
+	@GetMapping("/product/produclist")
+	public void productList(Model model) {
+		model.addAttribute("list", service.getList());
+	}
 	//상품등록화면
 	@GetMapping("/product/productwrite")
 	public void productwriteform() {
