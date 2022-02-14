@@ -3,8 +3,10 @@ package com.js.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.js.domain.QnaVO;
 import com.js.service.CsService;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +30,11 @@ public class CsController {
 	@GetMapping("/qna.do")
 	public void QnaList() {
 		
+	}
+	@PostMapping("/qnawrite.do")
+	public String QnaWrite(QnaVO qna) {
+		service.insert(qna);
+		return "redirect:/";
 	}
 	
 	@GetMapping("/notice.do")

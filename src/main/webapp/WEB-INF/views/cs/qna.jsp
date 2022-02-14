@@ -26,7 +26,7 @@
 								문의에 대한 답변은 [마이메뉴>마이페이지>1:1 게시판 문의내역] 에서 확인할 수 있습니다.</p>
 						<form class="form-horizontal" name="frm" method="post"
 						 enctype="" style="border-top: 1px solid #111;margin:0;" 
-						 action="/adm/admin_notice_write.do">
+						 action="/cs/qnawrite.do">
 							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 							
 							  <div class="form-group qnaform" style="margin:0;">
@@ -40,15 +40,17 @@
 							    </div>
 							  </div> 
 							  <div class="form-group qnaform" style="margin:0;">
-							    <label for="title" class="ml-4 mr-4 w100" style="float:left;">작성자</label>
+							    <label for="writer" class="ml-4 mr-4 w100" style="float:left;">작성자</label>
 							    <div class="col-sm-10">
-							      
+							      <input type="hidden" name="writer"class="form-control2" value="<%=name %>">
+							      <%=name %>
 							    </div>
 							  </div>
 							  <div class="form-group qnaform" style="margin:0;">
 							    <label for="title" class="ml-4 mr-4 w100" style="float:left;">예약코드</label>
 							    <div class="col-sm-10">
-							      <input type="text" name="title" class="form-control2" style="width:100%" id="title">
+							      <input type="text" name="oseq" class="form-control2" style="width:100%">
+							     <span style="font-size: 10pt;">예약관련된 문의가 아니시면 예약코드를 입력하지 않아도 됩니다.</span>
 							    </div>
 							  </div>
 							  <div class="form-group qnaform" style="margin:0;">
@@ -58,9 +60,9 @@
 							    </div>
 							  </div>
 							  <div class="form-group qnaform" style="margin:0;">
-							    <label for="content" class="ml-4 mr-4 w100" style="float:left;">문의내용</label>
+							    <label for="qcontent" class="ml-4 mr-4 w100" style="float:left;">문의내용</label>
 							    <div class="col-sm-10">
-							      <textarea name="content" class="form-control2" style="width:100%;height: 140px;" id=""></textarea>
+							      <textarea name="qcontent" class="form-control2" style="width:100%;height: 140px;" id=""></textarea>
 							    </div>
 							  </div>
 							  <div class="form-group qnaform" style="margin:0;">

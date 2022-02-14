@@ -1,12 +1,12 @@
 package com.js.service;
 
-import java.util.List;
-
-import com.js.domain.MemberVO;
+import com.js.domain.MypageVO;
+import com.js.domain.QnaVO;
 
 public interface MypageService {
 
-	public int idcheck(String id);
-	public void insert(MemberVO member);
-	public List<MemberVO> getList();
+	public MypageVO getList(String id);
+	public MypageVO getmileList(String id);
+	public QnaVO getqnaList(String id);
+	
 }

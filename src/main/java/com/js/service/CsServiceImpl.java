@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.js.domain.MemberVO;
+import com.js.domain.QnaVO;
 import com.js.mapper.CsMapper;
 
 import lombok.AllArgsConstructor;
@@ -19,13 +20,8 @@ public class CsServiceImpl implements CsService {
 	private CsMapper mapper;
 	
 	@Override
-	public int idcheck(String id) {
-		return mapper.idcheck(id);
-	}
-	@Override
-	public void insert(MemberVO member) {
-		mapper.insert(member);
-		mapper.insert_auth(member);
+	public void insert(QnaVO qna) {
+		mapper.insert(qna);
 	}
 	@Override
 	public List<MemberVO> getList() {

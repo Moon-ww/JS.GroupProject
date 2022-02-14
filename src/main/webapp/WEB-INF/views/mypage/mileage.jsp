@@ -15,8 +15,8 @@
                          <div class="accord">
 							<div class="">									
 								<a href="javascript:void(0)" class="accordion">마일리지</a>							
-								<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">
-									<a href="/mypage/mileage.do">내역조회</a>
+								<div class="panel" style="display: none; margin: 20px 0 20px 0;padding-bottom: 10px;">
+									<p><a href="/mypage/mileage.do" style="margin-bottom: 30px">내역조회</a></p>
 									<a href="/mypage/mileageGuide.do">사용안내</a>
 								</div>								
 							</div>		
@@ -35,7 +35,7 @@
 				  <div class="panel-body">
 				    <div>
 					    <%=name %>님의 사용 가능한 마일리지는 <br>
-					     0 입니다.
+					     ${list.mileage } 입니다.
 				     </div>
 				  </div>
 				</div>

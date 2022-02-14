@@ -19,7 +19,7 @@
 									<p><a href="/mypage/mileage.do" style="margin-bottom: 30px">내역조회</a></p>
 									<a href="/mypage/mileageGuide.do">사용안내</a>
 								</div>								
-							</div>	
+							</div>		
 							</div>
                          <li><a href="/mypage/qnaList.do">1:1 게시판 문의내역</a></li>
                          <li><a href="#">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
@@ -28,22 +28,9 @@
                      </ul>
                   </div>
                </div>
-               <div class="col-md-8">
-               <div class="content">
-    			<span class="tit">1:1 게시판 문의내역</span>
-    				<div role="tabpanel" class="category-tab">
-                 <!-- Tab panes -->
-                 <div class="tab-content">
-                   <div role="tabpanel" class="tab-pane active" id="package">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-                 <div class="tab-content">
-                 <!--  -->
-                 <div role="tabpanel" class="tab-pane active" id="res">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
+				<div class="col-md-8">
+					<div class="content">
+						<span class="tit">1:1 게시판 문의내역</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>유형</th>
@@ -51,102 +38,44 @@
 		    					<th>작성일</th>
 		    					<th>답변상태</th>
 		    				</tr>
+		    				<c:choose>
+								<c:when test="${list eq null}">
 		    				<tr>
 		    					<td style="line-height:50px;" colspan="5">1:1 문의 내역이 없습니다.</td>
 		    				</tr>
+		    				</c:when>
+								<c:otherwise>
+								<tr class="items">
+									<td>${list.kind }</td>
+									<td>${list.title }</td>
+									<td><fmt:parseDate var="regdate" value="${list.regdate }" pattern="yy-MM-dd"/>
+									<fmt:formatDate value="${regdate }" pattern="yy-MM-dd"/></td>
+									<c:if test="${list.status ==0}">
+									<td><span class="pbtn btn" style="background: #ccc;">답변대기</span></td>
+									</c:if>
+									<c:if test="${list.status ==1}">
+									<td><span class="pbtn btn btn-primary">답변완료</span></td>
+									</c:if>
+								</tr>
+								<tr class="eee" style="display: none;">
+		                      		<td colspan="4" style="text-align: left;padding-left: 50px;">
+		                      		<span style="font-size:30px; color:blue; margin-right:50px;">Q</span> ${list.qcontent }
+		                      		 <c:if test="${list.acontent ne null}">
+		                      		<br><br><br>
+		                      		<span style="font-size:30px; color:red; margin-right:50px;">A</span> ${list.acontent }
+		                      		</c:if>
+		                      		</td>
+		                      	</tr>
+								  </c:otherwise>
+							</c:choose>
 		    			</table>
 		    			<div>
-		    				<button style="float: right; border: 1px solid #fff; background: #58a3ff; color: #fff; padding: 10px; border-radius: 6px;">
-		    					1:1게시판 문의
-		    				</button>
+		    				<a href="/cs/qna.do" class="btn btn-default pull-right">1:1게시판 문의</a>
 		    			</div>
-                      </div>
                     </div>
                   </div>
-                 </div>
                 </div>
-               </div>
               </div>
-             </div>
-            </div><!-- 패키지 엔드 -->
-                 
-            <div role="tabpanel" class="tab-pane" id="air">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-
-                 <!-- Nav tabs -->
-                 <ul class="nav nav-tabs n2" role="tablist">
-		          <li style="margin-top:40px;" role="presentation" class="active"><a href="#res3" aria-controls="res3" role="tab" data-toggle="tab">예약내역</a></li>
-		          <li style="margin-top:40px;" role="presentation"><a href="#cancel3" aria-controls="cancel3" role="tab" data-toggle="tab">취소내역</a></li>
-		           <li style="margin-top:40px;" role="presentation"><a href="#last3" aria-controls="last3" role="tab" data-toggle="tab">지난내역</a></li>
-		           </ul>
-		           <div class="calandar">
-		           		<div class="calandarform pull-right">
-		           		<span>예약기간 선택하여 조회 </span> <input type="text" style="border-radius:10px;"/> ~ <input type="text"  style="border-radius:10px;"/>
-		           		<br><button type="button" class="btn-d">조회</button>
-		           		</div>
-		           </div>
-                 <div class="tab-content">
-                 <!--  -->
-                 <div role="tabpanel" class="tab-pane active" id="res3">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">출발일 최신순</span>
-		    			<table class="table pack_table" style="margin-top: 10px;">
-		    				<tr>
-		    					<th>예약일/예약코드</th>
-		    					<th>상품명</th>
-		    					<th>결제금액</th>
-		    					<th>인원</th>
-		    					<th>출발일</th>
-		    				</tr>
-		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">예약 내역이 없습니다.</td>
-		    				</tr>
-		    			</table>
-                      </div>
-                    </div>
-                  </div>
-                 </div>
-                 <!--  -->
-                 <div role="tabpanel" class="tab-pane" id="cancel3">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">취소일 최신순</span>
-		    			<table class="table pack_table" style="margin-top: 10px;">
-		    				<tr>
-		    					<th>예약일/예약코드</th>
-		    					<th>상품명</th>
-		    					<th>결제금액</th>
-		    					<th>인원</th>
-		    					<th>출발일</th>
-		    				</tr>
-		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">취소 내역이 없습니다.</td>
-		    				</tr>
-		    			</table>
-                      </div>
-                    </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div><!--탭 엔드  -->
-    		
-    		
-		</div>
-               </div>
-               <div class="col-md-1">
-               </div>
-	</div>
-	</div>
-</div>
 <script>
  	$(function() {
 	 	var actionForm = $("#actionForm");
@@ -177,5 +106,31 @@
 			}										
 		});											
 	}												
+</script>
+<!-- <script type="text/javascript">  
+        $(function(){  
+            var article = (".table .show");  
+            $(".table .items  td").click(function() {  
+                var myArticle =$(this).parents().next("tr");  
+                if($(myArticle).hasClass('hide')) {  
+                    $(article).removeClass('show').addClass('hide');  
+                    $(myArticle).removeClass('hide').addClass('show');  
+                }  
+                else {  
+                    $(myArticle).addClass('hide').removeClass('show');  
+                }  
+            });  
+        });  
+    </script>   -->
+<script type="text/javascript">
+
+	$(".items").on("click",function() {
+		if($(".eee").css("display") == "none"){
+			$(".eee").show();
+		}else{
+			$(".eee").hide();
+		}
+	})
+	
 </script>
     	<%@include file="../footer.jsp" %>

@@ -19,7 +19,7 @@
 									<p><a href="/mypage/mileage.do" style="margin-bottom: 30px">내역조회</a></p>
 									<a href="/mypage/mileageGuide.do">사용안내</a>
 								</div>								
-							</div>	
+							</div>		
 							</div>
                          <li><a href="/mypage/qnaList.do">1:1 게시판 문의내역</a></li>
                          <li><a href="#">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->

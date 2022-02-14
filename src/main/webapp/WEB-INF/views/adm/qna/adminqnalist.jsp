@@ -127,7 +127,7 @@
 							   		<td><span class="pbtn btn btn-primary">답변완료</span></td>
 							   		</c:if>
 							   		<c:if test="${list.status ==0 }">
-							   		<td><span class="pbtn btn" style="background: gray;">답변대기</span></td>
+							   		<td><span class="pbtn btn" style="background: #ccc;">답변대기</span></td>
 							   		</c:if>
 							    	<td><fmt:parseDate var="regdate" value="${list.regdate }" pattern="yy-MM-dd"/>
 									<fmt:formatDate value="${regdate }" pattern="yy-MM-dd"/></td>

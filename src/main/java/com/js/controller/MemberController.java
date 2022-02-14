@@ -179,6 +179,7 @@ public class MemberController {
 	}
 	@PostMapping("/orderinsert.do")
 	public String orderinsert(Model model, OrderVO order, String id) {
+		order.setMileage( Math.round(( order.getTotal() /  order.getQnt() ) * 0.01));
 		service.Order(order);
 		return "redirect:/member/orders.do";
 	}

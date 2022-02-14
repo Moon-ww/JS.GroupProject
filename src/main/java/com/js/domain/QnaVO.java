@@ -12,6 +12,8 @@ public class QnaVO {
 	String regdate;
 	int viewcount;
 	int status;
+	String oseq;
+	String kind;
 	
 	int qno;
 	int abno;

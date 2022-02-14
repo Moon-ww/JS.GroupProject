@@ -12,23 +12,11 @@
                      <ul>
                         <li style="margin-top:50px;"><a href="/mypage/reservList.do">예약내역</a></li>
                         <li><a href="/mypage/dibs.do">찜</a></li>
-                         <!-- <li><a href="javascript:void(0)">마일리지</a>
-                         	<div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="border: 0; padding-left: 15px;">
-							    마일리지
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-							    <li role="presentation"><a role="menuitem" tabindex="-1" href="/mypage/mileage.do">내역조회</a></li>
-							    <li role="presentation"><a role="menuitem" tabindex="-1" href="/mypage/mileageGuide.do">사용안내</a></li>
-							  </ul>
-							</div> 
-                         </li>-->
                          <div class="accord">
 							<div class="">									
 								<a href="javascript:void(0)" class="accordion">마일리지</a>							
-								<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">
-									<a href="/mypage/mileage.do">내역조회</a>
+								<div class="panel" style="display: none; margin: 20px 0 20px 0;padding-bottom: 10px;">
+									<p><a href="/mypage/mileage.do" style="margin-bottom: 30px">내역조회</a></p>
 									<a href="/mypage/mileageGuide.do">사용안내</a>
 								</div>								
 							</div>		
@@ -61,9 +49,9 @@
 
                  <!-- Nav tabs -->
                  <ul class="nav nav-tabs n2" role="tablist">
-		          <li style="margin-top:40px;" role="presentation" class="active"><a href="#res" aria-controls="res" role="tab" data-toggle="tab">예약내역</a></li>
-		          <li style="margin-top:40px;" role="presentation"><a href="#cancel" aria-controls="cancel" role="tab" data-toggle="tab">취소내역</a></li>
-		           <li style="margin-top:40px;" role="presentation"><a href="#last" aria-controls="last" role="tab" data-toggle="tab">지난내역</a></li>
+		          <li style="margin-top:40px;" role="presentation" class="active nothover"><a href="#res" aria-controls="res" role="tab" data-toggle="tab">예약내역</a></li>
+		          <li style="margin-top:40px;" role="presentation" class="nothover"><a href="#cancel" aria-controls="cancel" role="tab" data-toggle="tab">취소내역</a></li>
+		           <li style="margin-top:40px;" role="presentation"class="nothover"><a href="#last" aria-controls="last" role="tab" data-toggle="tab">지난내역</a></li>
 		           </ul>
 		           <div class="calandar">
 		           		<div class="calandarform pull-right">
@@ -83,12 +71,27 @@
 		    					<th>예약일/예약코드</th>
 		    					<th>상품명</th>
 		    					<th>결제금액</th>
-		    					<th>출발일/귀국일</th>
-		    					<th>여행/예약상태</th>
+		    					<th>인원</th>
+		    					<th>출발일</th>
 		    				</tr>
+		    				   <c:choose>
+								<c:when test="${list eq null}">
 		    				<tr>
 		    					<td style="line-height:50px;" colspan="5">예약 내역이 없습니다.</td>
 		    				</tr>
+		    					</c:when>
+								<c:otherwise>
+								<tr>
+								<fmt:parseDate var="indate" value="${list.indate }" pattern="yy-MM-dd"/>
+								<td><fmt:formatDate value="${indate }" pattern="yy-MM-dd"/>/${list.oseq }</td>
+								<td>${list.pname }</td>
+								<td>${list.total }</td>
+								<td>${list.qnt }</td>
+								<fmt:parseDate var="startdate" value="${list.startdate }" pattern="yy-MM-dd"/>
+								<td><fmt:formatDate value="${startdate }" pattern="yy-MM-dd"/></td>
+								</tr>
+							  </c:otherwise>
+							</c:choose>
 		    			</table>
                       </div>
                     </div>

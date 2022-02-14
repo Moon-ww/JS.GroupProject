@@ -23,9 +23,8 @@
 		<selectKey keyProperty="oseq" order="BEFORE" resultType="int">
 			select orders_seq.nextval from dual
 		</selectKey>
-		
-		insert into orders (oseq, id, name, phone, email, pcode, pname, qnt, total) 
-		values (#{oseq}, #{id}, #{name}, #{phone}, #{email}, #{pcode}, #{pname}, #{qnt}, #{total})
+		insert into orders (oseq, id, name, phone, email, pcode, pname, qnt, total, mileage) 
+		values (#{oseq}, #{id}, #{name}, #{phone}, #{email}, #{pcode}, #{pname}, #{qnt}, #{total}, #{mileage})
 	</insert>
 	<select id="getOrderinfo" resultType="com.js.domain.OrderVO">
 		select o.oseq, o.id, o.name, o.pcode, o.pname, o.qnt, o.total, o.indate, d.airline, d.startdate, d.enddate, 

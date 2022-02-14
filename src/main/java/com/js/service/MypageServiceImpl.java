@@ -1,11 +1,10 @@
 package com.js.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.js.domain.MemberVO;
+import com.js.domain.MypageVO;
+import com.js.domain.QnaVO;
 import com.js.mapper.MypageMapper;
 
 import lombok.AllArgsConstructor;
@@ -19,17 +18,18 @@ public class MypageServiceImpl implements MypageService {
 	private MypageMapper mapper;
 	
 	@Override
-	public int idcheck(String id) {
-		return mapper.idcheck(id);
+	public MypageVO getList(String id) {
+		
+		return mapper.getList(id);
 	}
 	@Override
-	public void insert(MemberVO member) {
-		mapper.insert(member);
-		mapper.insert_auth(member);
+	public MypageVO getmileList(String id) {
+		
+		return mapper.getmileList(id);
 	}
 	@Override
-	public List<MemberVO> getList() {
-		return mapper.getList();
+	public QnaVO getqnaList(String id) {
+		
+		return mapper.getqnaList(id);
 	}
-
 }

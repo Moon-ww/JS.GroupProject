@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.js.mapper.MypageMapper">
-	<select id="getList" resultType="com.js.domain.MemberVO">
-		select * from member
+	<select id="getList" resultType="com.js.domain.MypageVO">
+	 select o.oseq, o.pname, o.qnt, o.total, o.status, o.indate, d.startdate, d.enddate
+     from orders o, product_detail d
+     where o.pcode = d.pcode and id=#{id}
 	</select>
-	
+	<select id="getmileList" resultType="com.js.domain.MypageVO">
+	 select mileage from orders where id=#{id}
+	</select>
+	<select id="getqnaList" resultType="com.js.domain.QnaVO">
+	 select q.qbno, q.writer, q.title, q.qcontent, q.regdate, q.viewcount, q.status, 
+	 q.kind, q.oseq, a.qno, a.abno, a.acontent from qa q, answer a where qno(+)=qbno and writer=#{id}
+	</select>
 </mapper>

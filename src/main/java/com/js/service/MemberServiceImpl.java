@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public OrderVO getOrderinfo(String id) {
-		//mapper.Order(order);
+
 		return mapper.getOrderinfo(id);
 	}
 }
