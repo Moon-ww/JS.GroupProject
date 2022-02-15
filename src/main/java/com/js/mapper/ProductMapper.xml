@@ -111,5 +111,21 @@
 			where  d.pcode = #{pcode} and p.pseq=d.pseq
 		]]>	
 	</select>	
-	
+	<select id="getSearchView" resultType="com.js.domain.ProductVO">
+		<![CDATA[	
+		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
+		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
+		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
+		d.airline, d.rentent, d.rentcar, d.hgrade, d.hotel, d.count 
+		from product p, product_detail d 
+		where p.pseq=d.pseq  and p.spot=#{spot} and d.startdate>=#{startdate} and d.price2 = 
+		(select min(d.price2) from product p, product_detail d where p.pseq=d.pseq)
+		]]>	
+	</select>
+	<select id="getSearchCount" resultType="int">
+		select count(*) as cnt from product p, product_detail d where p.pseq=d.pseq 
+		and p.spot=#{spot} and d.startdate>= #{startdate} and d.price2 = 
+		(select min(d.price2) from product p, product_detail d where p.pseq=d.pseq)
+	</select>
 </mapper>

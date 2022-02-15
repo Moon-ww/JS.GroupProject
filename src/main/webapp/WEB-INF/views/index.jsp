@@ -8,16 +8,16 @@
 <section>
 <div class="container-fluid">
 	<div class="row mainvisual">
-	<form name="search" action="">
+	<form name="search" action="/product/productSearchview.do">
 	<div class="col-md-4 ment" style="margin: 70px 0 0 110px; height: auto;">
 			<p>고객님,<br><span style="font-weight: 600" id="scroll">어떤 여행을 꿈꾸시나요?</span></p>
 			<div class="dropdown2">
-			  <div onclick="myFunction()" class="dropbtn where" id="place" style="width: 330px;" >어디로 떠나세요?</div>
+			  <div onclick="myFunction()" class="dropbtn where" id="placeselect" style="width: 330px;" >어디로 떠나세요?</div>
 			  <div id="myDropdown" class="dropdown-content acon" style="margin: 70px 0 0 0;">
-			    <a href="javascript:void(0)">제주도</a>
-			    <a href="javascript:void(0)">전라북도</a>
-			    <a href="javascript:void(0)">부산</a>
-			    <a href="javascript:void(0)">전라남도</a>
+			    <a href="javascript:void(0)">제주시</a>
+			    <a href="javascript:void(0)">서울시</a>
+			    <a href="javascript:void(0)">부산시</a>
+			    <a href="javascript:void(0)">울릉도</a>
 			    <a href="javascript:void(0)">강원도</a>
 			    <a href="javascript:void(0)">충청북도</a>
 			    <a href="javascript:void(0)">경상북도</a>
@@ -25,10 +25,10 @@
 			    <a href="javascript:void(0)">경상남도</a>
 			    <a href="javascript:void(0)">인천</a>
 			  	</div>
-			  	<input type="hidden" name="place" id="placeinput">
+			  	<input type="hidden" name="spot" id="spot">
 				</div>
-			<input type="text" class="mbtn1" id="startDate" name="stardate" placeholder="여행시작일 선택" readonly style="cursor: pointer; width: 330px;">
-			<button class="mbtn3" >패키지 검색</button>
+			<input value="" type="text" class="mbtn1 datepicker" id="startDate" name="startdate" placeholder="여행시작일 선택" readonly style="cursor: pointer; width: 330px;">
+			<button type="submit" class="mbtn3" >패키지 검색</button>
 	</div>
 	</form>
 	<div class="col-md-6" style="margin: 50px 0 50px 0;">
@@ -301,9 +301,9 @@ window.onclick = function(event) {
 <script>
 	$("#myDropdown a").on("click",function(){
 		var text = $(this).text();
-        $('#place').text(text);
-        $('#placeinput').val(text);
-        console.log($('#placeinput').val());
+        $('#placeselect').text(text);
+        $('#spot').val(text);
+        console.log($('#spot').val());
 	})
 </script>
 
@@ -342,7 +342,7 @@ window.onclick = function(event) {
                      //$("#endDate").datepicker( "option", "minDate", selectedDate );
                  }    
             });
-            $( "#endDate" ).datepicker({
+            /* $( "#endDate" ).datepicker({
                  changeMonth: true, 
                  changeYear: true,
                  nextText: '다음 달',
@@ -359,7 +359,7 @@ window.onclick = function(event) {
                      //$("#startDate").datepicker( "option", "maxDate", selectedDate );
                  }    
  
-            });    
+            });     */
     });
 </script>
 <script type="text/javascript">
@@ -367,7 +367,7 @@ window.onclick = function(event) {
 		/* window.scrollBy({ top: 200, left: 0, behavior: 'smooth' }); */
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})
-	$("#place").on("click", function() {
+	$("#placeselect").on("click", function() {
 		/* window.scrollBy({ top: 200, left: 0, behavior: 'smooth' }); */
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})

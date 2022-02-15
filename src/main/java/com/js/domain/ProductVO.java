@@ -35,7 +35,7 @@ public class ProductVO {
 	private String hotel;
 	private String hgrade;
 	private long period;
-	
+	int cnt;
 	
 	/*
 	 * private String id; private String rcontent; private String review;

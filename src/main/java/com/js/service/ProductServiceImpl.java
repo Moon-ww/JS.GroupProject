@@ -10,8 +10,10 @@ import com.js.mapper.ProductMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
+@Log4j
 public class ProductServiceImpl implements ProductService {
 
 	@Setter(onMethod_ = @Autowired)
@@ -96,5 +98,13 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVO productDetailView(String pcode) {	
 		return mapper.productDetailView(pcode);
 	}	
-
+	@Override
+	public List<ProductVO> getSearchView(ProductVO product) {
+	
+		return mapper.getSearchView(product);
+	}@Override
+	public int getSearchCount(ProductVO product) {
+		
+		return mapper.getSearchCount(product);
+	}
 }

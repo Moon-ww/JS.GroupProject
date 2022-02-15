@@ -55,15 +55,15 @@
 
 <div class="container-fluid">
       <div class="row">
-      <form name="search" action="">
+      <form name="search" action="/product/productSearchview.do">
          <div class="col-md-12 ment2" style="" id="scroll">
          	<div class="dropdown2">
-			  <div onclick="myFunction2()" class="dropbtn where" id="place" >어디로 떠나세요?</div>
-			  <div id="myDropdown2" class="dropdown-content acon" style="margin: 70px 0 0 0;">
-			    <a href="javascript:void(0)">제주도</a>
-			    <a href="javascript:void(0)">전라북도</a>
-			    <a href="javascript:void(0)">부산</a>
-			    <a href="javascript:void(0)">전라남도</a>
+			  <div onclick="myFunction()" class="dropbtn where" id="placeselect" >어디로 떠나세요?</div>
+			  <div id="myDropdown" class="dropdown-content acon" style="margin: 70px 0 0 0;">
+			    <a href="javascript:void(0)">제주시</a>
+			    <a href="javascript:void(0)">서울시</a>
+			    <a href="javascript:void(0)">부산시</a>
+			    <a href="javascript:void(0)">울릉도</a>
 			    <a href="javascript:void(0)">강원도</a>
 			    <a href="javascript:void(0)">충청북도</a>
 			    <a href="javascript:void(0)">경상북도</a>
@@ -71,9 +71,9 @@
 			    <a href="javascript:void(0)">경상남도</a>
 			    <a href="javascript:void(0)">인천</a>
 			  	</div>
-			  	<input type="hidden" name="place" id="placeinput">
+			  	<input type="hidden" name="spot" id="spot">
 				</div>
-			<input type="text" class="mbtn1" id="startDate" name="stardate" placeholder="여행시작일 선택" readonly style="cursor: pointer;"><button class="mbtn2" style="" >검색</button>
+			<input type="text" class="mbtn1" id="startDate" name="startdate" placeholder="여행시작일 선택" readonly style="cursor: pointer;"><button type="submit" class="mbtn2">검색</button>
 	</div>
 	</form>
          </div>
@@ -233,7 +233,7 @@
       })
    });
      </script>
-     <!-- <script type="text/javascript">
+     <script type="text/javascript">
 	/* When the user clicks on the button,
 	toggle between hiding and showing the dropdown content */
 	function myFunction() {
@@ -257,11 +257,11 @@
 <script>
 	$("#myDropdown a").on("click",function(){
 		var text = $(this).text();
-        $('#start').text(text);
-        $('#startinput').val(text);
-        console.log($('#startinput').val());
+        $('#placeselect').text(text);
+        $('#spot').val(text);
+        console.log($('#spot').val());
 	})
-</script> -->
+</script>
 
 <script type="text/javascript">
 	/* When the user clicks on the button,
@@ -285,14 +285,7 @@
 	}
 </script>
 
-<script>
-	$("#myDropdown2 a").on("click",function(){
-		var text = $(this).text();
-        $('#place').text(text);
-        $('#placeinput').val(text);
-        console.log($('#placeinput').val());
-	})
-</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
@@ -359,15 +352,5 @@
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})
 </script>
-<!-- <script type="text/javascript">
-	$("#place").click(function(){
-		  $('#placeSelectList').toggle();
-	})
-	function selectPlace(item) {
-	   var strText = $(item).text();
-	   // strText 에 전체 문자열이 입력된다.
-	   $("input[id='place']").val(strText);
-	   $('#placeSelectList').hide();
-	}
-</script> -->
+
    <%@ include file="../footer.jsp" %>

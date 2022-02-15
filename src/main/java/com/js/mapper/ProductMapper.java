@@ -28,5 +28,8 @@ public interface ProductMapper {
 	public ProductVO getDetailView2(int pseq);//상품 view 최저가 Detail join
 	
 	public ProductVO productDetailView(String pcode);//뷰디테일
+	
+	public List<ProductVO> getSearchView(ProductVO product);//상품 검색
+	public int getSearchCount(ProductVO product);
 
 }

@@ -68,7 +68,11 @@ public class ProductController {
 			
 		model.addAttribute("list", pvo);	
 	}		
-
+	@GetMapping("/productSearchview.do")
+	public void ProductView(Model model, ProductVO product) {
+		model.addAttribute("list", service.getSearchView(product));
+		model.addAttribute("count",service.getSearchCount(product));
+	}
 }
 
 
