@@ -105,7 +105,7 @@
 							<input type="text" class="form-control" name="phone" id="phone" placeholder="전화번호">
 						</div>
 						<button type="submit" class="btn btn-block btn-primary mb-4">회원가입</button>
-						<a href="/" class="btn btn-block btn-info mb-4" style="color: #fff;">취소</a>
+						<a href="/" class="btn btn-block btn-info mb-4" style="color: #fff;font-weight: 400;">취소</a>
 						</form>
 					</div>
 				</div>

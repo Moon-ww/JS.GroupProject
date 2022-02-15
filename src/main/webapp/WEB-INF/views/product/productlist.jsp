@@ -125,7 +125,7 @@
       <div role="tabpanel" class="category-tab">
            <!-- Nav tabs -->
            <ul class="nav nav-tabs n3" role="tablist" id="mytab">
-             <li role="presentation" class="active" id="rrr"><a href="#제주" aria-controls="제주" role="tab" data-toggle="tab">제주</a></li>
+             <li role="presentation" class="active"><a href="#제주" aria-controls="제주" role="tab" data-toggle="tab">제주</a></li>
              <li role="presentation"><a href="#내륙" aria-controls="내륙" role="tab" data-toggle="tab">내륙</a></li>
              <li role="presentation"><a href="#울릉도" aria-controls="울릉도" role="tab" data-toggle="tab">울릉도</a></li>
            </ul>
@@ -140,8 +140,8 @@
                       			 
                       			<div role="tabpanel" class="category-tab">
                       			<ul class=" p1">
-                              <li style="width: 350px; margin-top: 20px; color: #007aff">
-                              <a href=""style=" color: #007aff">${list.kind}</a>
+                              <li style="width: 350px; margin-top: 20px; color: #00abff">
+                              <a href=""style=" color: #00abff">${list.kind}</a>
                               <c:set var="a" value="${fn:split(list.hash,'#')}" />
 								<c:forEach var="b" items="${a}" varStatus="c">
                               <span style="border: 1px solid #444;padding: 5px;float: right; color: black;margin-right: 3px;">
@@ -167,8 +167,8 @@
                       			 
                       			<div role="tabpanel" class="category-tab">
                       			<ul class=" p1">
-                              <li style="width: 350px; margin-top: 20px; color: #007aff">
-                              <a href=""style=" color: #007aff">${list.kind}</a>
+                              <li style="width: 350px; margin-top: 20px; color: #00abff">
+                              <a href=""style=" color: #00abff">${list.kind}</a>
                               <c:set var="a" value="${fn:split(list.hash,'#')}" />
 								<c:forEach var="b" items="${a}" varStatus="c">
                               <span style="border: 1px solid #444;padding: 5px;float: right; color: black;margin-right: 3px;">
@@ -194,8 +194,8 @@
                       			 
                       			<div role="tabpanel" class="category-tab">
                       			<ul class=" p1">
-                              <li style="width: 350px; margin-top: 20px; color: #007aff">
-                              <a href=""style=" color: #007aff">${list.kind}</a>
+                              <li style="width: 350px; margin-top: 20px; color: #00abff">
+                              <a href=""style=" color: #00abff">${list.kind}</a>
                               <c:set var="a" value="${fn:split(list.hash,'#')}" />
 								<c:forEach var="b" items="${a}" varStatus="c">
                               <span style="border: 1px solid #444;padding: 5px;float: right; color: black;margin-right: 3px;">

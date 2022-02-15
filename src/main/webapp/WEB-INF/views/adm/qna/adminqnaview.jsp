@@ -32,7 +32,7 @@
 </head>	
 	<!-- [ auth-signin ] start -->
 <div class="auth-wrapper">
-	<div class="auth-content" style="width: 600px;">
+	<div class="auth-content" style="width: 700px;">
 		<div class="card">
 			<div class="row align-items-center">
 				<div class="col-md-12">
@@ -40,38 +40,47 @@
 					<form class="form-horizontal" name="frm">
 						<h2 class="mb-4 f-w-400">문의 내용보기</h2>
 					  <div class="form-group">
-					  <input type="hidden" name="qbno" class="form-control" id="qbno" value="${list.qbno }">
-					    <label for="writer" class="mr-4 ml-4" style="float: left;min-width: 70px;">글쓴이</label>
-					    <div class="">
-					      <input type="text" name="writer" class="form-control2 w300" id="writer" value="${list.writer }" readonly>
+					   <input type="hidden" name="qbno" class="form-control2" id="qbno" value="${list.qbno }">
+					  </div>
+					  <div class="form-group">
+					    <label for="writer" class="col-sm-2 control-label">글쓴이</label>
+					    <div class="col-sm-10">
+					      <input type="text" name="writer" class="form-control2" style="width: 100%;" 
+					      id="writer" value="${list.writer }">
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="title" class="mr-4 ml-4" style="float: left;min-width: 70px;">제목</label>
-					    <div class="">
-					      <input type="text" name="title" class="form-control2 w300" id="title" value="${list.title }" readonly>
+					    <label for="title" class="col-sm-2 control-label">제목</label>
+					    <div class="col-sm-10">
+					      <input type="text" name="title" class="form-control2" style="width: 100%;" 
+					      id="title" value="${list.title }">
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="qcontent" class="mr-4 ml-4" style="float: left;min-width: 70px;">질문 내용</label>
-					    <div class="">
-					     <input type="text" name="qcontent" class="form-control2 w300" id="qcontent" value="${list.qcontent }" readonly>
+					    <label for="qcontent" class="col-sm-2 control-label">질문 내용</label>
+					    <div class="col-sm-10">
+					     <textarea name="qcontent" class="form-control2" style="width: 100%;height:150px;" 
+					     id="qcontent" readonly>${list.qcontent }</textarea>
 					    </div>
 					  </div>
 					  <c:if test="${list.acontent ne null}">
 					  <div class="form-group">
-					    <label for="acontent" class="mr-4 ml-4" style="float: left;min-width: 70px;">답변내용</label>
-					    <div class="">
-					      <input type="text" name="acontent" class="form-control2 w300" id="acontent" value="${list.acontent }" readonly>
+					    <label for="acontent" class="col-sm-2 control-label">답변내용</label>
+					    <div class="col-sm-10">
+					      <textarea name="acontent" class="form-control2" style="width: 100%;
+					      height:180px;" id="acontent">${list.acontent }</textarea>
 					    </div>
 					  </div>
-					  </c:if>
+					   </c:if>
 					  <div class="form-group">
 					    <div class="text-center">
 					    <c:if test="${list.acontent eq null}">
-					      <button type="button" class="btn btn-default" onclick="window.location='/adm/qna/adminanswerwrite.do?qbno=${list.qbno }'">답변하기</button>
-					      </c:if>
-					      <button type="button" class="btn btn-default" onclick="javascript:history.back()">목록</button>
+					      <button type="button" class="btn btn-default" 
+					      onclick="window.location='/adm/qna/adminanswerwrite.do?qbno=${list.qbno }'">
+					      답변하기</button>
+					       </c:if>
+					      <button type="button" class="btn btn-default" 
+					      onclick="javascript:history.back()">목록</button>
 					    </div>
 					  </div>
 					</form>

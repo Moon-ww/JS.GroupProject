@@ -22,7 +22,7 @@
 							</div>		
 							</div>
                          <li><a href="/mypage/qnaList.do">1:1 게시판 문의내역</a></li>
-                         <li><a href="#">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
+                         <li><a href="../cs/faq.do">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
                          <li><a href="/mypage/review.do">My 상품평</a></li>
                          <li><a href="/mypage/mypage.do">개인정보</a></li>
                      </ul>

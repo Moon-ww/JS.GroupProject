@@ -43,8 +43,9 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mileageGuide.do")
-	public void mileageGuide() {
-		
+	public void mileageGuide(Model model, Principal principal) {
+		String id = principal.getName();
+		model.addAttribute("list", service.getmileList(id));
 	}
 	
 	@GetMapping("/qnaList.do")

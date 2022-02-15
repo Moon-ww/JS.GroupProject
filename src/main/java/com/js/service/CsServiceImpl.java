@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.js.domain.MemberVO;
+import com.js.domain.NoticeVO;
 import com.js.domain.QnaVO;
 import com.js.mapper.CsMapper;
 
@@ -24,8 +25,8 @@ public class CsServiceImpl implements CsService {
 		mapper.insert(qna);
 	}
 	@Override
-	public List<MemberVO> getList() {
-		return mapper.getList();
+	public List<NoticeVO> getNoticeList(){
+		return mapper.getNoticeList();
 	}
 
 }

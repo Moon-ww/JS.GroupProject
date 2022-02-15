@@ -25,7 +25,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="" id="item">
+					<a href="/adm/sales/orderlist" id="item">
 						<i class="fas fa-passport"></i>
 						<p>예약관리</p>
 						<span class=""></span>
@@ -249,7 +249,7 @@
 	<script src="/resources/css/assets/js/plugin/datatables/datatables.min.js"></script>
 
 	<!-- Bootstrap Notify -->
-	<script src="/resources/css/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+	<!-- <script src="/resources/css/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script> -->
 
 	<!-- jQuery Vector Maps -->
 	<script src="/resources/css/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>

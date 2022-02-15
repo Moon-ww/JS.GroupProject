@@ -7,4 +7,5 @@ import com.js.domain.OrderVO;
 public interface OrderMapper {
 
 	public List<OrderVO> getList();
+	public void ordersave(String status);
 }

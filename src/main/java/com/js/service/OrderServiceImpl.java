@@ -1,11 +1,11 @@
 package com.js.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.js.domain.Criteria;
 import com.js.domain.OrderVO;
 import com.js.mapper.OrderMapper;
 
@@ -22,4 +22,10 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderVO> getList() {
 		return mapper.getList();
 	} 
+	@Override
+	public void ordersave(String status) {
+		
+			mapper.ordersave(status);
+	
+	}
 }

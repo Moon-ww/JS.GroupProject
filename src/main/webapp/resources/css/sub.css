@@ -32,13 +32,13 @@ ul, ol {list-style:none;}
 	text-align:center;
 }
 .total {
-	color:#47abff;
+	color:#00abff;
 	font-size:25px;
 	font-weight:600;
 	padding:20px 0;
 }
 .total2 {
-	color:#47abff;
+	color:#00abff;
 	font-size:25px;
 	font-weight:600;
 	padding:20px 0;
@@ -57,9 +57,7 @@ ul, ol {list-style:none;}
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.zip:hover {
-	background-color: #88c4ff;
-}
+
 /* Pagination links */
 .pagination {
 	width:100%;
@@ -77,7 +75,7 @@ ul, ol {list-style:none;}
 
 /* Style the active/current link */
 .pagination a.active {
-  background-color: #88c4ff;
+  background-color: #00abff;
   border-radius: 5px;
   color: #000000;
 }
@@ -109,7 +107,7 @@ input[id="check1"]:checked {
       }
 .a1 {
 	padding:5px;
-	background:#0080ff;
+	background:#00abff;
 	color:white;
 	
 }
@@ -124,7 +122,7 @@ input[id="check1"]:checked {
 	margin:10px 10px 0 0;
 }
 .reviewbtn:hover {
-	background:#ff889d;
+	background:#00abff;
 }
 
 .reviewbtn .span1 {
@@ -226,7 +224,7 @@ input[id="check1"]:checked {
 }
 .sidenav a span:hover {
 	color: #fff;
-	background:#57abff;
+	background:#00abff;
 	border-radius: 10px;
 }
 /* Style page content */
@@ -317,7 +315,7 @@ input[id="check1"]:checked {
 	width:80px;
 	height:36px;
 	padding:5px;
-	color:#409fff;
+	color:#00abff;
 	background:none;
 	border:1px solid #ccc;
 	border-radius: 5px;
@@ -340,14 +338,14 @@ input[id="check1"]:checked {
 }
 .n1>li.active>a, .n1>li.active>a:hover, .n1>li.active>a:focus {
 	color:#fff;
-	background:#47abff;
+	background:#00abff;
 }
 .n2 {
 	border:0px;
 }
 .n2>li.active {
 	border:none;
-	border-bottom:3px solid #409fff;
+	border-bottom:3px solid #00abff;
 	font-weight: 600;
 }
 
@@ -378,7 +376,7 @@ input[id="check1"]:checked {
 }
 .n3>li.active>a, .n3>li.active>a:hover, .n3>li.active>a:focus {
 	color:#fff;
-	background:#b2996e;
+	background:#00abff;
 }
 /* 인기검색어 */
 .swiper2 a:before {
@@ -387,12 +385,12 @@ input[id="check1"]:checked {
     height: 18px;
     line-height: 15px;
     border-radius: 4px 0 4px 4px;
-    border: solid 1px #409fff;
+    border: solid 1px #00abff;
     background-color: #fff;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: -0.43px;
-    color: #409fff;
+    color: #00abff;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -516,7 +514,7 @@ input[id="check1"]:checked {
 }
 .n4>li.active>a, .n4>li.active>a:hover, .n4>li.active>a:focus {
 	color:#fff;
-	background:#007aff;
+	background:#00abff;
 }
 .pvside {
     padding: 25px 25px 16px 0;
@@ -530,9 +528,9 @@ input[id="check1"]:checked {
 	 width: 100%;
 	 text-decoration: none;
 }
-/*바뀐 css 및 새로 만든 css (혜린)*/
+
 .btn-default:hover {
-    color: #409fff;
+    color: #00abff;
     background-color: #ffffff;
     transition: 0.5s ease-out;
 }

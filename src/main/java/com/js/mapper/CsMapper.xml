@@ -13,5 +13,7 @@
 	<select id="getList" resultType="com.js.domain.MemberVO">
 		select * from qa where id=#{id}
 	</select>
-	
+	<select id="getNoticeList" resultType="com.js.domain.NoticeVO">
+		select * from notice order by nseq desc
+	</select>
 </mapper>

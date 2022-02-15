@@ -50,9 +50,29 @@
 			    					<th>제목</th>
 			    					<th>등록일</th>
 			    				</tr>
+			    			<c:choose>
+					    	<c:when test="${empty list }">
 			    				<tr>
 			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다.</td>
 			    				</tr>
+			    			</c:when>
+					    	<c:otherwise>
+					    		<c:forEach items="${list }" var="list">
+					    			<tr class="items">
+							    	<td>${list.nseq }</td>
+							    	<td>${list.kind }</td>
+							    	<td><a href="#">${list.title }</a></td>
+							    	<td><fmt:parseDate var="regdate" value="${list.regdate }" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/></td>
+							    </tr>
+							    <tr class="eee" style="display: none;">
+		                      		<td colspan="4" style="text-align: left;padding-left: 50px; background: #ececec;">
+		                      			<span style="font-weight: 600">공지내용 </span>: ${list.content }
+		                      		</td>
+		                      	</tr>
+							    </c:forEach>
+						    </c:otherwise>
+					    </c:choose>
 			    			</table>
 	                      </div>
 	                    </div>
@@ -67,9 +87,24 @@
 			    					<th>제목</th>
 			    					<th>등록일</th>
 			    				</tr>
+			    			<c:choose>
+					    	<c:when test="${empty list }">
 			    				<tr>
-			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다1.</td>
+			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다.</td>
 			    				</tr>
+			    			</c:when>
+					    	<c:otherwise>
+					    		<c:forEach items="${list }" var="list">
+					    			<tr>
+							    	<td>${list.nseq }</td>
+							    	<td>${list.kind }</td>
+							    	<td><a href="#">${list.title }</a></td>
+							    	<td><fmt:parseDate var="regdate" value="${list.regdate }" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/></td>
+							    </tr>
+							    </c:forEach>
+						    </c:otherwise>
+					    </c:choose>
 			    			</table>
 	                      </div>
 	                    </div>
@@ -84,9 +119,24 @@
 			    					<th>제목</th>
 			    					<th>등록일</th>
 			    				</tr>
+			    			<c:choose>
+					    	<c:when test="${empty list }">
 			    				<tr>
-			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다2.</td>
+			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다.</td>
 			    				</tr>
+			    			</c:when>
+					    	<c:otherwise>
+					    		<c:forEach items="${list }" var="list">
+					    			<tr>
+							    	<td>${list.nseq }</td>
+							    	<td>${list.kind }</td>
+							    	<td><a href="#">${list.title }</a></td>
+							    	<td><fmt:parseDate var="regdate" value="${list.regdate }" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/></td>
+							    </tr>
+							    </c:forEach>
+						    </c:otherwise>
+					    </c:choose>
 			    			</table>
 	                      </div>
 	                    </div>
@@ -101,9 +151,24 @@
 			    					<th>제목</th>
 			    					<th>등록일</th>
 			    				</tr>
+			    			<c:choose>
+					    	<c:when test="${empty list }">
 			    				<tr>
-			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다3.</td>
+			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다.</td>
 			    				</tr>
+			    			</c:when>
+					    	<c:otherwise>
+					    		<c:forEach items="${list }" var="list">
+					    			<tr>
+							    	<td>${list.nseq }</td>
+							    	<td>${list.kind }</td>
+							    	<td><a href="#">${list.title }</a></td>
+							    	<td><fmt:parseDate var="regdate" value="${list.regdate }" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/></td>
+							    </tr>
+							    </c:forEach>
+						    </c:otherwise>
+					    </c:choose>
 			    			</table>
 	                      </div>
 	                    </div>
@@ -146,5 +211,15 @@
 		});											
 	}												
 </script>
+<script type="text/javascript">
 
+	$(".items").on("click",function() {
+		if($(".eee").css("display") == "none"){
+			$(".eee").show();
+		}else{
+			$(".eee").hide();
+		}
+	})
+	
+</script>
     	<%@include file="../footer.jsp" %>

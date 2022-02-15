@@ -22,7 +22,7 @@
 							</div>		
 							</div>
                          <li><a href="/mypage/qnaList.do">1:1 게시판 문의내역</a></li>
-                         <li><a href="#">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
+                         <li><a href="../cs/faq.do">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
                          <li><a href="/mypage/review.do">My 상품평</a></li>
                          <li><a href="/mypage/mypage.do">개인정보</a></li>
                      </ul>
@@ -31,13 +31,13 @@
                <div class="col-md-8">
                <div class="content">
     			<span class="tit">내역조회</span>
-				    <div  class="col-md-12" style="padding: 10px; margin-bottom: 30px; border: 2px solid #47abff;">
+				    <div  class="col-md-12" style="padding: 10px; margin-bottom: 30px; border: 2px solid #00abff;">
 					     <div class="col-md-2">
-					     <img src="/resources/images/mileage.png" style="width: 120px;">
+					     <img src="/resources/images/mileage.jpg" style="width: 120px;">
 					     </div>
 					     <div class="col-md-10" style="margin-top: 30px;">
 					     <span style="font-size: 15pt;"><%=name %> 님의 사용 가능한 마일리지는 </span>
-					     <span style="font-size: 20pt;color: #47abff;">${list.mileage }</span> 입니다.<br>
+					     <span style="font-size: 20pt;color: #00abff;">${list.mileage }</span> 입니다.<br>
 					     <span>누적 마일리지 ${list.mileage }</span>
 					     </div>
 				     </div>

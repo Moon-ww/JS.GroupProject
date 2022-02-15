@@ -14,6 +14,7 @@ public class OrderVO {
 	private String indate;
 	private int qnt;
 	private int total;
+	private String status;
 	private long mileage;
 	//product
 	private int pseq;

@@ -193,8 +193,8 @@
                       			 
                       			<div role="tabpanel" class="category-tab">
                       			<ul class="">
-                              <li style="width: 350px; margin-top: 20px; color: #007aff">
-                              <a href=""style=" color: #007aff">${list.place }</a>
+                              <li style="width: 350px; margin-top: 20px; color: #00abff">
+                              <a href=""style=" color: #00abff">${list.place }</a>
                               <c:set var="a" value="${fn:split(list.hash,'#')}" />
 								<c:forEach var="b" items="${a}" varStatus="c">
                               <span style="border: 1px solid #444;padding: 5px;float: right; color: black;margin-right: 3px;">
@@ -221,8 +221,8 @@
                       			 
                       			<div role="tabpanel" class="category-tab">
                       			<ul class="">
-                              <li style="width: 350px; margin-top: 20px; color: #007aff">
-                              <a href=""style=" color: #007aff">${list.place }</a>
+                              <li style="width: 350px; margin-top: 20px; color: #00abff">
+                              <a href=""style=" color: #00abff">${list.place }</a>
                               <c:set var="a" value="${fn:split(list.hash,'#')}" />
 								<c:forEach var="b" items="${a}" varStatus="c">
                               <span style="border: 1px solid #444;padding: 5px;float: right; color: black;margin-right: 3px;">
@@ -248,8 +248,8 @@
                       			 
                       			<div role="tabpanel" class="category-tab">
                       			<ul class="">
-                              <li style="width: 350px; margin-top: 20px; color: #007aff">
-                              <a href=""style=" color: #007aff">${list.place }</a>
+                              <li style="width: 350px; margin-top: 20px; color: #00abff">
+                              <a href=""style=" color: #00abff">${list.place }</a>
                               <c:set var="a" value="${fn:split(list.hash,'#')}" />
 								<c:forEach var="b" items="${a}" varStatus="c">
                               <span style="border: 1px solid #444;padding: 5px;float: right; color: black;margin-right: 3px;">

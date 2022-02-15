@@ -11,4 +11,5 @@ import com.js.domain.SizeVO;
 public interface OrderService {
 
 	public List<OrderVO> getList();
+	public void ordersave(String status);
 }

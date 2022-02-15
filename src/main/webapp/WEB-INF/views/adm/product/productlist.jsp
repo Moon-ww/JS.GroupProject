@@ -25,7 +25,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="" id="item">
+					<a href="/adm/sales/orderlist" id="item">
 						<i class="fas fa-passport"></i>
 						<p>예약관리</p>
 						<span class=""></span>

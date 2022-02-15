@@ -15,7 +15,7 @@
 				</div>				
 				<div class ="col-md-5">				
 					<div style="margin-top:50px">			
-						<p style="padding: 3px;color: #47abff;border: 1px solid #47abff;display: inline-block;">${list.kind}</p>		
+						<p style="padding: 3px;color: #00abff;border: 1px solid #00abff;display: inline-block;">${list.kind}</p>		
 					</div>			
 					<div style="margin-top:10px;font-weight: 600;font-size: 16pt;">			
 						<p>[${list.dkind}]${list.dname}</p>		

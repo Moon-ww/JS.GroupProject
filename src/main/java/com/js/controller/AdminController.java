@@ -3,8 +3,12 @@ package com.js.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +27,7 @@ import com.js.domain.QnaVO;
 import com.js.service.HotelService;
 import com.js.service.MemberService;
 import com.js.service.NoticeService;
+import com.js.service.OrderService;
 import com.js.service.ProductService;
 import com.js.service.QnaService;
 import com.js.service.SalesService;
@@ -43,7 +49,8 @@ public class AdminController {
 	private MemberService service3;
 	private QnaService service4;
 	private NoticeService service5;
-	private SalesService service6;
+	private OrderService service6;
+	private SalesService service7;
 	
 	//로그인
 	@GetMapping("/adminlogin")
@@ -70,7 +77,7 @@ public class AdminController {
 			return str.replace("-", File.separator);
 		}
 	//상품리스트
-	@GetMapping("/product/produclist")
+	@GetMapping("/product/productlist")
 	public void productList(Model model) {
 		model.addAttribute("list", service.getList());
 	}
@@ -427,16 +434,35 @@ public class AdminController {
 	//매출
 	@GetMapping("/sales/sales_status")
 	public void AdminSalesList(Model model) {
-		/* model.addAttribute("list", service6.getList()); */
+		/* model.addAttribute("list", service7.getList()); */
 	}
 	//순이익
 	@GetMapping("/sales/sales_status2")
 	public void AdminSalesList2(Model model) {
-		/* model.addAttribute("list", service6.getList()); */
+		/* model.addAttribute("list", service7.getList()); */
 	}
 	//상품별 판매량
 	@GetMapping("/sales/sales_status3")
 	public void AdminSalesList3(Model model) {
-		/* model.addAttribute("list", service6.getList()); */
+		/* model.addAttribute("list", service7.getList()); */
+	}
+	
+	//예약관리 화면
+	@GetMapping("/sales/orderlist")
+	public void AdminOrderlist(Model model) {
+		model.addAttribute("list", service6.getList());
+	}
+	//예약관리 화면
+	@RequestMapping(value = "/adminordersave.do" , method = RequestMethod.POST)
+	public String AdminOrdersave(HttpServletRequest request, Model model) {
+		
+		String[] StatusArr = request.getParameterValues("status");
+		
+		for (String status : StatusArr) {
+			System.out.println(status);
+			service6.ordersave(status);
+		}
+		
+		return "redirect:/adm/sales/orderlist";
 	}
 }
