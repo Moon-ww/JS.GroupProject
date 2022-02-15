@@ -24,31 +24,14 @@
                <div class="col-md-8">
                		<div class="content">
     					<p class="tit2" style="padding-bottom: 7px;">자주하는질문</p>
+    					<c:forEach items="${list }" var="list">
     						<div class="accord cs_center">
-								<p class="accordion" style="">여행이력은 어떻게 확인하나요?</p>							
+								<p class="accordion" style="">${list.que }</p>							
 								<div class="panel" style="display: none; margin: 20px 0 20px 0;padding-bottom: 10px;">
-									<p>나도 몰라요</p>
-									<p>나도 몰라요</p>
-									<p>나도 몰라요</p>
-									<p>나도 몰라요</p>
-									<p>나도 몰라요</p>
-									<p>나도 몰라요</p>
+									<p>${list.ans }</p>
 								</div>
-								<p class="accordion" style="cursor: pointer;">호텔/국내숙박 카드 결제시 취소는 언제 되나요?</p>							
-								<div class="panel" style="display: none; margin: 20px 0 20px 0;padding-bottom: 10px;">
-									<p>언젠간 되겠죠</p>
-									<p>언젠간 되겠죠</p>
-									<p>언젠간 되겠죠</p>
-									<p>언젠간 되겠죠</p>
-									<p>언젠간 되겠죠</p>
-									<p>언젠간 되겠죠</p>
-								</div>
-								<p class="accordion" style="cursor: pointer;">프로젝트 버스기사님 없나요?</p>							
-								<div class="panel" style="display: none; margin: 20px 0 20px 0;padding-bottom: 10px;">
-									<p>김세종 기사님 출발 하시죠</p>
-									<p>벨트 맸습니다</p>
-								</div>								
 							</div>
+							</c:forEach>
                			</div>
                			<sec:authorize access="isAnonymous()">
                				<a href="/member/login" class="btn btn-default" style="padding: 10.4px 22.4px;margin-top: 10px;float: right;">문의하기</a>

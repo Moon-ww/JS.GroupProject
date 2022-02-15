@@ -24,8 +24,9 @@ public class CsController {
 	private CsService service;
 	
 	@GetMapping("/faq.do")
-	public void FaqList() {
-		
+	public void FaqList(Model model) {
+	model.addAttribute("list", service.getFaqList());
+	System.out.println(model);
 	}
 	
 	@GetMapping("/qna.do")
@@ -41,6 +42,10 @@ public class CsController {
 	@GetMapping("/notice.do")
 	public void NoticeList(Model model) {
 		model.addAttribute("list",service.getNoticeList());
+		//System.out.println(model);
+		model.addAttribute("list2",service.getNoticeList2());
+		model.addAttribute("list3",service.getNoticeList3());
+		model.addAttribute("list4",service.getNoticeList4());
 	}
 	
 	

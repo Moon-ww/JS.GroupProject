@@ -88,13 +88,13 @@
 			    					<th>등록일</th>
 			    				</tr>
 			    			<c:choose>
-					    	<c:when test="${empty list }">
+					    	<c:when test="${empty list2 }">
 			    				<tr>
 			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다.</td>
 			    				</tr>
 			    			</c:when>
 					    	<c:otherwise>
-					    		<c:forEach items="${list }" var="list">
+					    		<c:forEach items="${list2 }" var="list">
 					    			<tr>
 							    	<td>${list.nseq }</td>
 							    	<td>${list.kind }</td>
@@ -120,13 +120,13 @@
 			    					<th>등록일</th>
 			    				</tr>
 			    			<c:choose>
-					    	<c:when test="${empty list }">
+					    	<c:when test="${empty list3 }">
 			    				<tr>
 			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다.</td>
 			    				</tr>
 			    			</c:when>
 					    	<c:otherwise>
-					    		<c:forEach items="${list }" var="list">
+					    		<c:forEach items="${list3 }" var="list">
 					    			<tr>
 							    	<td>${list.nseq }</td>
 							    	<td>${list.kind }</td>
@@ -152,13 +152,13 @@
 			    					<th>등록일</th>
 			    				</tr>
 			    			<c:choose>
-					    	<c:when test="${empty list }">
+					    	<c:when test="${empty list4 }">
 			    				<tr>
 			    					<td style="line-height:50px;" colspan="4">데이터가 없습니다.</td>
 			    				</tr>
 			    			</c:when>
 					    	<c:otherwise>
-					    		<c:forEach items="${list }" var="list">
+					    		<c:forEach items="${list4 }" var="list">
 					    			<tr>
 							    	<td>${list.nseq }</td>
 							    	<td>${list.kind }</td>

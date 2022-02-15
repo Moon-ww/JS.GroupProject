@@ -16,4 +16,16 @@
 	<select id="getNoticeList" resultType="com.js.domain.NoticeVO">
 		select * from notice order by nseq desc
 	</select>
+	<select id="getNoticeList2" resultType="com.js.domain.NoticeVO">
+		select * from notice where kind='일반' order by nseq desc
+	</select>
+	<select id="getNoticeList3" resultType="com.js.domain.NoticeVO">
+		select * from notice where kind='서비스' order by nseq desc
+	</select>
+	<select id="getNoticeList4" resultType="com.js.domain.NoticeVO">
+		select * from notice where kind='당첨자발표' order by nseq desc
+	</select>
+	<select id="getFaqList" resultType="com.js.domain.FaqVO">
+		select * from faq order by bno desc
+	</select>
 </mapper>

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.js.domain.MemberVO;
+import com.js.domain.FaqVO;
 import com.js.domain.NoticeVO;
 import com.js.domain.QnaVO;
 import com.js.mapper.CsMapper;
@@ -28,5 +28,21 @@ public class CsServiceImpl implements CsService {
 	public List<NoticeVO> getNoticeList(){
 		return mapper.getNoticeList();
 	}
-
+	@Override
+	public List<NoticeVO> getNoticeList2(){
+		return mapper.getNoticeList2();
+	}
+	@Override
+	public List<NoticeVO> getNoticeList3(){
+		return mapper.getNoticeList3();
+	}
+	@Override
+	public List<NoticeVO> getNoticeList4(){
+		return mapper.getNoticeList4();
+	}
+	@Override
+	public List<FaqVO> getFaqList() {
+		
+		return mapper.getFaqList();
+	}
 }
