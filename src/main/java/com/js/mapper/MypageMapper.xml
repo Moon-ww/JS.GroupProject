@@ -4,8 +4,25 @@
 	<select id="getList" resultType="com.js.domain.MypageVO">
 	 select o.oseq, o.pname, o.qnt, o.total, o.status, o.indate, d.startdate, d.enddate
      from orders o, product_detail d
-     where o.pcode = d.pcode and id=#{id}
+     where o.pcode = d.pcode and id=#{id} and o.status = 1
 	</select>
+	<select id="getList2" resultType="com.js.domain.MypageVO">
+	 select o.oseq, o.pname, o.qnt, o.total, o.status, o.indate, d.startdate, d.enddate
+     from orders o, product_detail d
+     where o.pcode = d.pcode and id=#{id} and not status = 1
+	</select>
+	<select id="getList3" resultType="com.js.domain.MypageVO">
+	<![CDATA[
+	 select o.oseq, o.pname, o.qnt, o.total, o.status, o.indate, d.startdate, d.enddate
+     from orders o, product_detail d
+     where o.pcode = d.pcode and id=#{id} and o.status = 1 and d.enddate < sysdate
+       ]]>
+	</select>
+	<update id="ordercancel" parameterType="com.js.domain.MypageVO">
+		 
+			UPDATE orders SET status = '2' WHERE oseq = #{oseq}
+        
+	</update>
 	<select id="getmileList" resultType="com.js.domain.MypageVO">
 	 select mileage from orders where id=#{id}
 	</select>
@@ -13,4 +30,13 @@
 	 select q.qbno, q.writer, q.title, q.qcontent, q.regdate, q.viewcount, q.status, 
 	 q.kind, q.oseq, a.qno, a.abno, a.acontent from qa q, answer a where qno(+)=qbno and writer=#{id}
 	</select>
+	<delete id="dibscancel">
+		delete from likes where id=#{id} and pcode = #{pcode}
+	</delete>
+	<select id="getdibs" resultType="com.js.domain.LikesVO">
+	 select * from likes where id=#{id} and pcode = #{pcode}
+	</select>
+	<insert id="register">
+		insert into likes (id, pcode) values (#{id},#{pcode})
+	</insert>
 </mapper>

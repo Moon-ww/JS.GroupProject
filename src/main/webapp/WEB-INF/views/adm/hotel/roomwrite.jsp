@@ -56,9 +56,11 @@
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="image" class="col-sm-2 control-label">이미지</label>
+					    <label for="img" class="ml-4 mr-4"style="float: left;min-width: 70px;">대표이미지</label>
 					    <div class="col-sm-10">
-					      <input type="file" name="uploadFile" class="form-control" id="image">
+					      <input type="file" name="uploadFile" id="input-file" style="display:none;">
+					      <label class="input-file-button btn btn-primary" for="input-file">업로드</label>
+					      <input type="text" id="filename" class="form-control2" style="width:80%" readonly>
 					    </div>
 					  </div>
 					  <div class="form-group">

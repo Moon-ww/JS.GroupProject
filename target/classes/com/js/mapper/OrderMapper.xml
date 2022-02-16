@@ -3,11 +3,11 @@
 <mapper namespace="com.js.mapper.OrderMapper">
 
 	<select id="getList" resultType="com.js.domain.OrderVO">
-		select * from orders order by status, oseq desc
+		select * from orders where not status =1 order by status, oseq desc
 	</select>
 	<update id="ordersave" parameterType="com.js.domain.OrderVO">
 		 
-			UPDATE orders SET status = '2' WHERE oseq = #{status}
+			UPDATE orders SET status = '3' WHERE oseq = #{status}
         
 	</update>
 	

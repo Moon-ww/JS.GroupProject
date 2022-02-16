@@ -6,7 +6,7 @@
 	<section>							
 	<div class = "container-fluid" style="border-top:2px solid  #000; padding:50px 0px 50px 0px;">							
 			<div class ="container">					
-			<div class = "row">					
+			<div class = "row">	
 				<div class = "col-md-7">				
 					<div class="imgdiv" style="margin-bottom: 20px;">			
 							<img style="width:100%;" src="/resources/images/z1.jpg" alt="" />	
@@ -166,8 +166,17 @@
 		<div style="padding:30px 0;">
 		    <p><strong style="margin-right: 50px;">총 금액 </strong><span class="total"></span></p>
 		</div>
-		  <a href="" id="resbtn" class = "btn btn-default" style="line-height: 25px;">예약하기</a>
-		  <a href=""><i class="fa fa-heart-o" style="font-size: 16pt;border: 1px solid #444;padding: 7px;border-radius: 5px;"></i></a>						
+		
+		  <div class="col-md-12" style="height: 35px;">
+		  
+		  <a href="" id="resbtn" class = "btn btn-default">예약하기</a>
+		   <c:if test="${empty list2}">
+		  <a href="/product/insert.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger" style="font-size: 22px;padding: 0 5px 0 5px;height: 100%;">찜하기</a>	
+		  </c:if>
+		  <c:if test="${not empty list2}">
+		  <a href="/product/cancel.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger" style="font-size: 22px;padding: 0 5px 0 5px;height: 100%;">찜삭제</a>	
+		  </c:if>
+		  </div>
 		</div>						
 	</div>							
 	</div>							

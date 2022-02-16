@@ -87,6 +87,7 @@
       <div class="row" style="margin-left: 150px; margin-right: 150px;">
          <h2 class="category" style="margin: 50px 0 30px 0px;">인기테마</h2>
          <div class="thema">
+         	<a href="/product/productSearchthema.do?thema=제주도에어카텔">
             <div class="themaimg">
             <img src="/resources/images/pc_sb.jpg" alt="" style="width: 260px; height: 260px; margin: 10px;"/>
             </div>
@@ -94,6 +95,8 @@
             <strong>제주에어카텔<br>모아보기</strong><br><br>
             <p>김포출발부터 지방출발까지<br> 모두다보기</p>
             </div>
+            </a>
+            <a href="/product/productSearchthema.do?thema=지방출발">
             <div class="themaimg">
             <img src="/resources/images/bnr_co.jpg" alt="" style="width: 260px; height: 260px; margin: 10px;"/>
             </div>
@@ -101,6 +104,8 @@
             <strong>지방출발 모아모아</strong><br><br><br>
             <p>부산/청주/광주/대구<br> 출~발!</p>
             </div>
+            </a>
+            <a href="/product/productSearchthema.do?thema=자유여행">
             <div class="themaimg">
             <img src="/resources/images/pc_sb_camellia.jpg" alt="" style="width: 260px; height: 260px; margin: 10px;"/>
             </div>
@@ -108,6 +113,8 @@
             <strong>자유여행</strong><br><br><br>
             <p>내차로 떠나는 자유여행</p>
             </div>
+            </a>
+            <a href="/product/productSearchthema.do?thema=프리미엄">
             <div class="themaimg">
             <img src="/resources/images/premium.jpg" alt="" style="width: 260px; height: 260px; margin: 10px;"/>
             </div>
@@ -115,6 +122,7 @@
             <strong>국내여행의 격조를 더하다</strong><br><br><br>
             <p>JS 투어 프리미엄국내여행으로<br> 방방곡곡</p>
             </div>
+            </a>
          </div>
       </div>
    </div>

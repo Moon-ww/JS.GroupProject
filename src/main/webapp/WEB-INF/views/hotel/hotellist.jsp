@@ -5,7 +5,7 @@
     
 <section>
     <div id="carousel-example-generic" class="carousel slide" style="margin-top: 5px;" data-ride="carousel">
-    
+  
      
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
@@ -58,12 +58,12 @@
       <form name="search" action="">
          <div class="col-md-12 ment2" style="" id="scroll">
          	<div class="dropdown2">
-			  <div onclick="myFunction2()" class="dropbtn where" id="place" >어디로 떠나세요?</div>
+			  <div onclick="myFunction2()" class="dropbtn where" id="spot" style="width: 300px;" >어디로 떠나세요?</div>
 			  <div id="myDropdown2" class="dropdown-content acon" style="margin: 70px 0 0 0;">
-			    <a href="javascript:void(0)">제주도</a>
-			    <a href="javascript:void(0)">전라북도</a>
-			    <a href="javascript:void(0)">부산</a>
-			    <a href="javascript:void(0)">전라남도</a>
+			    <a href="javascript:void(0)">제주시</a>
+			    <a href="javascript:void(0)">서울시</a>
+			    <a href="javascript:void(0)">부산시</a>
+			    <a href="javascript:void(0)">울릉도</a>
 			    <a href="javascript:void(0)">강원도</a>
 			    <a href="javascript:void(0)">충청북도</a>
 			    <a href="javascript:void(0)">경상북도</a>
@@ -71,9 +71,11 @@
 			    <a href="javascript:void(0)">경상남도</a>
 			    <a href="javascript:void(0)">인천</a>
 			  	</div>
-			  	<input type="hidden" name="place" id="placeinput">
+			  	<input type="hidden" name="spot" id="spot">
 				</div>
-			<input type="text" class="mbtn1" id="startDate" name="stardate" placeholder="여행시작일 선택" readonly style="cursor: pointer;"><button class="mbtn2" style="" >검색</button>
+			<input type="text" class="mbtn1" id="startDate" name="startdate" placeholder="체크인" readonly style="cursor: pointer;width: 200px;">~
+			<input type="text" class="mbtn1" id="endDate" name="enddate" placeholder="체크아웃" readonly style="cursor: pointer;width: 200px;">
+			<button class="mbtn2" style="width: 200px;" >숙소 검색</button>
 	</div>
 	</form>
          </div>
@@ -342,9 +344,9 @@
 <script>
 	$("#myDropdown2 a").on("click",function(){
 		var text = $(this).text();
-        $('#place').text(text);
-        $('#placeinput').val(text);
-        console.log($('#placeinput').val());
+        $('#spot').text(text);
+        $('#spot').val(text);
+        console.log($('#spot').val());
 	})
 </script>
 <script type="text/javascript">
@@ -379,7 +381,7 @@
                  onClose: function( selectedDate ) {    
                       //시작일(startDate) datepicker가 닫힐때
                       //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-                     //$("#endDate").datepicker( "option", "minDate", selectedDate );
+                     $("#endDate").datepicker( "option", "minDate", selectedDate );
                  }    
             });
             $( "#endDate" ).datepicker({
@@ -392,7 +394,7 @@
                  monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                  monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                  dateFormat: "yy-mm-dd",
-                 maxDate: 0,                       // 선택할수있는 최대날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                 minDate: 0,                       // 선택할수있는 최대날짜, ( 0 : 오늘 이후 날짜 선택 불가)
                  onClose: function( selectedDate ) {    
                      // 종료일(endDate) datepicker가 닫힐때
                      // 시작일(startDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 시작일로 지정

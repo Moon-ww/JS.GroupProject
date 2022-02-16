@@ -109,9 +109,10 @@
 		<div class="swiper-container swiper2" style="width:150px; height: 26px; position: absolute; top:16px; left: 450px;">
 		  <!-- 보여지는 영역 -->
 		  <div class="swiper-wrapper sw2">
-		  	<a href="#" class="swiper-slide" data-swiper-slide-index="0" style="height: 26px;">뭐해?</a>
-		    <a href="#" class="swiper-slide" data-swiper-slide-index="1" style="height: 26px;">놀지말고</a>
-		    <a href="#" class="swiper-slide" data-swiper-slide-index="2" style="height: 26px;">코딩해</a>
+		  	<a href="#" class="swiper-slide" data-swiper-slide-index="0" style="height: 26px;">제주도</a>
+		    <a href="#" class="swiper-slide" data-swiper-slide-index="1" style="height: 26px;">강원도</a>
+		    <a href="#" class="swiper-slide" data-swiper-slide-index="2" style="height: 26px;">서울</a>
+		    <a href="#" class="swiper-slide" data-swiper-slide-index="3" style="height: 26px;">가족여행</a>
 		   </div>
 		  <!-- 페이징 버튼 처리 -->
 		  <!-- <div class="swiper-pagination"></div> -->

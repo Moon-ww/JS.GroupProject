@@ -37,10 +37,7 @@ public class ProductVO {
 	private long period;
 	int cnt;
 	
-	/*
-	 * private String id; private String rcontent; private String review;
-	 */
-	
+	private String like_pcode;
 	
 	
 }

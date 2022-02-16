@@ -10,8 +10,8 @@
 			<div class="row">				
 							
 				<h2 class="col-md-3"></h2>
-				<a class="btn btn-default col-md-offset-7 col-md-2"									
-					style="width: 100px; height: 33px; padding: 15; margin-top: 20px">2022.02</a>								
+				<!-- <a class="btn btn-default col-md-offset-7 col-md-2"									
+					style="width: 100px; height: 33px; padding: 15; margin-top: 20px">2022.02</a> -->								
 			</div>										
 		</div>											
 	</div>												
@@ -50,8 +50,8 @@
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
+							<p class=""> 패키지 총 ${count} 개</p>		
 							<c:forEach items="${list}" var="list">	
-							<p class="">${list.spot} 패키지 총 ${count} 개</p>				
 							<div class="col-md-12" style="background:#fff; padding:20px;">				
 									<div class="col-md-10">
 										<div class="imagesss col-md-4" style="height: 150px;">

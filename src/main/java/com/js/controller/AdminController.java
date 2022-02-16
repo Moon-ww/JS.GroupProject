@@ -65,7 +65,7 @@ public class AdminController {
 	}
 	
 	//관리자페이지 메인 (판매현황)
-	@GetMapping("/adminmain")
+	@GetMapping("/adminmain.do")
 		public void adminmain() {
 			/* model.addAttribute("list", service.getList()); */
 	}
@@ -77,12 +77,12 @@ public class AdminController {
 			return str.replace("-", File.separator);
 		}
 	//상품리스트
-	@GetMapping("/product/productlist")
+	@GetMapping("/product/productlist.do")
 	public void productList(Model model) {
 		model.addAttribute("list", service.getList());
 	}
 	//상품등록화면
-	@GetMapping("/product/productwrite")
+	@GetMapping("/product/productwrite.do")
 	public void productwriteform() {
 		
 	}
@@ -121,7 +121,7 @@ public class AdminController {
 		return "redirect:/adm/product/productlist.do";
 	}
 	//상품수정화면
-	@GetMapping("/product/productmodify")
+	@GetMapping("/product/productmodify.do")
 	public void productmodifyform(int pseq, Model model) {
 		model.addAttribute("list", service.modifyview(pseq));
 	}
@@ -176,7 +176,7 @@ public class AdminController {
 	model.addAttribute("list", service.getpoptionList(pseq));
 	}
 	//옵션등록 화면
-	@GetMapping("/product/poptionwrite")
+	@GetMapping("/product/poptionwrite.do")
 	public void poptionwriteform() {
 		
 	}
@@ -186,10 +186,10 @@ public class AdminController {
 		
 		service.poptioninsert(product);
 		
-		return "redirect:/adm/admin";
+		return "redirect:/adm/adminmain.do";
 	}
 	//옵션수정화면
-	@GetMapping("/product/poptionmodify")
+	@GetMapping("/product/poptionmodify.do")
 	public void poptionmodifyform(String pcode, Model model) {
 		model.addAttribute("list", service.poptionmodifyview(pcode));
 	}
@@ -207,12 +207,12 @@ public class AdminController {
 	}
 	
 	//호텔리스트
-	@GetMapping("/hotel/hotellist")
+	@GetMapping("/hotel/hotellist.do")
 		public void AdminHotelList(Model model) {
 		model.addAttribute("list", service2.getList());
 	}
 	//호텔등록화면
-	@GetMapping("/hotel/hotelwrite")
+	@GetMapping("/hotel/hotelwrite.do")
 	public void hotelwriteform() {
 		
 	}
@@ -248,10 +248,10 @@ public class AdminController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/adm/hotel/hotellist";
+		return "redirect:/adm/hotel/hotellist.do";
 	}
 	//호텔수정화면
-	@GetMapping("/hotel/hotelmodify")
+	@GetMapping("/hotel/hotelmodify.do")
 	public void hotelmodifyform(int hseq, Model model) {
 		model.addAttribute("list", service2.modifyview(hseq));
 	}
@@ -292,7 +292,7 @@ public class AdminController {
 			e.printStackTrace();
 		}
 	}
-		return "redirect:/adm/hotel/hotellist";
+		return "redirect:/adm/hotel/hotellist.do";
 	}
 	//호텔삭제
 	@GetMapping("/admin_hotel_delete.do")
@@ -307,7 +307,7 @@ public class AdminController {
 	model.addAttribute("list", service2.getroomList(hseq));
 	}
 	//객실등록화면
-	@GetMapping("/hotel/roomwrite")
+	@GetMapping("/hotel/roomwrite.do")
 	public void roomwriteform() {
 		
 	}
@@ -346,7 +346,7 @@ public class AdminController {
 		return "redirect:/adm/hotel/hotellist.do";
 	}
 	//객실수정화면
-	@GetMapping("/hotel/roommodify")
+	@GetMapping("/hotel/roommodify.do")
 	public void roommodifyform(String title, Model model) {
 		model.addAttribute("list", service2.roommodifyview(title));
 	}
@@ -364,7 +364,7 @@ public class AdminController {
 	}
 	
 	//회원리스트
-	@GetMapping("/memberlist")
+	@GetMapping("/memberlist.do")
 		public void MemberList(Model model) {
 		model.addAttribute("list", service3.getList());
 	}
@@ -375,18 +375,18 @@ public class AdminController {
 			return "redirect:/adm/memberlist.do";
 		}
 	//질문리스트
-	@GetMapping("/qna/adminqnalist")
+	@GetMapping("/qna/adminqnalist.do")
 	public void AdminQnaList(Model model) {
 	model.addAttribute("list", service4.getList());
 	}
 	//질문화면
-	@GetMapping("/qna/adminqnaview")
+	@GetMapping("/qna/adminqnaview.do")
 	public void AdminQnaView(int qbno, Model model) {
 		service4.viewcount(qbno);
 	model.addAttribute("list", service4.qnaview(qbno));
 	}
 	//답변화면
-	@GetMapping("/qna/adminanswerwrite")
+	@GetMapping("/qna/adminanswerwrite.do")
 	public void AdminAnswerForm(int qbno, Model model) {
 	model.addAttribute("list", service4.qnaview(qbno));
 	}
@@ -396,7 +396,7 @@ public class AdminController {
 		System.out.println(qna);
 	service4.answerwrite(qna);
 	service4.status(qna.getQbno());
-	return "redirect:/adm/qna/adminqnalist";
+	return "redirect:/adm/qna/adminqnalist.do";
 	}
 	//공지사항 입력화면
 	@GetMapping("/notice/noticewrite.do")
@@ -407,10 +407,10 @@ public class AdminController {
 	@PostMapping("/admin_notice_write.do")
 	public String AdminNoticeWrite(NoticeVO notice) {
 		service5.insert(notice);
-		return "redirect:/adm/notice/adminnotice";
+		return "redirect:/adm/notice/adminnotice.do";
 	}
 	//공지사항리스트
-	@GetMapping("/notice/adminnotice")
+	@GetMapping("/notice/adminnotice.do")
 	public void AdminNotice(NoticeVO notice, Model model) {
 		model.addAttribute("list", service5.getList());
 	}
@@ -423,36 +423,36 @@ public class AdminController {
 	@PostMapping("/admin_notice_modify.do")
 	public String AdminNoticeModify(NoticeVO notice) {
 		service5.modify(notice);
-		return "redirect:/adm/notice/adminnotice";
+		return "redirect:/adm/notice/adminnotice.do";
 	}
 	//공지사항삭제
 		@GetMapping("/admin_notice_delete.do")
 		public String AdminNoticeDelete(int nseq) {
 			service5.delete(nseq);
-			return "redirect:/adm/notice/adminnotice";
+			return "redirect:/adm/notice/adminnotice.do";
 		}
 	//매출
-	@GetMapping("/sales/sales_status")
+	@GetMapping("/sales/sales_status.do")
 	public void AdminSalesList(Model model) {
 		/* model.addAttribute("list", service7.getList()); */
 	}
 	//순이익
-	@GetMapping("/sales/sales_status2")
+	@GetMapping("/sales/sales_status2.do")
 	public void AdminSalesList2(Model model) {
 		/* model.addAttribute("list", service7.getList()); */
 	}
 	//상품별 판매량
-	@GetMapping("/sales/sales_status3")
+	@GetMapping("/sales/sales_status3.do")
 	public void AdminSalesList3(Model model) {
 		/* model.addAttribute("list", service7.getList()); */
 	}
 	
 	//예약관리 화면
-	@GetMapping("/sales/orderlist")
+	@GetMapping("/sales/orderlist.do")
 	public void AdminOrderlist(Model model) {
 		model.addAttribute("list", service6.getList());
 	}
-	//예약관리 화면
+	//예약관리
 	@RequestMapping(value = "/adminordersave.do" , method = RequestMethod.POST)
 	public String AdminOrdersave(HttpServletRequest request, Model model) {
 		
@@ -462,7 +462,6 @@ public class AdminController {
 			System.out.println(status);
 			service6.ordersave(status);
 		}
-		
-		return "redirect:/adm/sales/orderlist";
+		return "redirect:/adm/sales/orderlist.do";
 	}
 }

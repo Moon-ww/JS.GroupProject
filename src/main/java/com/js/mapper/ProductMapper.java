@@ -31,5 +31,7 @@ public interface ProductMapper {
 	
 	public List<ProductVO> getSearchView(ProductVO product);//상품 검색
 	public int getSearchCount(ProductVO product);
+	public List<ProductVO> getSearchThema(ProductVO product);//상품 검색
+	public int getSearchThemaCount(ProductVO product);
 
 }

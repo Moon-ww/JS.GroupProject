@@ -4,49 +4,63 @@
 	<%@ include file="../adminheader2.jsp" %>
 			<ul class="nav nav-primary">
 				<li class="nav-item">
-					<a href="/adm/adminmain" id="item">
+					<a href="/adm/adminmain.do" id="item">
 						<i class="fas fa-chart-bar"></i>
 						<p>판매현황</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/product/productlist" id="item">
+					<a href="/adm/product/productlist.do" id="item">
 						<i class="fas fa-gift"></i>
 						<p>상품관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/hotel/hotellist" id="item">
+					<a href="/adm/hotel/hotellist.do" id="item">
 						<i class="fas fa-building"></i>
 						<p>호텔관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item active">
-					<a href="/adm/sales/orderlist" id="item">
+					<a href="/adm/sales/orderlist.do" id="item">
 						<i class="fas fa-passport"></i>
 						<p>예약관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/memberlist" id="item">
+					<a href="/adm/memberlist.do" id="item">
 						<i class="fas fa-user"></i>
 						<p>회원관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/qna/adminqnalist" id="item">
+					<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
 						<i class="fas fa-question"></i>
 						<p>문의관리</p>
-						<span class=""></span>
+						<span class="caret"></span>
 					</a>
+					<div class="collapse" id="dashboard">
+						<ul class="nav nav-collapse">
+							<li>
+								<a href="/adm/qna/adminqnalist.do">
+									<span class="sub-item">1:1문의</span>
+								</a>
+							</li>
+							<li>
+								<a href="/adm/adminmain.do">
+									<span class="sub-item">자주찾는질문</span>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/notice/adminnotice" id="item">
+					<a href="/adm/notice/adminnotice.do" id="item">
 						<i class="fas fa-bell"></i>
 						<p>공지사항</p>
 						<span class=""></span>
@@ -147,13 +161,13 @@
 							    	<tr>
 							    		<td>
 							    			<c:choose>
-							    				<c:when test="${list.status == '1' }">
+							    				<c:when test="${list.status == '2' }">
 							    					<span> &nbsp;${list.oseq } &nbsp;&nbsp;</span>
-							    					<input type="checkbox" name="status" value="${list.oseq }" />미처리
+							    					<input type="checkbox" name="status" value="${list.oseq }" />미승인
 							    				</c:when>
 							    				<c:otherwise>
 							    					<span>${list.oseq }</span>
-							    					<input type="checkbox" checked="checked"name="status" value="${list.oseq }" />처리완료
+							    					<input type="checkbox" checked="checked"name="status" value="${list.oseq }" />승인완료
 							    				</c:otherwise>
 							    			</c:choose>
 							    		</td>
@@ -172,7 +186,7 @@
 							    </c:choose>
 							  </table>
 							  </form>
-											<input type="button" value="주문처리" class="btn btn-default" onclick="go_order_save()"/>
+											<input type="button" value="취소승인" class="btn btn-default" onclick="go_order_save()"/>
 											</div>
 										</div>
 									</div>

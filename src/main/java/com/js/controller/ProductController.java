@@ -1,5 +1,6 @@
 package com.js.controller;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.js.domain.LikesVO;
 import com.js.domain.ProductVO;
+import com.js.service.MypageService;
 import com.js.service.ProductService;
 
 import lombok.AllArgsConstructor;
@@ -27,6 +31,7 @@ public class ProductController {
 	
 	@Setter(onMethod_ =@Autowired)
 	private ProductService service;
+	private MypageService service2;
 	
 	@GetMapping("/productlist.do")
 	public void ProductList(Model model) {
@@ -41,38 +46,38 @@ public class ProductController {
 		
 	}
 	@GetMapping("/product/productDetailview.do")			
-	public void productDetailView(@RequestParam("pcode") String pcode, Model model) {		
-		ProductVO pvo = service.productDetailView(pcode);	
-		String date1 = pvo.getEnddate();	
-		String date2 = pvo.getStartdate();	
-		long calDateDays = 0;	
-		try {	
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-			Date FirstDate = format.parse(date1);
-	        Date SecondDate = format.parse(date2);		
-	        		
-	        Calendar calendar = Calendar.getInstance();		
-	        calendar.setTime(FirstDate);		
-	        calendar.setTime(SecondDate);		
-	        System.out.println("첫번째날:"+FirstDate);		
-	        System.out.println("두번째날:"+SecondDate);		
-	        long calDate = FirstDate.getTime() - SecondDate.getTime(); 		
-	        calDateDays = calDate / ( 24*60*60*1000); 		
-	        calDateDays = Math.abs(calDateDays);		
-			
-	        pvo.setPeriod(calDateDays);		
-			
-		}catch(ParseException e) {	
-			
-		}	
-			
-		model.addAttribute("list", pvo);	
+	public void productDetailView(String pcode, Model model, LikesVO likes, Principal principal) {		
+		String id = principal.getName();
+		likes.setId(id);	
+		model.addAttribute("list", service.productDetailView(pcode));	
+		model.addAttribute("list2", service2.getdibs(likes));
+		System.out.println(likes);
 	}		
+	@GetMapping("/insert.do")
+	public String dibsinsert(LikesVO likes, Principal principal) {
+		String id = principal.getName();
+		likes.setId(id);	
+		service2.register(likes);
+		return "redirect:/product/productDetailview.do?pcode="+likes.getPcode();
+	}
+	@GetMapping("/cancel.do")
+	public String dibscancel(LikesVO likes, Principal principal) {
+		String id = principal.getName();
+		likes.setId(id);	
+		service2.dibscancel(likes);
+		return "redirect:/product/productDetailview.do?pcode="+likes.getPcode();
+	}
 	@GetMapping("/productSearchview.do")
 	public void ProductView(Model model, ProductVO product) {
 		model.addAttribute("list", service.getSearchView(product));
 		model.addAttribute("count",service.getSearchCount(product));
 	}
+	@GetMapping("/productSearchthema.do")
+	public void ProductThema(Model model, ProductVO product) {
+		model.addAttribute("list", service.getSearchThema(product));
+		model.addAttribute("count",service.getSearchThemaCount(product));
+	}
+	
 }
 
 

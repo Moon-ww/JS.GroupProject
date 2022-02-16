@@ -53,11 +53,7 @@
 		          <li style="margin-top:40px;" role="presentation" class="nothover"><a href="#cancel" aria-controls="cancel" role="tab" data-toggle="tab">취소내역</a></li>
 		           <li style="margin-top:40px;" role="presentation"class="nothover"><a href="#last" aria-controls="last" role="tab" data-toggle="tab">지난내역</a></li>
 		           </ul>
-		           <div class="calandar">
-		           		<div class="calandarform pull-right">
-		           		<span>예약기간 선택하여 조회 </span> <input type="text" style="border-radius:10px;"/> ~ <input type="text"  style="border-radius:10px;"/>
-		           		<br><button type="button" class="btn-d">조회</button>
-		           		</div>
+		           <div class="calandar" style="height: 60px;">
 		           </div>
                  <div class="tab-content">
                  <!--  -->
@@ -65,7 +61,7 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">출발일 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
@@ -73,14 +69,16 @@
 		    					<th>결제금액</th>
 		    					<th>인원</th>
 		    					<th>출발일</th>
+		    					<th>취소</th>
 		    				</tr>
 		    				   <c:choose>
-								<c:when test="${list eq null}">
+								<c:when test="${empty list }">
 		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">예약 내역이 없습니다.</td>
+		    					<td style="line-height:50px;" colspan="6">예약 내역이 없습니다.</td>
 		    				</tr>
 		    					</c:when>
 								<c:otherwise>
+								<c:forEach items="${list }" var="list">
 								<tr>
 								<fmt:parseDate var="indate" value="${list.indate }" pattern="yy-MM-dd"/>
 								<td><fmt:formatDate value="${indate }" pattern="yy-MM-dd"/>/${list.oseq }</td>
@@ -89,7 +87,9 @@
 								<td>${list.qnt }</td>
 								<fmt:parseDate var="startdate" value="${list.startdate }" pattern="yy-MM-dd"/>
 								<td><fmt:formatDate value="${startdate }" pattern="yy-MM-dd"/></td>
+								<td><a href="/mypage/ordercancel.do?oseq=${list.oseq }" class="btn btn-default">취소</a></td>
 								</tr>
+								</c:forEach>
 							  </c:otherwise>
 							</c:choose>
 		    			</table>
@@ -102,20 +102,42 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">취소일 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
 		    					<th>상품명</th>
 		    					<th>결제금액</th>
 		    					<th>인원</th>
-		    					<th>출발일/귀국일</th>
-		    					<th>취소/환불신청일</th>
+		    					<th>출발일</th>
 		    					<th>취소상태</th>
 		    				</tr>
+		    				   <c:choose>
+								<c:when test="${empty list2 }">
 		    				<tr>
-		    					<td style="line-height:50px;" colspan="7">취소 내역이 없습니다.</td>
+		    					<td style="line-height:50px;" colspan="6">예약 내역이 없습니다.</td>
 		    				</tr>
+		    					</c:when>
+								<c:otherwise>
+								<c:forEach items="${list2 }" var="list2">
+								<tr>
+								<fmt:parseDate var="indate" value="${list2.indate }" pattern="yy-MM-dd"/>
+								<td><fmt:formatDate value="${indate }" pattern="yy-MM-dd"/>/${list2.oseq }</td>
+								<td>${list2.pname }</td>
+								<td>${list2.total }</td>
+								<td>${list2.qnt }</td>
+								<fmt:parseDate var="startdate" value="${list2.startdate }" pattern="yy-MM-dd"/>
+								<td><fmt:formatDate value="${startdate }" pattern="yy-MM-dd"/></td>
+								<c:if test="${list2.status == 2 }">
+								<td><a href="javascript:void(0)" class="btn btn-info">취소대기</a></td>
+								</c:if>
+								<c:if test="${list2.status == 3 }">
+								<td><a href="javascript:void(0)" class="btn btn-primary">취소완료</a></td>
+								</c:if>
+								</tr>
+								</c:forEach>
+							  </c:otherwise>
+							</c:choose>
 		    			</table>
                       </div>
                     </div>
@@ -126,18 +148,36 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">출발일 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
 		    					<th>상품명</th>
 		    					<th>결제금액</th>
 		    					<th>출발일/귀국일</th>
-		    					<th>여행/예약상태</th>
-		    				</tr>
+		    					<th>상태</th>
+		    				<c:choose>
+								<c:when test="${empty list3 }">
 		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">예약 내역이 없습니다.</td>
+		    					<td style="line-height:50px;" colspan="6">예약 내역이 없습니다.</td>
 		    				</tr>
+		    					</c:when>
+								<c:otherwise>
+								<c:forEach items="${list3 }" var="list3">
+								<tr>
+								<fmt:parseDate var="indate" value="${list3.indate }" pattern="yy-MM-dd"/>
+								<td><fmt:formatDate value="${indate }" pattern="yy-MM-dd"/>/${list3.oseq }</td>
+								<td>${list3.pname }</td>
+								<td>${list3.total }</td>
+								<fmt:parseDate var="startdate" value="${list3.startdate }" pattern="yy-MM-dd"/>
+								<fmt:parseDate var="startdate" value="${list3.enddate }" pattern="yy-MM-dd"/>
+								<td><fmt:formatDate value="${startdate }" pattern="yy-MM-dd"/>
+								 / <fmt:formatDate value="${endtdate }" pattern="yy-MM-dd"/> </td>
+								<td><a href="javascript:void(0)" class="btn btn-primary">여행완료</a></td>
+								</tr>
+								</c:forEach>
+							  </c:otherwise>
+							</c:choose>
 		    			</table>
                       </div>
                     </div>
@@ -160,11 +200,7 @@
 		          <li style="margin-top:40px;" role="presentation"><a href="#cancel2" aria-controls="cancel2" role="tab" data-toggle="tab">취소내역</a></li>
 		           <li style="margin-top:40px;" role="presentation"><a href="#last2" aria-controls="last2" role="tab" data-toggle="tab">지난내역</a></li>
 		           </ul>
-		           <div class="calandar">
-		           		<div class="calandarform pull-right">
-		           		<span>예약기간 선택하여 조회 </span> <input type="text" style="border-radius:10px;"/> ~ <input type="text"  style="border-radius:10px;"/>
-		           		<br><button type="button" class="btn-d">조회</button>
-		           		</div>
+		           <div class="calandar" style="height: 60px;">
 		           </div>
                  <div class="tab-content">
                  <!--  -->
@@ -172,7 +208,7 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">체크인 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
@@ -195,7 +231,7 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">취소일 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
@@ -218,7 +254,7 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">체크인 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
@@ -252,11 +288,7 @@
 		          <li style="margin-top:40px;" role="presentation"><a href="#cancel3" aria-controls="cancel3" role="tab" data-toggle="tab">취소내역</a></li>
 		           <li style="margin-top:40px;" role="presentation"><a href="#last3" aria-controls="last3" role="tab" data-toggle="tab">지난내역</a></li>
 		           </ul>
-		           <div class="calandar">
-		           		<div class="calandarform pull-right">
-		           		<span>예약기간 선택하여 조회 </span> <input type="text" style="border-radius:10px;"/> ~ <input type="text"  style="border-radius:10px;"/>
-		           		<br><button type="button" class="btn-d">조회</button>
-		           		</div>
+		           <div class="calandar" style="height: 60px;">
 		           </div>
                  <div class="tab-content">
                  <!--  -->
@@ -264,7 +296,7 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">출발일 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
@@ -286,7 +318,7 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">취소일 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
@@ -308,7 +340,7 @@
                       <div class="">
                       <div class="thumbnail2">
                       <div role="tabpanel" class="category-tab">
-                      <span>총 0 건</span><span style="display:inline-block; margin-left:730px;">예약일 최신순</span> <span class="pull-right">출발일 최신순</span>
+                      <span>총 0 건</span>
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>예약일/예약코드</th>
@@ -371,5 +403,4 @@
 		});											
 	}												
 </script>
-
     	<%@include file="../footer.jsp" %>

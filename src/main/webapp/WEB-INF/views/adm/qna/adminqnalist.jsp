@@ -4,49 +4,63 @@
 	<%@ include file="../adminheader2.jsp" %>
 			<ul class="nav nav-primary">
 				<li class="nav-item">
-					<a href="/adm/adminmain" id="item">
+					<a href="/adm/adminmain.do" id="item">
 						<i class="fas fa-chart-bar"></i>
 						<p>판매현황</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/product/productlist" id="item">
+					<a href="/adm/product/productlist.do" id="item">
 						<i class="fas fa-gift"></i>
 						<p>상품관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/hotel/hotellist" id="item">
+					<a href="/adm/hotel/hotellist.do" id="item">
 						<i class="fas fa-building"></i>
 						<p>호텔관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/sales/orderlist" id="item">
+					<a href="/adm/sales/orderlist.do" id="item">
 						<i class="fas fa-passport"></i>
 						<p>예약관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/memberlist" id="item">
+					<a href="/adm/memberlist.do" id="item">
 						<i class="fas fa-user"></i>
 						<p>회원관리</p>
 						<span class=""></span>
 					</a>
 				</li>
 				<li class="nav-item active">
-					<a href="/adm/qna/adminqnalist" id="item">
+					<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
 						<i class="fas fa-question"></i>
 						<p>문의관리</p>
-						<span class=""></span>
+						<span class="caret"></span>
 					</a>
+					<div class="collapse" id="dashboard">
+						<ul class="nav nav-collapse">
+							<li>
+								<a href="/adm/qna/adminqnalist.do">
+									<span class="sub-item">1:1문의</span>
+								</a>
+							</li>
+							<li>
+								<a href="/adm/adminmain.do">
+									<span class="sub-item">자주찾는질문</span>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</li>
 				<li class="nav-item">
-					<a href="/adm/notice/adminnotice" id="item">
+					<a href="/adm/notice/adminnotice.do" id="item">
 						<i class="fas fa-bell"></i>
 						<p>공지사항</p>
 						<span class=""></span>

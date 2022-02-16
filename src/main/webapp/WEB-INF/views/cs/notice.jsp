@@ -66,8 +66,8 @@
 									<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/></td>
 							    </tr>
 							    <tr class="eee" style="display: none;">
-		                      		<td colspan="4" style="text-align: left;padding-left: 50px; background: #ececec;">
-		                      			<span style="font-weight: 600">공지내용 </span>: ${list.content }
+		                      		<td colspan="4" style="text-align: left;padding-left: 100px; background: #ececec;">
+		                      			<span style="font-weight: 600; float: left;">내용 : </span><div style="margin-left: 50px;"> ${list.content }</div>
 		                      		</td>
 		                      	</tr>
 							    </c:forEach>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-ul > li > a {
+/* ul > li > a {
     display: inline-block;
     position: relative;
 }
@@ -29,9 +29,9 @@ ul > li > a:hover:after {
 }
 ul > li > a:hover:before {
     width: 50%
-}
+} */
 /*  */
-.nothover > a:after {
+/* .nothover > a:after {
     content:"";
     position: absolute;
     left: 50%;
@@ -56,4 +56,4 @@ ul > li > a:hover:before {
 }
 .nothover > a:hover:before {
     width: 50%
-}
+} */

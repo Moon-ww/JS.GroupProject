@@ -107,4 +107,13 @@ public class ProductServiceImpl implements ProductService {
 		
 		return mapper.getSearchCount(product);
 	}
+	@Override
+	public List<ProductVO> getSearchThema(ProductVO product) {
+	
+		return mapper.getSearchThema(product);
+	}@Override
+	public int getSearchThemaCount(ProductVO product) {
+		
+		return mapper.getSearchThemaCount(product);
+	}
 }

@@ -12,7 +12,7 @@
 	<security:http>
 		<!--  <security:form-login/>-->
 		<security:intercept-url pattern="/adm/adminlogin" access="permitAll"/>
-		<security:intercept-url pattern="/adm/adminmain" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/adm/adminmain.do" access="hasRole('ROLE_ADMIN')"/>
 		<!--권한없으면  -->
 		<security:form-login login-page="/member/login.do" authentication-success-handler-ref="AdminLoginSuccess"/>
 		<!--로그아웃  -->
