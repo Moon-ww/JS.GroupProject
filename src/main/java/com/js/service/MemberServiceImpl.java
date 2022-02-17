@@ -25,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public void insert(MemberVO member) {
-		mapper.insert(member);
+		mapper.insert(member);//
 		mapper.insert_auth(member);
 	}
 	@Override

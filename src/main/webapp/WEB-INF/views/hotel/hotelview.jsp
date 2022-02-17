@@ -67,7 +67,7 @@
 						<div class="col-md-2" style="margin-top: 30px;margin-bottom: 30px;">			
 							<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="width: 130px;height: 40px;line-height: 30px;">
-  예약하기
+  예약하기<!-- 세종 -->
 </button>
 <input type="hidden" id="hseq" value="${list.hseq}">
 <input type="hidden" id="id" value="<%=name %>">

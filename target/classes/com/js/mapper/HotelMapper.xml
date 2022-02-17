@@ -74,7 +74,7 @@
 		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
 		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
 		from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq}order by r.price
-	</select>
+	</select><!--  -->
 	<select id="getDetailView2" resultType="com.js.domain.HotelVO">
 		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
 		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 

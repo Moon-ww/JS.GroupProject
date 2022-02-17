@@ -71,7 +71,7 @@
 							
 				<table class="bbb">
 				
-				<div class="aaaTitle">결제 정보</div>
+				<div class="aaaTitle">결제 정보</div><!-- 세종 -->
 				
 							<tr style="border-top: 1px solid #ccc;">
 								<th>최종 결제 금액</th>

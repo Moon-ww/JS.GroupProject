@@ -181,7 +181,7 @@ public class MemberController {
 	}
 	@GetMapping("/reservationviewh.do")
 	public void reservationviewh(Model model, @RequestParam("id") String id, @RequestParam("hseq") int hseq) {
-		model.addAttribute("mlist", service.getOneh(id));
+		model.addAttribute("mlist", service.getOneh(id));//
 		HotelVO vo = service3.getDetailViewHotel(hseq);
 		model.addAttribute("hoteldetail", vo);
 	}

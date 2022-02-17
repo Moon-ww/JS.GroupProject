@@ -88,7 +88,7 @@ public class HotelServiceImpl implements HotelService {
 		return mapper.getDetailView(hseq);
 	}
 	@Override
-	public HotelVO getDetailViewHotel(int hseq) {
+	public HotelVO getDetailViewHotel(int hseq) {//
 		return mapper.getDetailViewHotel(hseq);
 	}
 	@Override

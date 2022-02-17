@@ -18,3 +18,4 @@ public interface MemberMapper {
 	public void Order(OrderVO order);
 	public OrderVO getOrderinfo(String id);
 }
+//
