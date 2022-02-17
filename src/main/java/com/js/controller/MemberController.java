@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.js.domain.HotelVO;
 import com.js.domain.MemberVO;
 import com.js.domain.OrderVO;
+import com.js.service.HotelService;
 import com.js.service.MemberService;
 import com.js.service.ProductService;
 
@@ -44,6 +45,7 @@ public class MemberController {
 	@Setter(onMethod_ =@Autowired)
 	private MemberService service;
 	private ProductService service2;
+	private HotelService service3;
 	
 	@Setter(onMethod_ =@Autowired)
 	private PasswordEncoder pwencoder;
@@ -176,6 +178,12 @@ public class MemberController {
 	public void reservationview(Model model, String pcode, String id) {
 		model.addAttribute("mlist", service.getOne(id));
 		model.addAttribute("list2", service2.productDetailView(pcode));
+	}
+	@GetMapping("/reservationviewh.do")
+	public void reservationviewh(Model model, @RequestParam("id") String id, @RequestParam("hseq") int hseq) {
+		model.addAttribute("mlist", service.getOneh(id));
+		HotelVO vo = service3.getDetailViewHotel(hseq);
+		model.addAttribute("hoteldetail", vo);
 	}
 	@PostMapping("/orderinsert.do")
 	public String orderinsert(Model model, OrderVO order, String id) {

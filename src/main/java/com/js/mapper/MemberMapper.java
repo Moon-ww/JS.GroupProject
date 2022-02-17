@@ -14,6 +14,7 @@ public interface MemberMapper {
 	public List<MemberVO> getList();
 	public void delete(String id);
 	public MemberVO getOne(String id);
+	public MemberVO getOneh(String id);
 	public void Order(OrderVO order);
 	public OrderVO getOrderinfo(String id);
 }

@@ -42,6 +42,11 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getOne(id);
 	}
 	@Override
+	public MemberVO getOneh(String id) {
+		
+		return mapper.getOneh(id);
+	}
+	@Override
 	public void Order(OrderVO order) {
 		
 		mapper.Order(order);
