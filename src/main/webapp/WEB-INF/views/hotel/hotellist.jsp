@@ -94,78 +94,28 @@
 		<div class="fr">
 		<div class="swiper-container swip1">
 		<ul class="swiper-wrapper" id="swiper-wrapper" aria-live="polite" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;margin-top:30px; ">
-		<li class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 284px;height:470px;margin-right: 28px;">
+		<c:forEach items="${list4 }" var="list">
+		<li class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" 
+		 onclick="location.href='hotelview.do?hseq=${list.hseq }'" style="width: 284px;height:470px;margin-right: 28px;">
 		<div class="img"style="width: 284px;">
-		<img src="/resources/images/z1.jpg" title="" data-src="" class="" alt=""style="width: 284px;height: 220px;">
+		<img src="/upload/${list.image }" title="" data-src="" class="" alt=""style="width: 284px;height: 220px;">
 		</div>
 		<div class="txt"style="width: 284px;border-bottom: 1px solid #ccc;border-right: 1px solid #ccc; box-shadow: 7px 7px 7px -5px #ccc;">
 		<div class="name_wrap2"style="margin-top: 50px;">
-		<strong class="item_title">그랜드 하얏트 제주</strong> 
+		<strong class="item_title">${list.name }</strong> 
 		<p class="stxt2">[★타임세일특가★] ~4월 30일 체크인까지</p>
 		</div> 
 		<div class="price_group">
 		<p class="discount"></p> 
-		<strong class="price" style="font-size: 22pt;">304,000<span>원~</span></strong>
+		<strong class="price" style="font-size: 22pt;"><fmt:formatNumber value="${list.price }"/><span>원~</span></strong>
 		</div> 
 		<div class="hash_group" style="margin-top: 10px;">
-		<span class="hash" style="border: 1px solid #ccc;padding: 3px;">#2박 이상시 런치 뷔페 1회 제공</span>
+		<span class="hash" style="border: 1px solid #ccc;padding: 3px;">${list.hash }</span>
 		</div>
 		</div>
 		</li>
-		<li class="swiper-slide swiper-slide-active" role="group" aria-label="2 / 4" style="width: 284px;height:470px;margin-right: 28px;">
-		<div class="img">
-		<img src="/resources/images/z1.jpg" title="" data-src="" class="" alt=""style="width: 284px;height: 220px;">
-		</div>
-		<div class="txt"style="width: 284px;border-bottom: 1px solid #ccc;border-right: 1px solid #ccc; box-shadow: 7px 7px 7px -5px #ccc;">
-		<div class="name_wrap2"style="margin-top: 50px;">
-		<strong class="item_title">그랜드 하얏트 제주</strong> 
-		<p class="stxt2">[★타임세일특가★] ~4월 30일 체크인까지</p>
-		</div> 
-		<div class="price_group">
-		<p class="discount"></p> 
-		<strong class="price" style="font-size: 22pt;">304,000<span>원~</span></strong>
-		</div> 
-		<div class="hash_group" style="margin-top: 10px;">
-		<span class="hash" style="border: 1px solid #ccc;padding: 3px;">#2박 이상시 런치 뷔페 1회 제공</span>
-		</div>
-		</div>
-		</li>
-		<li class="swiper-slide swiper-slide-active" role="group" aria-label="3 / 4" style="width: 284px;height:470px;margin-right: 28px;">
-		<div class="img">
-		<img src="/resources/images/z1.jpg" title="" data-src="" class="" alt=""style="width: 284px;height: 220px;">
-		</div>
-		<div class="txt"style="width: 284px;border-bottom: 1px solid #ccc;border-right: 1px solid #ccc; box-shadow: 7px 7px 7px -5px #ccc;">
-		<div class="name_wrap2"style="margin-top: 50px;">
-		<strong class="item_title">그랜드 하얏트 제주</strong> 
-		<p class="stxt2">[★타임세일특가★] ~4월 30일 체크인까지</p>
-		</div> 
-		<div class="price_group">
-		<p class="discount"></p> 
-		<strong class="price" style="font-size: 22pt;">304,000<span>원~</span></strong>
-		</div> 
-		<div class="hash_group" style="margin-top: 10px;">
-		<span class="hash" style="border: 1px solid #ccc;padding: 3px;">#2박 이상시 런치 뷔페 1회 제공</span>
-		</div>
-		</div>
-		</li>
-		<li class="swiper-slide swiper-slide-active" role="group" aria-label="4 / 4" style="width: 284px;height:470px;margin-right: 28px;">
-		<div class="img">
-		<img src="/resources/images/z1.jpg" title="" data-src="" class="" alt=""style="width: 284px;height: 220px;">
-		</div>
-		<div class="txt"style="width: 284px;border-bottom: 1px solid #ccc;border-right: 1px solid #ccc; box-shadow: 7px 7px 7px -5px #ccc;">
-		<div class="name_wrap2"style="margin-top: 50px;">
-		<strong class="item_title">그랜드 하얏트 제주</strong> 
-		<p class="stxt2">[★타임세일특가★] ~4월 30일 체크인까지</p>
-		</div> 
-		<div class="price_group">
-		<p class="discount"></p> 
-		<strong class="price" style="font-size: 22pt;">304,000<span>원~</span></strong>
-		</div> 
-		<div class="hash_group" style="margin-top: 10px;">
-		<span class="hash" style="border: 1px solid #ccc;padding: 3px;">#2박 이상시 런치 뷔페 1회 제공</span>
-		</div>
-		</div>
-		</li>
+		</c:forEach>
+		
 		</ul> 
 			
 		    <div class="swiper-button-next"><img alt="" src="/resources/images/ico-arrow-right.png" style="margin: -10px 0px 100px 0px; border: 1px solid #ccc;border-radius: 50%;background: #fff;width: 40px;height: 40px;"></div>

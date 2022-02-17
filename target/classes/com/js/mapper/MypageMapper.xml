@@ -23,8 +23,11 @@
 			UPDATE orders SET status = '2' WHERE oseq = #{oseq}
         
 	</update>
+	<select id="getdibsList" resultType="com.js.domain.LikesVO">
+	 select l.id, l.pcode,d.name, d.startdate, d.price2 from likes l, product_detail d where l.id=#{id} and l.pcode = d.pcode
+	</select>
 	<select id="getmileList" resultType="com.js.domain.MypageVO">
-	 select mileage from orders where id=#{id}
+	 select name, mileage, mileage_used from member where id=#{id}
 	</select>
 	<select id="getqnaList" resultType="com.js.domain.QnaVO">
 	 select q.qbno, q.writer, q.title, q.qcontent, q.regdate, q.viewcount, q.status, 
@@ -39,4 +42,19 @@
 	<insert id="register">
 		insert into likes (id, pcode) values (#{id},#{pcode})
 	</insert>
+	<select id="oneList" resultType="com.js.domain.MemberVO">
+		select * from member where id = #{id}
+	</select>
+	
+	<select id="onePw" resultType="com.js.domain.MemberVO">
+		select pw from member where id = #{id}
+	</select>
+	
+	<update id="update">
+		update member set phone = #{phone}, email=#{email} where id=#{id}
+	</update>
+	
+	<delete id="delete">
+		delete from member where id = 'gagaga'
+	</delete>
 </mapper>

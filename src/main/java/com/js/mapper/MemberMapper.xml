@@ -29,6 +29,15 @@
 		insert into orders (oseq, id, name, phone, email, pcode, pname, qnt, total, mileage) 
 		values (#{oseq}, #{id}, #{name}, #{phone}, #{email}, #{pcode}, #{pname}, #{qnt}, #{total}, #{mileage})
 	</insert>
+	<update id="Mileageinsert">
+		update member set mileage = mileage + #{mileage} where id=#{id}
+	</update>
+	<select id="getid" resultType="com.js.domain.OrderVO">
+		select id , mileage from orders where oseq=#{status}
+	</select>
+	<update id="Mileagedelete">
+		update member set mileage = mileage - #{mileage} where id=#{id}
+	</update>
 	<select id="getOrderinfo" resultType="com.js.domain.OrderVO">
 		select o.oseq, o.id, o.name, o.pcode, o.pname, o.qnt, o.total, o.indate, d.airline, d.startdate, d.enddate, 
     	d.guide, d.hash, d.hotel, d.hgrade, d.rentent, d.rentcar, d.pcode 

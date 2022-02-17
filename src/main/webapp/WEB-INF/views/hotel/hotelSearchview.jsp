@@ -20,57 +20,44 @@
 		<div class="row" style="">											
 			<div class="col-md-2 accord"style="margin-top: 50px;">
 				<div class=" col-md-12 pvside">									
-					<a href="javascript:void(0)" class="accordion">여행기간</a>							
-					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">								
-						<a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">3일</a>							
-					</div>								
-				</div>									
-				<div class=" col-md-12 pvside">									
 					<a href="javascript:void(0)" class="accordion">가격</a>							
 					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">								
 						<a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;"></a>							
 					</div>								
 				</div>
 				<div class=" col-md-12 pvside">									
-					<a href="javascript:void(0)" class="accordion">항공</a>							
-					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">								
-						<a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;"></a>							
-					</div>								
-				</div>							
-				<div class=" col-md-12 pvside">									
-					<a href="javascript:void(0)" class="accordion">호텔등급</a>							
+					<a href="javascript:void(0)" class="accordion">숙소등급</a>							
 					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">								
 						<a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;"></a>							
 					</div>								
 				</div>
 			</div>
-			<div class="col-md-9" id="detail1" style="margin: 70px 0 10px 10px; border: solid 1px #f2f4f7;">						
+			<div class="col-md-9" id="detail1" style="margin: 70px 0 10px 10px; width:950px; border: solid 1px #f2f4f7;">						
 							<c:choose>
 							<c:when test="${empty list }">
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
-							<p class=""> 패키지 총 ${count} 개</p>
+							<p class=""> 검색결과 총 ${count} 개</p>		
 							<c:forEach items="${list}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;">				
 									<div class="col-md-10">
 										<div class="imagesss col-md-4" style="height: 150px;">
-											<img alt="" src="/upload/${list.img }" style="width: 100%;height: 100%;">
+											<img alt="" src="/upload/${list.image }" style="width: 100%;height: 100%;">
 										</div>
 										<div class="textttt col-md-8">
 										<div style="margin-bottom: 10px;">
-										<strong style="font-size: 17px;">${list.dname}</strong>
+										<strong style="font-size: 17px;">${list.name}</strong>
 										</div>
 										<div style="">
-										<p style="display:inline-block;">${list.spot}</p>	
-										<p>${list.period -1}박 ${list.period}일</p>	
+										<p style="display:inline-block;">${list.place}</p>	
 										<p>${list.hash}</p>	
 										</div>
 										</div>
 									</div>		
-									<div class="col-md-2">			
-									<p><span style="font-weight: 400; font-size: 15pt"><fmt:formatNumber value="${list.price2 }"/> 원~</span></p>		
-									<a href="/product/productDetailview.do?pcode=${list.pcode}" class="btn btn-default">판매상품 보기</a>		
+									<div class="col-md-2" style="width: 140px;">			
+									<p>1박 기준<span style="font-weight: 400; font-size: 15pt"> <fmt:formatNumber value="${list.price }"/> 원~</span></p>		
+									<a href="/hotel/hotelview.do?hseq=${list.hseq }" class="btn btn-default">상세보기</a>		
 									</div>			
 								</div>			
 								</c:forEach>

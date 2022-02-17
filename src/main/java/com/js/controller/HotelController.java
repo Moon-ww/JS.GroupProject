@@ -26,12 +26,18 @@ public class HotelController {
 		model.addAttribute("list", service.getDetailList());
 		model.addAttribute("list2", service.getDetailList2());
 		model.addAttribute("list3", service.getDetailList3());
+		model.addAttribute("list4", service.getDetailList4());
 	}
 	
 	@GetMapping("/hotelview.do")
 	public void HotelView(Model model, int hseq) {
 		model.addAttribute("list", service.getDetailView(hseq));
 		model.addAttribute("list2", service.getDetailView2(hseq));
+		
+	}
+	@GetMapping("/hotelSearchview.do")
+	public void HotelSearchView(Model model, String place) {
+		model.addAttribute("list", service.getSearchView());
 		
 	}
 	 

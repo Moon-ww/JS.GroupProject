@@ -83,6 +83,11 @@ public class HotelServiceImpl implements HotelService {
 		return mapper.getDetailList3();
 	}
 	@Override
+	public List<HotelVO> getDetailList4() {
+
+		return mapper.getDetailList4();
+	}
+	@Override
 	public List<HotelVO> getDetailView(int hseq) {
 		
 		return mapper.getDetailView(hseq);
@@ -91,5 +96,10 @@ public class HotelServiceImpl implements HotelService {
 	public HotelVO getDetailView2(int hseq) {
 		
 		return mapper.getDetailView2(hseq);
+	}
+	@Override
+	public List<HotelVO> getSearchView() {
+		
+		return mapper.getSearchView();
 	}
 }

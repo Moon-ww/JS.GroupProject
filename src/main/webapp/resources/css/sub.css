@@ -578,3 +578,159 @@ input[id="check1"]:checked {
 }
 *.icon-white {color: white}    
 *.icon-silver {color: silver}
+
+
+/* 2022-02-15 14:00 ~ (남택주-privacy, privacy_corr, secsession)*/
+
+.js_tabs:not(.box_tab)>div {
+   position: relative;
+}
+
+.panels {
+   padding: 30px 0 0;
+}
+
+.panels .panel.selected {
+   display: block;
+}
+
+.msg_wrap.bg {
+   background-color: #f7f7f7;
+   padding: 40px px 65px 40px 155px;
+   position: relative;
+   text-align: center;
+   margin-bottom: 38px;
+}
+
+.msg_wrap.bg .tit {
+    position: relative;
+    font-size: 22px;
+    font-weight: 400;
+    color: #333;
+    text-align: left;
+    margin-left: 20px;
+}
+
+em {
+   font: inherit;
+   color:#0080c0;
+}
+
+.type2 {
+   width: 100%;
+}
+
+.tbl table.type2 tr:first-child th, .tbl .type2 tr:first-child td {
+    border-top: 1px solid #999;
+}
+
+.tbl table.type2 th {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.tbl th {
+    background-color: #f7f7f7;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+}
+
+.tbl td {
+    color: #333;
+    font-size: 15px;
+}
+
+.tbl th, .tbl td {
+    text-align: left;
+    min-height: 54px;
+    padding: 15px 20px;
+    font-weight: 400;
+    line-height: 23px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tbl table.type2 tr:first-child th, .tbl .type2 tr:first-child td {
+    border-bottom: 1px solid #ddd;
+}
+
+.btn.big {
+    min-width: 140px;
+    height: 56px;
+    line-height: 54px;
+    font-size: 17px;
+    padding: 0 35px;
+    margin-top: 23px;
+}
+
+.btn.pink {
+    color: #fff !important;
+    background-color: #8080ff;
+}
+
+span.form_holder {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.form_holder input[type='checkbox'], .form_holder input[type='radio'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0 !important;
+}
+
+.label_checkbox, .label_radio {
+    position: relative;
+    display: block;
+    line-height: 20px;
+    color: #333;
+    padding-left: 34px;
+    min-height: 24px;
+}
+
+.form_holder label:before {
+    width: 24px;
+    height: 24px;
+    background-size: 100% auto;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+.form_holder.radio label:before {
+    content: "\f096";
+    font-size: 20px;
+    color: #0080c0;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+.form_holder.radio input[type='radio']:checked+label:before {
+   content: "\f046";
+   font-size: 20px;
+   color: #0080c0;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+
+/*
+.inpt_radio::before {
+   content: "\f096";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}*/
+
+
+.text_box.udline {
+    border-top: 1px solid #838999;
+    border-bottom: 1px solid #dadce1;
+    padding: 10px 0;
+}

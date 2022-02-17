@@ -171,10 +171,10 @@
 		  
 		  <a href="" id="resbtn" class = "btn btn-default">예약하기</a>
 		   <c:if test="${empty list2}">
-		  <a href="/product/insert.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger" style="font-size: 22px;padding: 0 5px 0 5px;height: 100%;">찜하기</a>	
+		  <a href="/product/insert.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger">찜하기</a>	
 		  </c:if>
 		  <c:if test="${not empty list2}">
-		  <a href="/product/cancel.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger" style="font-size: 22px;padding: 0 5px 0 5px;height: 100%;">찜삭제</a>	
+		  <a href="/product/cancel.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger">찜해제</a>	
 		  </c:if>
 		  </div>
 		</div>						

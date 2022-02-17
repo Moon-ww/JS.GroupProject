@@ -36,8 +36,8 @@
 					     <img src="/resources/images/mileage.jpg" style="width: 120px;">
 					     </div>
 					     <div class="col-md-10" style="margin-top: 30px;">
-					     <span style="font-size: 15pt;"><%=name %> 님의 사용 가능한 마일리지는 </span>
-					     <span style="font-size: 20pt;color: #00abff;">${list.mileage }</span> 입니다.<br>
+					     <span style="font-size: 15pt;">${list.name } 님의 사용 가능한 마일리지는 </span>
+					     <span style="font-size: 20pt;color: #00abff;">${list.mileage - list.mileage_used }</span> 입니다.<br>
 					     <span>누적 마일리지 ${list.mileage }</span>
 					     </div>
 				     </div>
@@ -54,7 +54,7 @@
 		    					<th>비고</th>
 		    				</tr>
 		    				<tr>
-		    					<td style="line-height:50px;" colspan="7">해당 기간 내 사용 내역이 없습니다.</td>
+		    					<td style="line-height:50px;" colspan="7">사용 내역이 없습니다.</td>
 		    				</tr>
 		    			</table>
                       </div>

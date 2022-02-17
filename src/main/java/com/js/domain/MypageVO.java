@@ -31,6 +31,7 @@ public class MypageVO {
 	private  String startdate;
 	private  String enddate;
 	private long mileage;
+	private long mileage_used;
 	
 	
 }

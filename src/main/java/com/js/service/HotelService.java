@@ -22,7 +22,10 @@ public interface HotelService {
 	public List<HotelVO> getDetailList();//호텔리스트 객실 join
 	public List<HotelVO> getDetailList2();//호텔리스트 객실 join
 	public List<HotelVO> getDetailList3();//호텔리스트 객실 join
+	public List<HotelVO> getDetailList4();//호텔리스트 객실 join
 	
 	public List<HotelVO> getDetailView(int hseq);//호텔 view Detail join
 	public HotelVO getDetailView2(int hseq);//호텔 view 최저가 Detail join
+	
+	public List<HotelVO> getSearchView();//호텔 검색
 }

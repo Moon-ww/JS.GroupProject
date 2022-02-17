@@ -3,9 +3,7 @@ package com.js.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.js.domain.HotelVO;
 import com.js.domain.NoticeVO;
+import com.js.domain.OrderVO;
 import com.js.domain.ProductVO;
 import com.js.domain.QnaVO;
 import com.js.service.HotelService;
@@ -461,6 +460,13 @@ public class AdminController {
 		for (String status : StatusArr) {
 			System.out.println(status);
 			service6.ordersave(status);
+			/*
+			 * String id = service3.getid(status); 
+			 * order.setId(id);
+			 * System.out.println(order.getId());
+			 */
+			OrderVO order = service3.getid(status);
+			service3.Mileagedelete(order);
 		}
 		return "redirect:/adm/sales/orderlist.do";
 	}

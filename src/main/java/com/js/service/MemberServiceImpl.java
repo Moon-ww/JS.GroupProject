@@ -51,4 +51,19 @@ public class MemberServiceImpl implements MemberService {
 
 		return mapper.getOrderinfo(id);
 	}
+	@Override
+	public void Mileageinsert(OrderVO order) {
+		
+		mapper.Mileageinsert(order);
+	}
+	@Override
+	public void Mileagedelete(OrderVO order) {
+		
+		mapper.Mileagedelete(order);
+	}
+	@Override
+	public OrderVO getid(String status) {
+		
+		return mapper.getid(status);
+	}
 }

@@ -16,4 +16,7 @@ public interface MemberMapper {
 	public MemberVO getOne(String id);
 	public void Order(OrderVO order);
 	public OrderVO getOrderinfo(String id);
+	public void Mileageinsert(OrderVO order);
+	public void Mileagedelete(OrderVO order);
+	public OrderVO getid(String status);
 }

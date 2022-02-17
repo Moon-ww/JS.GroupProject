@@ -10,7 +10,7 @@
 						<form class="form-horizontal" name="frm" method="post" enctype="" action="">
 							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 					  		<div class="form-group" style="margin-top: 30px;">
-					  	<input type="hidden" name="pname" id="pname" value="${list2.name }">
+					  	<input type="hidden" name="pname" id="pname" value="${list2.dname }">
 					    <label for="title" class="ml-4 mr-4 w100 in" style="float:left;">여행기간</label>
 					    <div class="col-sm-10">
 					      <fmt:parseDate var="startdate" value="${list2.startdate }" pattern="yyyy-MM-dd"/>

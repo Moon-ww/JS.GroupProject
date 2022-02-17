@@ -64,9 +64,23 @@
 		    					<th>상품금액</th>
 		    					<th></th>
 		    				</tr>
+		    				 <c:choose>
+		    				<c:when test="${empty list }">
 		    				<tr>
 		    					<td style="line-height:50px;" colspan="5">찜에 담긴 상품이 없습니다.</td>
 		    				</tr>
+		    				</c:when>
+		    				<c:otherwise>
+		    				<c:forEach items="${list }" var="list">
+		    				<tr>
+		    					<td><a href="/product/productDetailview.do?pcode=${list.pcode }"> ${list.name }</a></td>
+		    						<fmt:parseDate var="startdate" value="${list.startdate }" pattern="yy-MM-dd"/>
+								<td><fmt:formatDate value="${startdate }" pattern="yy-MM-dd"/></td>
+								<td><fmt:formatNumber value="${list.price2}"/>원</td>
+		    				</tr>
+		    				</c:forEach>
+		    				</c:otherwise>
+		    				</c:choose>
 		    			</table>
                       </div>
                     </div>
