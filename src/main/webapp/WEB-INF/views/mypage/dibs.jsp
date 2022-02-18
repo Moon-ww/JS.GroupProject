@@ -35,9 +35,8 @@
 
                  <!-- Nav tabs -->
                  <ul class="nav nav-tabs n1" role="tablist" id="mytab">
-                   <li style="margin-top:40px; width: 33.33%; text-align: center;" role="presentation" class="active" id="rrr"><a href="#package" aria-controls="package" role="tab" data-toggle="tab">패키지</a></li>
-                   <li style="margin-top:40px; width: 33.33%; text-align: center;" role="presentation"><a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">호텔/펜션</a></li>
-                   <li style="margin-top:40px; width: 33.33%; text-align: center;" role="presentation"><a href="#air" aria-controls="air" role="tab" data-toggle="tab">투어/입장권</a></li>
+                   <li style="margin-top:40px; width: 50%; text-align: center;" role="presentation" class="active" id="rrr"><a href="#package" aria-controls="package" role="tab" data-toggle="tab">패키지</a></li>
+                   <li style="margin-top:40px; width: 50%; text-align: center;" role="presentation"><a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">호텔/펜션</a></li>
                  </ul>
                
                  <!-- Tab panes -->
@@ -125,39 +124,6 @@
               </div>
              </div>
             </div><!--호텔 엔드  -->
-            <div role="tabpanel" class="tab-pane" id="air">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-
-                 <!-- Nav tabs -->
-                 <div style="padding: 20px 0;">
-                	<button style="padding: 7px 15px; background: white; border: 1px solid #ccc;">전체 삭제</button>
-                 </div>
-                 <div class="tab-content">
-                 <!--  -->
-                 <div role="tabpanel" class="tab-pane active" id="res3">
-                      <div class="">
-                      <div class="thumbnail2">
-                      <div role="tabpanel" class="category-tab">
-		    			<table class="table pack_table" style="margin-top: 10px;">
-		    				<tr>
-		    					<th>상품명</th>
-		    					<th></th>
-		    				</tr>
-		    				<tr>
-		    					<td style="line-height:50px;" colspan="5">찜에 담긴 상품이 없습니다.</td>
-		    				</tr>
-		    			</table>
-                      </div>
-                    </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div><!-- 항공 엔드 -->
            </div><!--탭 엔드  -->
     		
     		

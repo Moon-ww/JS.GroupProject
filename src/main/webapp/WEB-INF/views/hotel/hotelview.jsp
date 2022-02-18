@@ -35,6 +35,12 @@
 					<div class="col-md-2" style="margin-top: 50px; text-align: right;">
                          <span style="font-weight: 600; font-size: 22pt">
                          <fmt:formatNumber value="${list2.price }"/></span><span> 원~</span>
+                         <c:if test="${empty list2}">
+						  <a href="/product/insert.do?hseq=${list2.hseq }" id="dibsbtn" class="btn btn-danger">찜하기</a>	
+						  </c:if>
+						  <c:if test="${not empty list2}">
+						  <a href="/product/cancel.do?hseq=${list2.hseq }" id="dibsbtn" class="btn btn-danger">찜해제</a>	
+						  </c:if>
                      </div>	
 			</div><!--최저가  -->
 		</div>								
@@ -65,7 +71,54 @@
 							<fmt:formatNumber value="${list.price }"/></span><span style="font-size: 10pt;">원</span>
 						</div>
 						<div class="col-md-2" style="margin-top: 30px;margin-bottom: 30px;">			
-							<a href="/product/productDetailview.do?pcode=${list.hseq}" class="btn btn-default" style="width: 130px;height: 40px;line-height: 30px;">예약하기</a>
+							<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="width: 130px;height: 40px;line-height: 30px;">
+  예약하기
+</button>
+<input type="hidden" id="hseq" value="${list.hseq}">
+<input type="hidden" id="id" value="<%=name %>">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">알림</h4>
+      </div>
+		      <div class="modal-body">
+		      <br>
+				1. 룸 업그레이드 프로모션<br><br>
+				
+				스탠다드 예약시 -> 무료 업그레이드 (디럭스 트윈,디럭스 패밀리 트윈, 발코니패밀리 트윈중 랜덤으로 배정. 지정불가)<br><br><br>
+				
+				
+				※ 상품 예약 시 〈투숙 인원 기재 필수〉<br><br>
+				
+				[예약방법]<br><br>
+				
+				■반드시 룸타입 앞에 [무료업그레이드] 가 써있는 룸으로 예약을 해주셔야 적용 됩니다.<br><br>
+				
+				■[특가].[한정특가] 룸타입은 적용이 불가능합니다.<br>
+				■호텔 사정에 의해 업그레이드가 불가능할 수 있습니다.<br><br><br>
+				
+				
+				2. 연박 할인<br><br>
+				
+				전 객실 2박 이상 연박시 5% 추가 할인 적용<br><br><br>
+				
+				
+				[예약방법]<br><br>
+				
+				■2박 이상 검색시 전체금액에서 자동으로 5% 할인되어 노출됩니다.<br><br>
+		        
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" id="resbtn_hotel">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 						</div>
 				</div>
 			</c:forEach>
@@ -77,6 +130,25 @@
 			</div>
 		</div>
 </section>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var id = $("#id").val();
+		var hseq = $("#hseq").val();
+		$("#resbtn_hotel").on("click", function() {
+			location.href='/member/reservationviewh.do?id='+id+'&hseq='+hseq;
+		})
+	})
+		
+</script>
+
+<script>
+
+$('#myModal').on('shown.bs.modal', function () {
+	  $('#myInput').focus()
+	})
+
+</script>
 <script>
 	$("#plus").click(function() {												
 													

@@ -86,4 +86,10 @@
 		from hotel h, hotel_room r where h.place like '%제주%' and h.hseq=r.hbno group by h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
 		h.place, h.thema, h.best, r.hbno,r.title,r.content,r.image,r.price, r.options
 	</select>
+	<select id="getDetailViewHotel" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq}order by r.price
+	</select>
+	
 </mapper>

@@ -55,7 +55,7 @@
 
 <div class="container-fluid">
       <div class="row">
-      <form name="search" action="">
+      <form name="search" action="/hotel/hotelSearchview.do">
          <div class="col-md-12 ment2" style="" id="scroll">
          	<div class="dropdown2">
 			  <div onclick="myFunction2()" class="dropbtn where" id="spot" style="width: 300px;" >어디로 떠나세요?</div>
@@ -71,10 +71,10 @@
 			    <a href="javascript:void(0)">경상남도</a>
 			    <a href="javascript:void(0)">인천</a>
 			  	</div>
-			  	<input type="hidden" name="spot" id="spot">
+			  	<input type="hidden" name="place" id="spot">
 				</div>
-			<input type="text" class="mbtn1" id="startDate" name="startdate" placeholder="체크인" readonly style="cursor: pointer;width: 200px;">~
-			<input type="text" class="mbtn1" id="endDate" name="enddate" placeholder="체크아웃" readonly style="cursor: pointer;width: 200px;">
+			<input type="text" class="mbtn1" id="startDate" name="checkin" placeholder="체크인" readonly style="cursor: pointer;width: 200px;">~
+			<input type="text" class="mbtn1" id="endDate" name="checkout" placeholder="체크아웃" readonly style="cursor: pointer;width: 200px;">
 			<button class="mbtn2" style="width: 200px;" >숙소 검색</button>
 	</div>
 	</form>

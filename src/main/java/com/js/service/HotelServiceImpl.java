@@ -102,4 +102,8 @@ public class HotelServiceImpl implements HotelService {
 		
 		return mapper.getSearchView();
 	}
+	@Override
+	public HotelVO getDetailViewHotel(int hseq) {
+		return mapper.getDetailViewHotel(hseq);
+	}
 }

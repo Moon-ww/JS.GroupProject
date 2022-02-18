@@ -10,19 +10,19 @@
             <div class="sidebar" style="text-align:left;">
             <div class="sidetitle"><span>마이페이지</span></div>
                      <ul>
-                        <li style="margin-top:50px;"><a href="/mypage/reservList.do">예약내역</a></li>
+                        <li><a href="/mypage/reservList.do">예약내역</a></li>
                         <li><a href="/mypage/dibs.do">찜</a></li>
                          <div class="accord">
 							<div class="">									
 								<a href="javascript:void(0)" class="accordion">마일리지</a>							
-								<div class="panel" style="display: none; margin: 20px 0 20px 0;padding-bottom: 10px;">
-									<p><a href="/mypage/mileage.do" style="margin-bottom: 30px">내역조회</a></p>
+								<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">
+									<a href="/mypage/mileage.do">내역조회</a>
 									<a href="/mypage/mileageGuide.do">사용안내</a>
 								</div>								
 							</div>		
 							</div>
                          <li><a href="/mypage/qnaList.do">1:1 게시판 문의내역</a></li>
-                         <li><a href="../cs/faq.do">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
+                         <li><a href="#">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
                          <li><a href="/mypage/review.do">My 상품평</a></li>
                          <li><a href="/mypage/mypage.do">개인정보</a></li>
                      </ul>
@@ -32,14 +32,14 @@
                <div class="content">
     			<span class="tit" style="display: inline-block; width: 100%;margin-bottom: 100px;">개인정보</span>
 	    				<div class="col-md-2 userLeft"style="margin-top: 45px;">
-	    					<span class="name"><%=name %></span>
-	    					<p class="email" style="margin-top: 5px;">admin@email.com</p>
+	    					<span class="name">${mvo.name }</span>
+	    					<p class="email" style="margin-top: 5px;">${mvo.email}</p>
 	    				</div>
 	    				<div class="col-md-7 userRight">
 	    					<ul>
-	    						<li><a href="#"><i class="fa fa-user-o icon-silver"></i> 회원정보 수정</a></li>
-	    						<li><a href="#"><i class="fa fa-lock icon-silver"></i> 비밀번호 변경</a></li>
-	    						<li><a href="#"><i class="fa fa-sign-out icon-silver"></i> 회원탈퇴</a></li>
+	    						<li><a href="privacy.do"><i class="fa fa-user-o icon-silver"></i> 회원정보 수정</a></li>
+	    						<li><a href="changePw.do"><i class="fa fa-lock icon-silver"></i> 비밀번호 변경</a></li>
+	    						<li><a href="secsession.do"><i class="fa fa-sign-out icon-silver"></i> 회원탈퇴</a></li>
 	    					</ul>
 	    				</div>
 	               </div>

@@ -24,4 +24,5 @@ public interface MypageMapper {
 	public String onePw(String id);
 	public void update(MemberVO mvo);
 	public void delete(String id);
+	public MemberVO getOneh(String id);
 }

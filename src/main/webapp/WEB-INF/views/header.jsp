@@ -162,7 +162,7 @@
             
       <div class="header_bottom">
          <div class="container-fluid">
-            <div class="row" style="border-top:1px solid #ccc">
+            <div class="row" style="border-top:1px solid #ccc; border-bottom: 1px solid;">
             	<div class="col-md-1">
             	</div>
                <div class="col-md-10 navheight">

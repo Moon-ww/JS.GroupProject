@@ -19,4 +19,5 @@ public interface MemberMapper {
 	public void Mileageinsert(OrderVO order);
 	public void Mileagedelete(OrderVO order);
 	public OrderVO getid(String status);
+	public MemberVO getOneh(String id);
 }

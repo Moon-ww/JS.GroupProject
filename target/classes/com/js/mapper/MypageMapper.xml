@@ -40,7 +40,7 @@
 	 select * from likes where id=#{id} and pcode = #{pcode}
 	</select>
 	<insert id="register">
-		insert into likes (id, pcode) values (#{id},#{pcode})
+		insert into likes (id, pcode,hseq) values (#{id},#{pcode, jdbcType = INTEGER},#{hseq, jdbcType = INTEGER})
 	</insert>
 	<select id="oneList" resultType="com.js.domain.MemberVO">
 		select * from member where id = #{id}

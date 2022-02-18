@@ -66,4 +66,9 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.getid(status);
 	}
+	@Override
+	public MemberVO getOneh(String id) {
+
+		return mapper.getOneh(id);
+	}
 }
