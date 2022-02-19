@@ -50,6 +50,7 @@ public class MypageController {
 		String id = principal.getName();
 		likes.setId(id);
 		model.addAttribute("list", service.getdibsList(likes));
+		model.addAttribute("list2", service.getdibsList2(likes));
 	}
 	//뷰페이지에서 찜삭제하기
 		@GetMapping("/dibsDelete2.do")

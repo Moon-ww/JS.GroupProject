@@ -22,8 +22,7 @@
 							</div>		
 							</div>
                          <li><a href="/mypage/qnaList.do">1:1 게시판 문의내역</a></li>
-                         <li><a href="../cs/faq.do">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
-                         <li><a href="/mypage/review.do">My 상품평</a></li>
+                         <li><a href="../cs/faq.do">자주찾는질문</a></li>
                          <li><a href="/mypage/mypage.do">개인정보</a></li>
                      </ul>
                   </div>
@@ -109,11 +108,21 @@
 		    			<table class="table pack_table" style="margin-top: 10px;">
 		    				<tr>
 		    					<th>상품명</th>
-		    					<th></th>
 		    				</tr>
+		    				<c:choose>
+		    				<c:when test="${empty list2 }">
 		    				<tr>
-		    					<td style="line-height:50px;" colspan="6">찜에 담긴 상품이 없습니다.</td>
+		    					<td style="line-height:50px;" colspan="5">찜에 담긴 상품이 없습니다.</td>
 		    				</tr>
+		    				</c:when>
+		    				<c:otherwise>
+		    				<c:forEach items="${list2 }" var="list">
+		    				<tr>
+		    					<td><a href="/hotel/hotelview.do?hseq=${list.hseq }"> ${list.name }</a></td>
+		    				</tr>
+		    				</c:forEach>
+		    				</c:otherwise>
+		    				</c:choose>
 		    			</table>
                       </div>
                     </div>

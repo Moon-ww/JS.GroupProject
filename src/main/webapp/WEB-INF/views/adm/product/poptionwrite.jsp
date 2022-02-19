@@ -30,6 +30,7 @@
 	<script src="/resources/js/summernote.min.js"></script>
 	<script src="/resources/js/my.js"></script>
 </head>	
+
 	<!-- [ auth-signin ] start -->
 <div class="auth-wrapper">
 	<div class="auth-content" style="width: 900px;">
@@ -242,7 +243,8 @@
 
   </script>
 	<script type="text/javascript">
- 	$.urlParam = function(name){
+
+	$.urlParam = function(name){
  	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
  	    return results[1] || 0;
  	}

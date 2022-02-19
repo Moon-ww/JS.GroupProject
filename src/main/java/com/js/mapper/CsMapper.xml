@@ -25,7 +25,24 @@
 	<select id="getNoticeList4" resultType="com.js.domain.NoticeVO">
 		select * from notice where kind='당첨자발표' order by nseq desc
 	</select>
-	<select id="getFaqList" resultType="com.js.domain.FaqVO">
-		select * from faq order by bno desc
-	</select>
+		<select id="getFaqList" resultType="com.js.domain.FaqVO">		
+		select * from faq order by bno desc	
+	</select>		
+	<insert id="insertFaq">		
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">	
+			select faq_seq.nextval from dual
+		</selectKey>	
+		insert into faq (bno, que, ans, cate)  	
+		values (#{bno}, #{que}, #{ans}, #{cate})	
+	</insert>		
+	<select id="faqModify" resultType="com.js.domain.FaqVO">		
+		select * from faq where bno = #{bno}	
+	</select>		
+	<update id="faqModifypro">		
+		update faq set que=#{que},ans=#{ans},cate=#{cate} where bno = #{bno}	
+	</update>		
+	<delete id="faqDelete">		
+		delete from faq where bno = #{bno}	
+	</delete>		
+
 </mapper>

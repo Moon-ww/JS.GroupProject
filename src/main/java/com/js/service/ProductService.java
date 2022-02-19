@@ -2,9 +2,7 @@ package com.js.service;
 
 import java.util.List;
 
-import com.js.domain.ColorVO;
 import com.js.domain.ProductVO;
-import com.js.domain.SizeVO;
 
 public interface ProductService {
 
@@ -33,4 +31,7 @@ public interface ProductService {
 	public int getSearchCount(ProductVO product);
 	public List<ProductVO> getSearchThema(ProductVO product);//상품 검색
 	public int getSearchThemaCount(ProductVO product);
+	
+	public List<ProductVO> getTotalSearch(String spot);//전체 검색
+	public List<ProductVO> getTotalSearchp_p_price(int price2,int price,String spot);//전체 검색ajax
 }

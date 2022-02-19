@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.js.domain.HotelVO;
+import com.js.domain.ProductVO;
 import com.js.mapper.HotelMapper;
 
 import lombok.AllArgsConstructor;
@@ -98,12 +99,18 @@ public class HotelServiceImpl implements HotelService {
 		return mapper.getDetailView2(hseq);
 	}
 	@Override
-	public List<HotelVO> getSearchView() {
+	public List<HotelVO> getSearchView(HotelVO hotel) {
 		
-		return mapper.getSearchView();
+		return mapper.getSearchView(hotel);
 	}
 	@Override
 	public HotelVO getDetailViewHotel(int hseq) {
+		
 		return mapper.getDetailViewHotel(hseq);
+	}
+	@Override
+	public List<HotelVO> getTotalSearch(String spot) {
+
+		return mapper.getTotalSearch(spot);
 	}
 }

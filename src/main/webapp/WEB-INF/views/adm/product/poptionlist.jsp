@@ -164,7 +164,7 @@
 						    </c:otherwise>
 					    </c:choose>
 											  </table>
-											  <a href="/adm/product/poptionwrite.do" class="btn btn-default" style="float:right;">옵션등록</a>
+											  <a href="/adm/product/poptionwrite.do" id="pseqbtn" class="btn btn-default" style="float:right;">옵션등록</a>
 											</div>
 										</div>
 									</div>
@@ -289,7 +289,21 @@
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/resources/css/assets/js/setting-demo.js"></script>
 	<script src="/resources/css/assets/js/demo.js"></script>
-	<script>
+	
+	
+	<script type="text/javascript">
+
+	$.urlParam = function(name){
+ 	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+ 	    return results[1] || 0;
+ 	}
+ 		var pseq = $.urlParam('pseq'); 
+ 		console.log(pseq)
+		$('#pseqbtn').prop('href', "/adm/product/poptionwrite.do?pseq="+pseq)
+
+	 </script>
+	
+	<!-- <script>
 		Circles.create({
 			id:'circles-1',
 			radius:45,
@@ -382,6 +396,6 @@
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
-	</script>
+	</script> -->
 </body>
 </html>

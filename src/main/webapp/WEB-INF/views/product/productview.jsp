@@ -10,8 +10,6 @@
 			<div class="row">				
 							
 				<h2 class="col-md-3">${list2.spot }</h2>
-				<a class="btn btn-default col-md-offset-7 col-md-2"									
-					style="width: 100px; height: 33px; padding: 15; margin-top: 20px">2022.02</a>								
 			</div>										
 		</div>											
 	</div>												

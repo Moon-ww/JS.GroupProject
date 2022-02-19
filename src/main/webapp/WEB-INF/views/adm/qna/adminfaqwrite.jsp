@@ -30,7 +30,6 @@
 	<script src="/resources/js/summernote.min.js"></script>
 	<script src="/resources/js/my.js"></script>
 </head>	
-
 	<!-- [ auth-signin ] start -->
 <div class="auth-wrapper">
 	<div class="auth-content" style="width: 900px;">
@@ -38,54 +37,47 @@
 			<div class="row align-items-center">
 				<div class="col-md-12">
 					<div class="card-body">
-					<form class="form-horizontal" name="frm" method="post" enctype="multipart/form-data" action="/adm/admin_room_write.do">
-					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-						
-						<input type="hidden" name="hseq" id="hseq">
-						<h2 class="mb-4 f-w-400">객실등록</h2>
-					  <div class="form-group">
-					    <label for="title" class="col-sm-2 control-label">객실명</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="title" class="form-control2" style="width:100%" id="title">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="options" class="col-sm-2 control-label">옵션</label>
-					    <div class="col-sm-10">
-					    	<select name="options" id="" style="width:160px;height:40px; text-align:center;">
-					    		<option value="2인 조식 포함">2인 조식 포함</option>
-					    		<option value="조식 불포함">조식 불포함</option>
-					    	</select>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="price" class="col-sm-2 control-label">가격</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="price" class="form-control2" style="width:100%" id="price">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="content" class="col-sm-2 control-label">상품설명</label>
-					    <div class="col-sm-10">
-					      <textarea name="content" class="form-control2" style="width:100%" id="summernote"></textarea>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="img" class="ml-4 mr-4"style="float: left;min-width: 70px;">대표이미지</label>
-					    <div class="col-sm-10">
-					      <input type="file" name="uploadFile" id="input-file" style="display:none;">
-					      <label class="input-file-button btn btn-primary" for="input-file">업로드</label>
-					      <input type="text" id="filename" class="form-control2" style="width:80%" readonly>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="text-center">
-					      <button type="submit" class="btn btn-default" onclick="">객실 등록</button>
-					      <button type="button" class="btn btn-default" onclick="go_move()">목록</button>
-					    </div>
-					  </div>
-					</form>
-				</div>
+					<form class="form-horizontal" name="frm" method="post" action="/adm/qna/adminfaqwrite.do">
+		               <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+		                 <div class="form-group">
+		                   <div class="col-sm-10">
+		                   </div>
+		                 </div>
+		                 <div class="form-group">
+		                   <label for="cate" class="col-sm-2 control-label">분류</label>
+		                   <div class="col-sm-10">
+		                     <select name='cate'style="height:40px;">
+		                       <option value='' style="text-align: center;">-- 선택 --</option>
+		                       <option value='air'>항공권</option>
+		                       <option value='hotel'>숙박</option>
+		                       <option value='package'>패키지</option>
+		                       <option value='ticket'>입장권</option>
+		                       <option value='reserv'>상품예약.결제</option>
+		                       <option value='customer'>회원정보</option>
+		                       <option value='etc'>기타</option>
+		                     </select>
+		                   </div>
+		                 </div>
+		                 <div class="form-group">
+		                   <label for="que" class="col-sm-2 control-label">자주 묻는 질문</label>
+		                   <div class="col-sm-10">
+		                     <input name="que" class="form-control2" id="que" style="height:40px;width: 100%;"></input>
+		                   </div>
+		                 </div>
+		                 <div class="form-group">
+		                   <label for="ans" class="col-sm-2 control-label">답변</label>
+		                   <div class="col-sm-10">
+		                     <textarea name="ans" class="form-control2" id="ans" style="height:200px;width: 100%;"></textarea>
+		                   </div>
+		                 </div>
+		                 <div class="form-group">
+		                   <div class="text-center">
+		                     <button type="submit" class="btn btn-default" >답변하기</button>
+		                     <button type="button" class="btn btn-default" onclick="javascript:history.back()">목록</button>
+		                   </div>
+		                 </div>
+		               </form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -128,15 +120,5 @@
 	    }
 	});
 	</script>
-	<script type="text/javascript">
- 	$.urlParam = function(name){
- 	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
- 	    return results[1] || 0;
- 	}
- 		var hseq = $.urlParam('hseq'); 
- 		console.log(hseq)
-		$("#hseq").val(hseq)
-
-	 </script>
 </body>
 </html>

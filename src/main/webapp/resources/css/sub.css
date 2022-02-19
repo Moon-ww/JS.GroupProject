@@ -734,3 +734,21 @@ span.form_holder {
     border-bottom: 1px solid #dadce1;
     padding: 10px 0;
 }
+/* faq */
+.card-body .button-wrap .faq-button {	
+	 border: 3px solid #d3dceb;
+	 background: #fff;
+	 padding: 39px;
+	 border-radius: 15px;
+	 margin: 20px 253px;
+	 font-family: 'Hahmlet', serif;
+	 font-size: 18px;
+}	
+.card-body .button-wrap .qna-button{	
+	border: 3px solid #d3dceb;
+	background: #fff;
+	padding: 39px;
+	border-radius: 15px;
+	font-family: 'Hahmlet', serif;
+	font-size: 18px;
+}	

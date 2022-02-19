@@ -35,12 +35,17 @@
 					<div class="col-md-2" style="margin-top: 50px; text-align: right;">
                          <span style="font-weight: 600; font-size: 22pt">
                          <fmt:formatNumber value="${list2.price }"/></span><span> 원~</span>
-                         <c:if test="${empty list2}">
-						  <a href="/product/insert.do?hseq=${list2.hseq }" id="dibsbtn" class="btn btn-danger">찜하기</a>	
+                         <sec:authorize access="isAuthenticated()">
+                         <c:if test="${empty list3}">
+						  <a href="/hotel/insert.do?hseq=${list2.hseq }" id="dibsbtn" class="btn btn-danger">찜하기</a>	
 						  </c:if>
-						  <c:if test="${not empty list2}">
-						  <a href="/product/cancel.do?hseq=${list2.hseq }" id="dibsbtn" class="btn btn-danger">찜해제</a>	
+						  <c:if test="${not empty list3}">
+						  <a href="/hotel/cancel.do?hseq=${list2.hseq }" id="dibsbtn" class="btn btn-danger">찜해제</a>	
 						  </c:if>
+						  </sec:authorize>
+						  <sec:authorize access="isAnonymous()">
+						  <a href="/member/login" id="dibsbtn" class="btn btn-danger">찜하기</a>
+						  </sec:authorize>
                      </div>	
 			</div><!--최저가  -->
 		</div>								
@@ -55,8 +60,14 @@
 		</div>
 		<div class="container">												
 			<div class="row" style="margin-top: 100px;">	
-			<p style="border-bottom: 1px solid #ccc;padding-bottom: 10px;">
-			<strong style="font-size: 14pt;">전체 객실</strong></p>
+			<form action="/hotel/hotelview.do">
+			<p class="" style="border-bottom: 1px solid #ccc;padding-bottom: 10px;">
+			<strong style="font-size: 14pt;">전체 객실</strong><span class="pull-right">
+			<input type="hidden" id="hseq" name="hseq" value="">
+			<input type="text" class="btn" id="startDate" name="checkin" placeholder="체크인" readonly style="cursor: pointer;width: 200px;border:1px solid #ccc;"> ~
+			<input type="text" class="btn" id="endDate" name="checkout" placeholder="체크아웃" readonly style="cursor: pointer;width: 200px;border:1px solid #ccc;">
+			<button class="btn btn-primary" style="width: 200px;" >숙소 검색</button></span></p>
+			</form>
 				<c:forEach items="${list}" var="list">					
 					<div class="col-md-12" style="border-bottom: 1px solid #ccc;margin-bottom: 40px;">				
 						<div class="col-md-5" style="margin-top: 30px;margin-bottom: 30px;">
@@ -70,11 +81,19 @@
 							<p>1박 기준</p><span style="font-weight: 600; font-size: 15pt;">
 							<fmt:formatNumber value="${list.price }"/></span><span style="font-size: 10pt;">원</span>
 						</div>
-						<div class="col-md-2" style="margin-top: 30px;margin-bottom: 30px;">			
+						<div class="col-md-2" style="margin-top: 30px;margin-bottom: 30px;">		
+							
 							<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="width: 130px;height: 40px;line-height: 30px;">
-  예약하기
-</button>
+				<sec:authorize access="isAuthenticated()">
+				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" 
+				data-target="#myModal" style="width: 130px;height: 40px;line-height: 30px;">예약하기</button>
+				</sec:authorize>
+				
+			<sec:authorize access="isAnonymous()">
+			<a href="/member/login" class="btn btn-primary btn-lg" style="width: 130px; 
+			height: 40px;line-height: 30px;">예약하기</a>
+			</sec:authorize>
+			
 <input type="hidden" id="hseq" value="${list.hseq}">
 <input type="hidden" id="id" value="<%=name %>">
 
@@ -194,5 +213,69 @@ $('#myModal').on('shown.bs.modal', function () {
             });  													
         });  													
     </script>  													
-													
+	<script type="text/javascript">
+    $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional['ko']); 
+            $( "#startDate" ).datepicker({
+                 changeMonth: true, 
+                 changeYear: true,
+                 nextText: '다음 달',
+                 prevText: '이전 달', 
+                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 dateFormat: "yy-mm-dd",
+                 minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                 beforeShow: function(input, inst) {
+        		// Handle calendar position before showing it.
+        		// It's not supported by Datepicker itself (for now) so we need to use its internal variables.
+        		var calendar = inst.dpDiv;
+
+		        // Dirty hack, but we can't do anything without it (for now, in jQuery UI 1.8.20)
+		        setTimeout(function() {
+		            calendar.position({
+		                my: 'bottom-top',
+		                at: 'right bottom',
+		                collision: 'none',
+		                of: input
+		            	});
+		        	}, 1);
+		    	},
+                 onClose: function( selectedDate ) {    
+                      //시작일(startDate) datepicker가 닫힐때
+                      //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                     $("#endDate").datepicker( "option", "minDate", selectedDate );
+                 }    
+            });
+            $( "#endDate" ).datepicker({
+                 changeMonth: true, 
+                 changeYear: true,
+                 nextText: '다음 달',
+                 prevText: '이전 달', 
+                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 dateFormat: "yy-mm-dd",
+                 minDate: 0,                       // 선택할수있는 최대날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                 onClose: function( selectedDate ) {    
+                     // 종료일(endDate) datepicker가 닫힐때
+                     // 시작일(startDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 시작일로 지정
+                     //$("#startDate").datepicker( "option", "maxDate", selectedDate );
+                 }    
+ 
+            });    
+    });
+</script>							
+<script type="text/javascript">
+ 	$.urlParam = function(name){
+ 	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+ 	    return results[1] || 0;
+ 	}
+ 		var hseq = $.urlParam('hseq'); 
+ 		console.log(hseq)
+		$("#hseq").val(hseq)
+
+	 </script>					
     	<%@include file="../footer.jsp" %>												

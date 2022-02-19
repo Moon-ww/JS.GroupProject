@@ -31,10 +31,6 @@
 					<li>
 						<a href="#">자주찾는질문</a>
 					</li>
-					<!-- /고객센터/자주찾는질문.do -->
-					<li>
-						<a href="/mypage/review.do">My 상품평</a>
-					</li>
 					<li>
 						<a href="/mypage/mypage.do">개인정보</a>
 					</li>

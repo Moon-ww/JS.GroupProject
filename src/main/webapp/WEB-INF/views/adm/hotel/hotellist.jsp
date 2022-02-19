@@ -269,7 +269,10 @@
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/resources/css/assets/js/setting-demo.js"></script>
 	<script src="/resources/css/assets/js/demo.js"></script>
-	<script>
+	
+	
+	
+	<!-- <script>
 		Circles.create({
 			id:'circles-1',
 			radius:45,
@@ -362,6 +365,6 @@
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
-	</script>
+	</script> -->
 </body>
 </html>

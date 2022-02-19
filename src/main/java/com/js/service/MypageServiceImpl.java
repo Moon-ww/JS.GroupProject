@@ -61,6 +61,11 @@ public class MypageServiceImpl implements MypageService {
 
 	return	mapper.getdibs(likes);
 	}
+	@Override
+	public LikesVO getdibs2(LikesVO likes) {
+
+	return	mapper.getdibs2(likes);
+	}
 	@Override	
 	public int register(LikesVO likes) {	
 		return mapper.register(likes);
@@ -69,6 +74,11 @@ public class MypageServiceImpl implements MypageService {
 	public List<LikesVO> getdibsList(LikesVO likes) {
 		
 		return	mapper.getdibsList(likes);
+	}
+	@Override
+	public List<LikesVO> getdibsList2(LikesVO likes) {
+		
+		return	mapper.getdibsList2(likes);
 	}
 	@Override
 	public MemberVO oneList(String id) {

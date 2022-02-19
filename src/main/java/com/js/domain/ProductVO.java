@@ -21,6 +21,7 @@ public class ProductVO {
 	private String dname;
 	private String dkind;
 	private String dcontent;
+	private int price;
 	private int price1;
 	private int price2;
 	private int price3;

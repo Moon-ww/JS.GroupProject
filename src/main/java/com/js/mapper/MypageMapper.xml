@@ -26,6 +26,9 @@
 	<select id="getdibsList" resultType="com.js.domain.LikesVO">
 	 select l.id, l.pcode,d.name, d.startdate, d.price2 from likes l, product_detail d where l.id=#{id} and l.pcode = d.pcode
 	</select>
+	<select id="getdibsList2" resultType="com.js.domain.LikesVO">
+	 select l.id, l.hseq,h.name from likes l, hotel h where l.id=#{id} and l.hseq = h.hseq
+	</select>
 	<select id="getmileList" resultType="com.js.domain.MypageVO">
 	 select name, mileage, mileage_used from member where id=#{id}
 	</select>
@@ -34,13 +37,16 @@
 	 q.kind, q.oseq, a.qno, a.abno, a.acontent from qa q, answer a where qno(+)=qbno and writer=#{id}
 	</select>
 	<delete id="dibscancel">
-		delete from likes where id=#{id} and pcode = #{pcode}
+		delete from likes where id=#{id} and pcode = #{pcode, jdbcType = VARCHAR} or hseq = #{hseq, jdbcType = INTEGER}
 	</delete>
 	<select id="getdibs" resultType="com.js.domain.LikesVO">
 	 select * from likes where id=#{id} and pcode = #{pcode}
 	</select>
+	<select id="getdibs2" resultType="com.js.domain.LikesVO">
+	 select * from likes where id=#{id} and hseq = #{hseq}
+	</select>
 	<insert id="register">
-		insert into likes (id, pcode,hseq) values (#{id},#{pcode, jdbcType = INTEGER},#{hseq, jdbcType = INTEGER})
+		insert into likes (id, pcode,hseq) values (#{id},#{pcode, jdbcType = VARCHAR},#{hseq, jdbcType = INTEGER})
 	</insert>
 	<select id="oneList" resultType="com.js.domain.MemberVO">
 		select * from member where id = #{id}

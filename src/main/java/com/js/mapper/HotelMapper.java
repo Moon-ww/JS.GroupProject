@@ -28,5 +28,7 @@ public interface HotelMapper {
 	public HotelVO getDetailView2(int hseq);//호텔 view 최저가 Detail join
 	public HotelVO getDetailViewHotel(int hseq);//호텔 view Detail join
 	
-	public List<HotelVO> getSearchView();//호텔 검색
+	public List<HotelVO> getSearchView(HotelVO hotel);//호텔 검색
+	
+	public List<HotelVO> getTotalSearch(String spot);//전체 검색
 }

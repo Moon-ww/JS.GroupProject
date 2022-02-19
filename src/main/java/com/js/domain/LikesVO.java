@@ -12,6 +12,7 @@ public class LikesVO {
 	private String startdate;
 	private int price2;
 	private String kind;
+	private int hseq;
 	
 	
 	

@@ -159,7 +159,9 @@
 		<span style="margin-left: 20px;">						
 			<button class="minus" type="button">-</button><input type="text" name="quantity" class="quantity" value="1" readonly><button class="plus" type="button">+</button>					
 	 		<input type="hidden" id="pcode" value="${list.pcode }">
+	 		<sec:authorize access="isAuthenticated()">
 	 		<input type="hidden" id="id" value="<%=name %>">
+	 		</sec:authorize>
 	 		<input type="hidden" id="price" value="${list.price2}">
 	 	</span>
 			
@@ -170,12 +172,17 @@
 		  <div class="col-md-12" style="height: 35px;">
 		  
 		  <a href="" id="resbtn" class = "btn btn-default">예약하기</a>
+		  <sec:authorize access="isAuthenticated()">
 		   <c:if test="${empty list2}">
 		  <a href="/product/insert.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger">찜하기</a>	
 		  </c:if>
 		  <c:if test="${not empty list2}">
 		  <a href="/product/cancel.do?pcode=${list.pcode }" id="dibsbtn" class="btn btn-danger">찜해제</a>	
 		  </c:if>
+		  </sec:authorize>
+		  <sec:authorize access="isAnonymous()">
+		  <a href="/member/login" id="dibsbtn" class="btn btn-danger">찜하기</a>
+		  </sec:authorize>
 		  </div>
 		</div>						
 	</div>							

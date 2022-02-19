@@ -142,7 +142,7 @@
 						    </c:otherwise>
 					    </c:choose>
 					  </table>
-					  <a href="/adm/hotel/roomwrite.do" class="btn btn-default" style="float:right;">객실등록</a>
+					  <a href="/adm/hotel/roomwrite.do" id="hseqbtn" class="btn btn-default" style="float:right;">객실등록</a>
 											</div>
 										</div>
 									</div>
@@ -267,7 +267,20 @@
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/resources/css/assets/js/setting-demo.js"></script>
 	<script src="/resources/css/assets/js/demo.js"></script>
-	<script>
+	
+	<script type="text/javascript">
+
+	$.urlParam = function(name){
+ 	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+ 	    return results[1] || 0;
+ 	}
+ 		var hseq = $.urlParam('hseq'); 
+ 		console.log(hseq)
+		$('#hseqbtn').prop('href', "/adm/hotel/roomwrite.do?hseq="+hseq)
+
+	 </script>
+	
+	<!-- <script>
 		Circles.create({
 			id:'circles-1',
 			radius:45,
@@ -360,6 +373,6 @@
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
-	</script>
+	</script> -->
 </body>
 </html>

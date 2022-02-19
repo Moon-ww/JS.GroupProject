@@ -4,7 +4,7 @@
     <%@ include file="../header.jsp" %>
     
 <section>
-    <div id="carousel-example-generic" class="carousel slide" style="margin-top: 5px;" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide" style="margin-top: 0px;" data-ride="carousel">
     
      
   <!-- Wrapper for slides -->

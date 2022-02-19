@@ -40,9 +40,26 @@ public class CsServiceImpl implements CsService {
 	public List<NoticeVO> getNoticeList4(){
 		return mapper.getNoticeList4();
 	}
-	@Override
-	public List<FaqVO> getFaqList() {
+	@Override	
+	public List<FaqVO> getFaqList() {	
 		
 		return mapper.getFaqList();
-	}
+	}	
+	@Override	
+	public void insertFaq(FaqVO fvo) {	
+		mapper.insertFaq(fvo);
+	}	
+	@Override	
+	public FaqVO faqModify(int bno) {	
+		return mapper.faqModify(bno);
+	}	
+	@Override	
+	public void faqModifypro(FaqVO fvo) {	
+		mapper.faqModifypro(fvo);
+	}	
+	@Override	
+	public void faqDelete(int bno) {	
+		mapper.faqDelete(bno);
+	}	
+
 }

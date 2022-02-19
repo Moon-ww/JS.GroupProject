@@ -175,7 +175,9 @@ public class MemberController {
 	      response.getWriter().print(obj);
 	}
 	@GetMapping("/reservationviewp.do")
-	public void reservationview(Model model, String pcode, String id) {
+	public void reservationview(Model model, String pcode, String id, int qnt, int total) {
+		model.addAttribute("qnt",qnt);
+		model.addAttribute("total",total);
 		model.addAttribute("mlist", service.getOne(id));
 		model.addAttribute("list2", service2.productDetailView(pcode));
 	}

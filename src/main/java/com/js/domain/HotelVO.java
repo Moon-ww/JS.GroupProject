@@ -24,4 +24,6 @@ public class HotelVO {
 	private String thema;
 	private String best;
 	
+	private String spot;
+	
 }

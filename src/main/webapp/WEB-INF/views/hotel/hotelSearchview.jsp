@@ -6,7 +6,7 @@
 	<section>												
 	<div class="container-fluid" style="border-top: 1px solid #000;">												
 		<div class="container"											
-			style="border-bottom: 2px solid #000; padding-top: 25px; padding-bottom: 10px;">										
+			style="border-bottom: 0; padding-top: 25px; padding-bottom: 10px;">										
 			<div class="row">				
 							
 				<h2 class="col-md-3"></h2>
@@ -21,14 +21,18 @@
 			<div class="col-md-2 accord"style="margin-top: 50px;">
 				<div class=" col-md-12 pvside">									
 					<a href="javascript:void(0)" class="accordion">가격</a>							
-					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">								
-						<a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;"></a>							
+					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">								
+						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">5~15만원</a></p>
+						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">15~29만원</a></p>
+						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">29~45만원</a></p>						
 					</div>								
 				</div>
 				<div class=" col-md-12 pvside">									
 					<a href="javascript:void(0)" class="accordion">숙소등급</a>							
-					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">								
-						<a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;"></a>							
+					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">								
+						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">3성급</a></p>
+						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">4성급</a></p>
+						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">5성급</a></p>							
 					</div>								
 				</div>
 			</div>
@@ -38,7 +42,7 @@
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
-							<p class=""> 검색결과 총 ${count} 개</p>		
+							<p class="" style="font-weight: 600; font-size: 15pt;"> 호텔/펜션 ()</p>
 							<c:forEach items="${list}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;">				
 									<div class="col-md-10">

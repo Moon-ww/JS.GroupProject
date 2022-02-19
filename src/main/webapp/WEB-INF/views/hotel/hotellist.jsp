@@ -4,7 +4,7 @@
     <%@ include file="../header.jsp" %>
     
 <section>
-    <div id="carousel-example-generic" class="carousel slide" style="margin-top: 5px;" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide" style="margin-top: 0px;" data-ride="carousel">
   
      
   <!-- Wrapper for slides -->
@@ -71,11 +71,11 @@
 			    <a href="javascript:void(0)">경상남도</a>
 			    <a href="javascript:void(0)">인천</a>
 			  	</div>
-			  	<input type="hidden" name="place" id="spot">
+			  	<input type="hidden" name="place" id="place">
 				</div>
-			<input type="text" class="mbtn1" id="startDate" name="checkin" placeholder="체크인" readonly style="cursor: pointer;width: 200px;">~
+			<input type="text" class="mbtn1" id="startDate" name="checkin" placeholder="체크인" readonly style="cursor: pointer;width: 200px;"> ~
 			<input type="text" class="mbtn1" id="endDate" name="checkout" placeholder="체크아웃" readonly style="cursor: pointer;width: 200px;">
-			<button class="mbtn2" style="width: 200px;" >숙소 검색</button>
+			<button type="submit" class="mbtn2" style="width: 200px;" >숙소 검색</button>
 	</div>
 	</form>
          </div>
@@ -294,9 +294,9 @@
 <script>
 	$("#myDropdown2 a").on("click",function(){
 		var text = $(this).text();
-        $('#spot').text(text);
-        $('#spot').val(text);
-        console.log($('#spot').val());
+        $('#place').text(text);
+        $('#place').val(text);
+        console.log($('#place').val());
 	})
 </script>
 <script type="text/javascript">

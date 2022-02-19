@@ -48,12 +48,13 @@
     <script src="/resources/js/member.js"></script>
     <script src="/resources/js/mypage.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -98,11 +99,12 @@
                <h1 class="logo"><a href="/"><img src="/resources/images/jslogo.png" alt="" style="width:195px; height:100px; margin-top: -50px;"/></a></h1>
             </div>
             <div class="search_box col-md-4">
-            <form name="search" id="search" method="get" action="productsearch.do">
+            <form name="search" id="search" method="get" action="/product/totalSearch.do">
+         <%--    <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/> --%>
             		<div class="searchform">
-                        <input type="text" placeholder="검색어를 입력하세요" name="word">
-                        <input type="hidden" name="pageNum" value="1">
-						<input type="hidden" name="amount" value="10">
+                        <input type="text" placeholder="검색어를 입력하세요" name="spot" id="">
+                        <!-- <input type="hidden" name="pageNum" value="1">
+						<input type="hidden" name="amount" value="10"> -->
                         <a id="abc"><i class="fa fa-search"></i></a>
                      </div>
                      <!-- swiper슬라이더 메인컨테이너 -->

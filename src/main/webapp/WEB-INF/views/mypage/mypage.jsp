@@ -10,20 +10,19 @@
             <div class="sidebar" style="text-align:left;">
             <div class="sidetitle"><span>마이페이지</span></div>
                      <ul>
-                        <li><a href="/mypage/reservList.do">예약내역</a></li>
+                        <li style="margin-top:50px;"><a href="/mypage/reservList.do">예약내역</a></li>
                         <li><a href="/mypage/dibs.do">찜</a></li>
                          <div class="accord">
 							<div class="">									
 								<a href="javascript:void(0)" class="accordion">마일리지</a>							
-								<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;">
-									<a href="/mypage/mileage.do">내역조회</a>
+								<div class="panel" style="display: none; margin: 20px 0 20px 0;padding-bottom: 10px;">
+									<p><a href="/mypage/mileage.do" style="margin-bottom: 30px">내역조회</a></p>
 									<a href="/mypage/mileageGuide.do">사용안내</a>
 								</div>								
 							</div>		
 							</div>
                          <li><a href="/mypage/qnaList.do">1:1 게시판 문의내역</a></li>
-                         <li><a href="#">자주찾는질문</a></li><!-- /고객센터/자주찾는질문.do -->
-                         <li><a href="/mypage/review.do">My 상품평</a></li>
+                         <li><a href="../cs/faq.do">자주찾는질문</a></li>
                          <li><a href="/mypage/mypage.do">개인정보</a></li>
                      </ul>
                   </div>
