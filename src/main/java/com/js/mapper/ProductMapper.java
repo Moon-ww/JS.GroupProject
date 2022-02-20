@@ -24,14 +24,16 @@ public interface ProductMapper {
 	
 	public List<ProductVO> getDetailView(int pseq);//상품 view Detail join
 	public ProductVO getDetailView2(int pseq);//상품 view 최저가 Detail join
-	
 	public ProductVO productDetailView(String pcode);//뷰디테일
 	
+	
 	public List<ProductVO> getSearchView(ProductVO product);//상품 검색
-	public int getSearchCount(ProductVO product);
-	public List<ProductVO> getSearchThema(ProductVO product);//상품 검색
-	public int getSearchThemaCount(ProductVO product);
+	public List<ProductVO> getSearchThema(ProductVO product);//테마 검색
+	
 	public List<ProductVO> getTotalSearch(String spot);//전체 검색
-	public List<ProductVO> getTotalSearchp_p_price(int price2,int price,String spot);//전체 검색ajax
+	public List<ProductVO> getTotalSearch_p(ProductVO product);//전체 검색
+	public int getSearchCount(ProductVO product);//상품 카운트
+	public int getSearchThemaCount(ProductVO product);//테마 카운트
+	public int getSearchCountTotal(ProductVO product);//상품 카운트 전체
 
 }

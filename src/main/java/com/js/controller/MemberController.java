@@ -180,6 +180,7 @@ public class MemberController {
 		model.addAttribute("total",total);
 		model.addAttribute("mlist", service.getOne(id));
 		model.addAttribute("list2", service2.productDetailView(pcode));
+		System.out.println(service2.productDetailView(pcode));
 	}
 	@GetMapping("/reservationviewh.do")
 	public void reservationviewh(Model model, @RequestParam("id") String id, @RequestParam("hseq") int hseq) {

@@ -25,5 +25,5 @@ public class HotelVO {
 	private String best;
 	
 	private String spot;
-	
+	private int price2;
 }

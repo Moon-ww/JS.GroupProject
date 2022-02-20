@@ -31,4 +31,7 @@ public interface HotelService {
 	public List<HotelVO> getSearchView(HotelVO hotel);//호텔 검색
 	
 	public List<HotelVO> getTotalSearch(String spot);//전체 검색
+	public List<HotelVO> getTotalSearch_h(HotelVO hotel);//전체 검색
+	public int getSearchCount(HotelVO hotel);//호텔 카운트
+	public int getSearchCountTotal(HotelVO hotel);//호텔 카운트 전체
 }

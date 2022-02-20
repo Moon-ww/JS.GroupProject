@@ -113,4 +113,19 @@ public class HotelServiceImpl implements HotelService {
 
 		return mapper.getTotalSearch(spot);
 	}
+	@Override
+	public List<HotelVO> getTotalSearch_h(HotelVO hotel) {
+
+		return mapper.getTotalSearch_h(hotel);
+	}
+	@Override
+	public int getSearchCount(HotelVO hotel) {
+		
+		return mapper.getSearchCount(hotel);
+	}
+	@Override
+	public int getSearchCountTotal(HotelVO hotel) {
+		
+		return mapper.getSearchCountTotal(hotel);
+	}
 }

@@ -58,7 +58,7 @@
       <form name="search" action="/hotel/hotelSearchview.do">
          <div class="col-md-12 ment2" style="" id="scroll">
          	<div class="dropdown2">
-			  <div onclick="myFunction2()" class="dropbtn where" id="spot" style="width: 300px;" >어디로 떠나세요?</div>
+			  <div onclick="myFunction2()" class="dropbtn where" id="places" style="width: 300px;" >어디로 떠나세요?</div>
 			  <div id="myDropdown2" class="dropdown-content acon" style="margin: 70px 0 0 0;">
 			    <a href="javascript:void(0)">제주시</a>
 			    <a href="javascript:void(0)">서울시</a>
@@ -71,9 +71,9 @@
 			    <a href="javascript:void(0)">경상남도</a>
 			    <a href="javascript:void(0)">인천</a>
 			  	</div>
-			  	<input type="hidden" name="place" id="place">
+			  	<input type="hidden" name="spot" id="place">
 				</div>
-			<input type="text" class="mbtn1" id="startDate" name="checkin" placeholder="체크인" readonly style="cursor: pointer;width: 200px;"> ~
+			<input type="text" class="mbtn1" id="startDate" name="checkin" placeholder="체크인" readonly style="cursor: pointer;width: 200px;"> ~ 
 			<input type="text" class="mbtn1" id="endDate" name="checkout" placeholder="체크아웃" readonly style="cursor: pointer;width: 200px;">
 			<button type="submit" class="mbtn2" style="width: 200px;" >숙소 검색</button>
 	</div>
@@ -294,7 +294,7 @@
 <script>
 	$("#myDropdown2 a").on("click",function(){
 		var text = $(this).text();
-        $('#place').text(text);
+        $('#places').text(text);
         $('#place').val(text);
         console.log($('#place').val());
 	})

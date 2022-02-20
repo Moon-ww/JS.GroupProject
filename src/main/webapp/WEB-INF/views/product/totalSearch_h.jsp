@@ -5,18 +5,8 @@
 										
 <style>
 input[type=checkbox] { display:none;  margin:10px; } 
-
-
-/* 선택한 라디오 단추 옆의 레이블에 대한 배경색 변경하면 됩니다. 강조 표시된 버튼으로 보이게합니다.*/ 
-
-input[type=checkbox]:checked+label {  
-
-background:#0047ff !important; 
-
-color:#fff; 
-
-} 
 </style>
+
 	<section>												
 	<div class="container-fluid" style="border-top: 1px solid #000;">												
 		<div class="container"											
@@ -36,8 +26,8 @@ color:#fff;
            <!-- Nav tabs -->
            <ul class="nav nav-tabs n3" role="tablist" id="mytab">
              <li role="presentation"><a href="#전체" aria-controls="전체" role="tab" data-toggle="tab">전체</a></li>
-             <li role="presentation" class="active"><a href="#국내여행" aria-controls="국내여행" role="tab" data-toggle="tab">국내여행</a></li>
-             <li role="presentation"><a href="#호텔" aria-controls="호텔" role="tab" data-toggle="tab">호텔/펜션</a></li>
+             <li role="presentation"><a href="#국내여행" aria-controls="국내여행" role="tab" data-toggle="tab">국내여행</a></li>
+             <li role="presentation" class="active"><a href="#호텔" aria-controls="호텔" role="tab" data-toggle="tab">호텔/펜션</a></li>
            </ul>
 												
 			<input type="hidden" name="spot" id="spots" value="${spot }">
@@ -48,13 +38,13 @@ color:#fff;
                    <div role="tabpanel" class="tab-pane" id="전체">
                       	<div class="">
                       	<c:choose>
-							<c:when test="${empty list }">
+							<c:when test="${empty list2 }">
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
 							
-							<p class="" style="font-weight: 600; font-size: 15pt;"> 호텔/펜션 ()</p>
-							<c:forEach items="${list}" var="list">	
+							<p class="" style="font-weight: 600; font-size: 15pt;"> 호텔/펜션 (${count2 })</p>
+							<c:forEach items="${list2}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;margin-bottom: 100px;">				
 									<div class="col-md-10">
 										<div class="imagesss col-md-4" style="height: 150px;">
@@ -80,13 +70,13 @@ color:#fff;
 					    </c:choose>		
 					    
 							<c:choose>
-							<c:when test="${empty list2 }">
+							<c:when test="${empty list1 }">
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
-							<p class="" style="font-weight: 600; font-size: 15pt;"> 국내여행 ()</p>
+							<p class="" style="font-weight: 600; font-size: 15pt;"> 국내여행 (${count1 })</p>
 							
-							<c:forEach items="${list2}" var="list">	
+							<c:forEach items="${list1}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;">				
 									<div class="col-md-10">
 										<div class="imagesss col-md-4" style="height: 150px;">
@@ -113,12 +103,12 @@ color:#fff;
 					    </c:choose>		
 					</div>
 			</div>
-			<div role="tabpanel" class="tab-pane active" id="국내여행">
+			<div role="tabpanel" class="tab-pane" id="국내여행">
                       	<div class="">
                       	  <div class="col-md-2 accord"style="margin-top: 0px;">
 				<div class=" col-md-12 pvside">									
 					<a href="javascript:void(0)" class="accordion">여행기간</a>							
-					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">	
+					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;border-bottom:none !important;">	
 						<p><input type="checkbox" class="checkbox ck1" id="btn1" value="2">
 								<label class="btn" for="btn1">2일</label><p>									
 						<p><input type="checkbox" class="checkbox ck1" id="btn2" value="3">
@@ -127,7 +117,7 @@ color:#fff;
 				</div>									
 				<div class=" col-md-12 pvside">					
 					<a href="javascript:void(0)" class="accordion">가격</a>							
-					<div class="panel pvpanel" style="display: show; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
+					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
 						<p><input type="checkbox" class="checkbox ck2" name="price2" id="btn3" value="1">
 								<label class="btn" for="btn3">10~32만원</label><p>
 						<p><input type="checkbox" class="checkbox ck2" name="price2" id="btn4" value="2">
@@ -154,12 +144,12 @@ color:#fff;
 			</div>
              <div class="col-md-9" id="detail1" style="margin: 0px 0 10px 10px; width:930px;">						
 							<c:choose>
-							<c:when test="${empty list2 }">
+							<c:when test="${empty list1 }">
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
-							<p class="" style="font-weight: 600; font-size: 15pt;"> 국내여행 ()</p>
-							<c:forEach items="${list2}" var="list">	
+							<p class="" style="font-weight: 600; font-size: 15pt;"> 국내여행 (${count1 })</p>
+							<c:forEach items="${list1}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;">				
 									<div class="col-md-10">
 										<div class="imagesss col-md-4" style="height: 150px;">
@@ -187,35 +177,41 @@ color:#fff;
 					</div>	
 					</div>
 			</div>
-			<div role="tabpanel" class="tab-pane" id="호텔">
+			<div role="tabpanel" class="tab-pane active" id="호텔">
                       	<div class="">
                       	<div class="col-md-2 accord"style="margin-top: 0px;">
-				<div class=" col-md-12 pvside">									
+				<div class=" col-md-12 pvside">					
 					<a href="javascript:void(0)" class="accordion">가격</a>							
-					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">								
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">5~15만원</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">15~29만원</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">29~45만원</a></p>					
+					<div class="panel pvpanel" style="display: show; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
+						<p><input type="checkbox" class="checkbox ck2" name="price" id="btn6" value="1">
+								<label class="btn" for="btn6">5~15만원</label><p>
+						<p><input type="checkbox" class="checkbox ck2" name="price" id="btn7" value="2">
+								<label class="btn" for="btn7">15~29만원</label><p>		
+						<p><input type="checkbox" class="checkbox ck2" name="price" id="btn8" value="3">
+								<label class="btn" for="btn8">29~45만원</label><p>						
 					</div>								
 				</div>
-				<div class=" col-md-12 pvside">									
+				<div class=" col-md-12 pvside">					
 					<a href="javascript:void(0)" class="accordion">숙소등급</a>							
-					<div class="panel" style="display: none; margin: 10px 0 0 ;padding-bottom: 10px;cursor: pointer;">								
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">3성급</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">4성급</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">5성급</a></p>						
+					<div class="panel pvpanel" style="display: show; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
+						<p><input type="checkbox" class="checkbox ck2" name="hgrade" id="btn9" value="1">
+								<label class="btn" for="btn9">3성급</label><p>
+						<p><input type="checkbox" class="checkbox ck2" name="hgrade" id="btn10" value="2">
+								<label class="btn" for="btn10">4성급</label><p>		
+						<p><input type="checkbox" class="checkbox ck2" name="hgrade" id="btn11" value="3">
+								<label class="btn" for="btn11">5성급</label><p>						
 					</div>								
 				</div>
 			</div>
              <div class="col-md-9" id="detail1" style="margin: 0px 0 10px 10px; width:930px;">
                       	<c:choose>
-							<c:when test="${empty list }">
+							<c:when test="${empty list4 }">
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
 							
-							<p class="" style="font-weight: 600; font-size: 15pt;"> 호텔/펜션 ()</p>
-							<c:forEach items="${list}" var="list">	
+							<p class="" style="font-weight: 600; font-size: 15pt;"> 호텔/펜션 (${count4 })</p>
+							<c:forEach items="${list4}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;margin-bottom: 100px;">				
 									<div class="col-md-10">
 										<div class="imagesss col-md-4" style="height: 150px;">
@@ -319,51 +315,63 @@ color:#fff;
     $(".checkbox").not(this).prop('checked', false);
 	});			
 </script>
-		<script>
-		$(".ck2").on("click", function() {
 		
-		var price2 = $(this).val();
-		var spot = $("#spots").val();
-		var price = 0;
-		console.log(price2);
-		console.log($("#spots").val());
-		
-		if(price2 ==1) {
-			price2 = 100000;
-			var price = 320000;
-		}else if(price2 ==2) {
-			price2 = 320000;
-			var price = 450000;
-		}else {
-			price2 = 450000;
-			var price = 620000;
-		}
-		$.ajax({
-			
-			type:'get',
-			url:"/product/totalSearchproductajax.do",
-			data:{
-				price2:price2,
-				price:price,
-				spot:spot
-				},
-			//dataType:"json",
-			success:function(data) {
-				
-			},error:function() {
-				alert("에러");
-			}
-		})//ajax
-})
-		</script> 	
-	<!-- <script type="text/javascript">
- 	$.urlParam = function(name){
- 	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
- 	    return results[1] || 0;
- 	}
- 		var spot = $.urlParam('price2'); 
- 		console.log(price2)
-		$("#price2input").val(price2)
+	<script>
+	$("#btn1").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_p.do?period=1&spot="+spot
+	 })
+	 $("#btn2").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_p.do?period=2&spot="+spot
+	 })
+	 $("#btn3").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_p.do?price2=100000&price=320000&spot="+spot
+	 })
+	 $("#btn4").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_p.do?price2=320000&price=450000&spot="+spot
+	 })
+	 $("#btn5").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_p.do?price2=450000&price=620000&spot="+spot
+	 })
+	 $("#btn6").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_h.do?price=50000&price2=150000&spot="+spot
+	 })
+	 $("#btn7").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_h.do?price=150000&price2=290000&spot="+spot
+	 })
+	 $("#btn8").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_h.do?price=290000&price2=450000&spot="+spot
+	 })
+	 $("#btn9").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_h.do?hgrade=3성급&spot="+spot
+	 })
+	 $("#btn10").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_h.do?hgrade=4성급&spot="+spot
+	 })
+	 $("#btn11").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/product/totalSearch_h.do?hgrade=5성급&spot="+spot
+	 })
+	 </script>
 
-	 </script> -->
     	<%@include file="../footer.jsp" %>												

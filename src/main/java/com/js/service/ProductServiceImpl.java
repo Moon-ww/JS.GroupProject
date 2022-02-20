@@ -102,7 +102,8 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> getSearchView(ProductVO product) {
 	
 		return mapper.getSearchView(product);
-	}@Override
+	}
+	@Override
 	public int getSearchCount(ProductVO product) {
 		
 		return mapper.getSearchCount(product);
@@ -123,8 +124,13 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.getTotalSearch(spot);
 	}
 	@Override
-	public List<ProductVO> getTotalSearchp_p_price(int price2,int price,String spot) {
-		
-		return mapper.getTotalSearchp_p_price(price2,price,spot);
+	public List<ProductVO> getTotalSearch_p(ProductVO product) {
+
+		return mapper.getTotalSearch_p(product);
+	}
+	@Override
+	public int getSearchCountTotal(ProductVO product) {
+	
+		return mapper.getSearchCountTotal(product);
 	}
 }

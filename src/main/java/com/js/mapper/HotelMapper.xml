@@ -80,22 +80,74 @@
 		from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq}and r.price = 
 		(select min(r.price) from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq})
 	</select>
-	<select id="getSearchView" resultType="com.js.domain.HotelVO">
-		select min(price),h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
-		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
-		from hotel h, hotel_room r where h.place like '%' ||  #{place} || '%' and h.hseq=r.hbno group by h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
-		h.place, h.thema, h.best, r.hbno,r.title,r.content,r.image,r.price, r.options
-	</select>
-	<select id="getTotalSearch" resultType="com.js.domain.HotelVO">
-		select min(price),h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
-		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
-		from hotel h, hotel_room r where h.place like '%' ||  #{spot} || '%' and h.hseq=r.hbno group by h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
-		h.place, h.thema, h.best, r.hbno,r.title,r.content,r.image,r.price, r.options
-	</select>
 	<select id="getDetailViewHotel" resultType="com.js.domain.HotelVO">
 		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
 		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
 		from hotel h, hotel_room r where h.hseq=r.hbno and h.hseq=#{hseq}order by r.price
+	</select>
+	<select id="getSearchView" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno 
+		<![CDATA[ and h.place like '%' ||  #{spot} || '%' ]]>	
+		)
+	</select>
+	<select id="getTotalSearch" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno 
+		<![CDATA[ and h.place like '%' ||  #{spot} || '%' ]]>	
+		)
+	</select>
+	
+	
+	
+	<select id="getTotalSearch_h" resultType="com.js.domain.HotelVO">
+		select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno 
+		<![CDATA[ and h.place like '%' ||  #{spot} || '%' ]]>	
+		<if test="price==50000 or price==150000 or price==290000" >
+		<![CDATA[	
+			and r.price >= #{price} and r.price<= #{price2}
+		]]>
+		</if>
+		<if test="hgrade != null" >
+		and h.hgrade = #{hgrade}
+		</if>
+		)
+	</select>
+	
+	
+	<select id="getSearchCountTotal" resultType="int">
+		select count(*) as cnt from
+        (select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno 
+		<![CDATA[ and h.place like '%' ||  #{spot} || '%' ]]>
+		))
+	</select>
+		
+	<select id="getSearchCount" resultType="int">
+		select count(*) as cnt from
+        (select h.name,h.content,h.hgrade,h.hash,h.hseq,h.image,h.location,h.roomcount, 
+		h.place, h.thema, h.best, r.hbno,r.title,r.content rcontent,r.image rimage,r.price, r.options 
+		from hotel h, hotel_room r where h.hseq=r.hbno and price = (select min(price) 
+		from hotel h, hotel_room r where h.hseq=r.hbno 
+		<![CDATA[ and h.place like '%' ||  #{spot} || '%' ]]>	
+		<if test="price==50000 or price==150000 or price==290000" >
+		<![CDATA[	
+			and r.price >= #{price} and r.price<= #{price2}
+		]]>
+		</if>
+		<if test="hgrade != null" >
+		and h.hgrade = #{hgrade}
+		</if>
+		))
 	</select>
 	
 </mapper>

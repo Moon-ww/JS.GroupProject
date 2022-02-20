@@ -1,7 +1,6 @@
 package com.js.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.js.domain.HotelVO;
 import com.js.domain.LikesVO;
 import com.js.domain.ProductVO;
 import com.js.service.HotelService;
@@ -68,9 +67,12 @@ public class ProductController {
 		return "redirect:/product/productDetailview.do?pcode="+likes.getPcode();
 	}
 	@GetMapping("/productSearchview.do")
-	public void ProductView(Model model, ProductVO product) {
+	public void ProductView(Model model, ProductVO product, 
+			@RequestParam("spot") String spot,@RequestParam("startdate") String startdate) {
 		model.addAttribute("list", service.getSearchView(product));
 		model.addAttribute("count",service.getSearchCount(product));
+		model.addAttribute("spot",spot); 
+		model.addAttribute("startdate",startdate); 
 	}
 	@GetMapping("/productSearchthema.do")
 	public void ProductThema(Model model, ProductVO product) {
@@ -78,38 +80,36 @@ public class ProductController {
 		model.addAttribute("count",service.getSearchThemaCount(product));
 	}
 	@GetMapping("/totalSearch.do")
-	public void totalSearchView(Model model, @RequestParam("spot") String spot) {
-		//product.setSpot(spot);
-		//System.out.println(spot);
+	public void totalSearchView(Model model, 
+			@RequestParam("spot") String spot, ProductVO product,HotelVO hotel) {
+		model.addAttribute("list1", service.getTotalSearch(spot));//상품전체
+		model.addAttribute("list2", service3.getTotalSearch(spot));//호텔전체
+		model.addAttribute("count1",service.getSearchCountTotal(product));//상품카운트전체
+	    model.addAttribute("count2",service3.getSearchCountTotal(hotel));//호텔카운트전체
 		model.addAttribute("spot",spot);
-		model.addAttribute("list2", service.getTotalSearch(spot));
-		//model.addAttribute("count",service.getTotalSearchCount(spot));
-		model.addAttribute("list", service3.getTotalSearch(spot));
-		//System.out.println(model);
 	}
 	
-	  @ResponseBody
-	  @GetMapping("/totalSearch_p_price.do") 
-	  public List<ProductVO>totalsearchpprice(
-	  @RequestParam("price2") int price2,
-	  @RequestParam("price") int price,
-	  @RequestParam("spot") String spot) {
-	  System.out.println("가격 : "+price2+"~"+price+" & 여행지 : "+spot);
-	  return service.getTotalSearchp_p_price(price2, price, spot); }
+	  @GetMapping("/totalSearch_p.do") 
+	  public void totalsearchp(Model model,ProductVO product,String spot,HotelVO hotel) {
+	  model.addAttribute("list1", service.getTotalSearch(spot));//상품전체
+	  model.addAttribute("list2", service3.getTotalSearch(spot));//호텔전체
+	  model.addAttribute("count1",service.getSearchCountTotal(product));//상품카운트전체
+      model.addAttribute("count2",service3.getSearchCountTotal(hotel));//호텔카운트전체
+	  model.addAttribute("list3",service.getTotalSearch_p(product)); //상품조건
+	  model.addAttribute("count3",service.getSearchCount(product));//상품카운트
+	  model.addAttribute("spot",spot); 
 	 
-	
-	/*
-	 * @GetMapping("/totalSearch_p_price.do") public void totalsearchpprice(Model
-	 * model, @RequestParam("price2") int price2,
-	 * 
-	 * @RequestParam("price") int price,
-	 * 
-	 * @RequestParam("spot") String spot) {
-	 * System.out.println("가격 : "+price2+"~"+price+" & 여행지 : "+spot);
-	 * model.addAttribute("list2",service.getTotalSearchp_p_price(price2, price,
-	 * spot)); model.addAttribute("list", service3.getTotalSearch(spot));
-	 * model.addAttribute("spot",spot); }
-	 */
+	  }
+	  @GetMapping("/totalSearch_h.do") 
+	  public void totalsearchh(Model model,ProductVO product, HotelVO hotel, String spot) {
+	  model.addAttribute("list1", service.getTotalSearch(spot));//상품전체
+	  model.addAttribute("list2", service3.getTotalSearch(spot));//호텔전체
+	  model.addAttribute("count1",service.getSearchCountTotal(product));//상품카운트전체
+      model.addAttribute("count2",service3.getSearchCountTotal(hotel));//호텔카운트전체
+	  model.addAttribute("list4",service3.getTotalSearch_h(hotel)); //호텔조건
+      model.addAttribute("count4",service3.getSearchCount(hotel));//호텔카운트
+	  model.addAttribute("spot",spot); 
+	 
+	  }
 }
-
 

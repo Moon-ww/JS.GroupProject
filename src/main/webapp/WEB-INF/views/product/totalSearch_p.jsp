@@ -25,8 +25,8 @@ input[type=checkbox] { display:none;  margin:10px; }
 	<div role="tabpanel" class="category-tab">
            <!-- Nav tabs -->
            <ul class="nav nav-tabs n3" role="tablist" id="mytab">
-             <li role="presentation" class="active"><a href="#전체" aria-controls="전체" role="tab" data-toggle="tab">전체</a></li>
-             <li role="presentation"><a href="#국내여행" aria-controls="국내여행" role="tab" data-toggle="tab">국내여행</a></li>
+             <li role="presentation"><a href="#전체" aria-controls="전체" role="tab" data-toggle="tab">전체</a></li>
+             <li role="presentation" class="active"><a href="#국내여행" aria-controls="국내여행" role="tab" data-toggle="tab">국내여행</a></li>
              <li role="presentation"><a href="#호텔" aria-controls="호텔" role="tab" data-toggle="tab">호텔/펜션</a></li>
            </ul>
 												
@@ -35,7 +35,7 @@ input[type=checkbox] { display:none;  margin:10px; }
 							
 			<!-- Tab panes -->
                  <div class="tab-content"style="margin-top:40px;">
-                   <div role="tabpanel" class="tab-pane active" id="전체">
+                   <div role="tabpanel" class="tab-pane" id="전체">
                       	<div class="">
                       	<c:choose>
 							<c:when test="${empty list2 }">
@@ -103,21 +103,21 @@ input[type=checkbox] { display:none;  margin:10px; }
 					    </c:choose>		
 					</div>
 			</div>
-			<div role="tabpanel" class="tab-pane" id="국내여행">
+			<div role="tabpanel" class="tab-pane active" id="국내여행">
                       	<div class="">
                       	  <div class="col-md-2 accord"style="margin-top: 0px;">
 				<div class=" col-md-12 pvside">									
 					<a href="javascript:void(0)" class="accordion">여행기간</a>							
-					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">	
+					<div class="panel" style="display: show; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">	
 						<p><input type="checkbox" class="checkbox ck1" id="btn1" value="2">
 								<label class="btn" for="btn1">2일</label><p>									
 						<p><input type="checkbox" class="checkbox ck1" id="btn2" value="3">
 								<label class="btn" for="btn2">3일</label><p>			
 					</div>								
 				</div>									
-				<div class=" col-md-12 pvside">									
+				<div class=" col-md-12 pvside">					
 					<a href="javascript:void(0)" class="accordion">가격</a>							
-					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
+					<div class="panel pvpanel" style="display: show; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
 						<p><input type="checkbox" class="checkbox ck2" name="price2" id="btn3" value="1">
 								<label class="btn" for="btn3">10~32만원</label><p>
 						<p><input type="checkbox" class="checkbox ck2" name="price2" id="btn4" value="2">
@@ -144,12 +144,12 @@ input[type=checkbox] { display:none;  margin:10px; }
 			</div>
              <div class="col-md-9" id="detail1" style="margin: 0px 0 10px 10px; width:930px;">						
 							<c:choose>
-							<c:when test="${empty list1 }">
+							<c:when test="${empty list3 }">
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
-							<p class="" style="font-weight: 600; font-size: 15pt;"> 국내여행 (${count1 })</p>
-							<c:forEach items="${list1}" var="list">	
+							<p class="" style="font-weight: 600; font-size: 15pt;"> 국내여행 (${count3 })</p>
+							<c:forEach items="${list3}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;">				
 									<div class="col-md-10">
 										<div class="imagesss col-md-4" style="height: 150px;">
@@ -279,14 +279,44 @@ input[type=checkbox] { display:none;  margin:10px; }
 		$(".panel").toogle();											
 	})												
 </script>													
-
+<script>											
+	$("#plus").click(function() {												
+													
+		var queryString = $("form[name=formm]").serialize() ;											
+		var quantity = $("input[name=quantity ]").val();											
+		var name = $("input[name=jname ]").val();											
+		   											
+		$.ajax({											
+			  										
+			type:'post',										
+			  url:'cartinsert.do',										
+			  data:queryString,										
+			  										
+			  success:function(data) {										
+			      //정상 요청, 응답 시 처리 작업										
+			    										
+			 },//sucess end										
+			 error : function(xhr,status,error) {										
+			      //오류 발생 시 처리										
+			      alert(queryString);										
+			  }										
+		})//ajax end											
+													
+  		if(confirm(name +"　"+ quantity+" 개 가 장바구니에 추가되었습니다\n 장바구니로 이동하시겠습니까?") == true) {											
+	  		location.href='cartlist.do';										
+ 		 }else {											
+	 		 return false;										
+		  }											
+	})												
+		</script>											
+			
     <script>											
 	$(".checkbox").change(function() {
     $(".checkbox").not(this).prop('checked', false);
 	});			
-	</script>
-
-	 <script>
+</script>
+		
+	<script>
 	$("#btn1").on("click",function() {
 		 var spot = $("#spots").val();
 		 console.log(spot);
@@ -330,7 +360,7 @@ input[type=checkbox] { display:none;  margin:10px; }
 	 $("#btn9").on("click",function() {
 		 var spot = $("#spots").val();
 		 console.log(spot);
-		 location.href="/product/totalSearch_h.do?hgrade=3성급&spot="+spot
+		 location.href="/product/totalSearch_p.do?hgrade=3성급&spot="+spot
 	 })
 	 $("#btn10").on("click",function() {
 		 var spot = $("#spots").val();
@@ -343,5 +373,5 @@ input[type=checkbox] { display:none;  margin:10px; }
 		 location.href="/product/totalSearch_h.do?hgrade=5성급&spot="+spot
 	 })
 	 </script>
-	 
+
     	<%@include file="../footer.jsp" %>												

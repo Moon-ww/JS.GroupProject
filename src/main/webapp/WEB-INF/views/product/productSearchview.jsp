@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"													
     pageEncoding="UTF-8"%>													
 													
-	<%@include file="../header.jsp" %>												
-	
+	<%@include file="../header.jsp" %>		
+											
+<style>
+input[type=checkbox] { display:none;  margin:10px; } 
+</style>
+
 	<section>												
 	<div class="container-fluid" style="border-top: 1px solid #000;">												
 		<div class="container"											
@@ -17,21 +21,28 @@
 	</div>												
 													
 	<div class="container">												
-		<div class="row" style="">											
+		<div class="row" style="">				
+		<input type="hidden" name="spot" id="spots" value="${spot }">
+		 <input type="hidden" name="startdate" id="startdates" value="${startdate }">							
 			<div class="col-md-2 accord"style="margin-top: 0px;">
 				<div class=" col-md-12 pvside">									
 					<a href="javascript:void(0)" class="accordion">여행기간</a>							
 					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">	
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">2일</a><p>									
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">3일</a><p>					
+						<p><input type="checkbox" class="checkbox ck1" id="btn1" value="2">
+								<label class="btn" for="btn1">2일</label><p>									
+						<p><input type="checkbox" class="checkbox ck1" id="btn2" value="3">
+								<label class="btn" for="btn2">3일</label><p>			
 					</div>								
 				</div>									
-				<div class=" col-md-12 pvside">									
+				<div class=" col-md-12 pvside">					
 					<a href="javascript:void(0)" class="accordion">가격</a>							
-					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">								
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">10~32만원</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">32~45만원</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">45~62만원</a></p>						
+					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
+						<p><input type="checkbox" class="checkbox ck2" name="price2" id="btn3" value="1">
+								<label class="btn" for="btn3">10~32만원</label><p>
+						<p><input type="checkbox" class="checkbox ck2" name="price2" id="btn4" value="2">
+								<label class="btn" for="btn4">32~45만원</label><p>		
+						<p><input type="checkbox" class="checkbox ck2" name="price2" id="btn5" value="3">
+								<label class="btn" for="btn5">45~62만원</label><p>						
 					</div>								
 				</div>
 				<!-- <div class=" col-md-12 pvside">									
@@ -169,5 +180,37 @@
             });  													
         });  													
     </script>  													
-													
+			 <script>
+	$("#btn1").on("click",function() {
+		 var spot = $("#spots").val();
+		 var startdate = $("#startdates").val();
+		 console.log(spot);
+		 location.href="/product/productSearchview.do?period=1&spot="+spot+"&startdate="+startdate
+	 })
+	 $("#btn2").on("click",function() {
+		 var spot = $("#spots").val();
+		 var startdate = $("#startdates").val();
+		 console.log(spot);
+		 location.href="/product/productSearchview.do?period=2&spot="+spot+"&startdate="+startdate
+	 })
+	 $("#btn3").on("click",function() {
+		 var spot = $("#spots").val();
+		 var startdate = $("#startdates").val();
+		 console.log(spot);
+		 location.href="/product/productSearchview.do?price2=100000&price=320000&spot="+spot+"&startdate="+startdate
+	 })
+	 $("#btn4").on("click",function() {
+		 var spot = $("#spots").val();
+		 var startdate = $("#startdates").val();
+		 console.log(spot);
+		 location.href="/product/productSearchview.do?price2=320000&price=450000&spot="+spot+"&startdate="+startdate
+	 })
+	 $("#btn5").on("click",function() {
+		 var spot = $("#spots").val();
+		 var startdate = $("#startdates").val();
+		 console.log(spot);
+		 location.href="/product/productSearchview.do?price2=450000&price=620000&spot="+spot+"&startdate="+startdate
+	 })
+	 
+	 </script>										
     	<%@include file="../footer.jsp" %>												

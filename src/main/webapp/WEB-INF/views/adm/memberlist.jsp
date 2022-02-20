@@ -52,7 +52,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="/adm/adminmain.do">
+								<a href="/adm/qna/adminfaqlist.do">
 									<span class="sub-item">자주찾는질문</span>
 								</a>
 							</li>

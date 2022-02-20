@@ -62,10 +62,10 @@ public class HotelController {
 		return "redirect:/hotel/hotelview.do?hseq="+likes.getHseq();
 	}
 	@GetMapping("/hotelSearchview.do")
-	public void HotelSearchView(Model model, HotelVO hotel) {
-		System.out.println(hotel);
-		model.addAttribute("list", service.getSearchView(hotel));
-		
+	public void HotelSearchView(Model model, HotelVO hotel, String spot) {
+		model.addAttribute("list", service.getTotalSearch_h(hotel));
+		model.addAttribute("count4",service.getSearchCount(hotel));//호텔카운트
+		model.addAttribute("spot",spot); 
 	}
 	 
 }

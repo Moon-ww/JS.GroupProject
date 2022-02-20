@@ -48,7 +48,7 @@
 	</delete>
 	
 	<select id="getDetailList" resultType="com.js.domain.ProductVO">
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -59,7 +59,7 @@
 		where p.pseq=d.pseq and p.place='제주도') order by pseq
 	</select>
 	<select id="getDetailList2" resultType="com.js.domain.ProductVO">
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -70,7 +70,7 @@
 		where p.pseq=d.pseq and p.place='내륙') order by pseq
 	</select>
 	<select id="getDetailList3" resultType="com.js.domain.ProductVO">
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -82,7 +82,7 @@
 	</select>
 	
 	<select id="getDetailView" resultType="com.js.domain.ProductVO">
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -91,7 +91,7 @@
 		where p.pseq=#{pseq} and p.pseq=d.pseq order by d.price2
 	</select>
 	<select id="getDetailView2" resultType="com.js.domain.ProductVO">
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -102,7 +102,7 @@
 	</select>
 		<select id="productDetailView" resultType="com.js.domain.ProductVO">			
 		<![CDATA[	
-			select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+			select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 			p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 			d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 			d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -113,7 +113,7 @@
 	</select>	
 	<select id="getSearchView" resultType="com.js.domain.ProductVO">
 		<![CDATA[	
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -121,14 +121,41 @@
 		from product p, product_detail d 
 		where p.pseq=d.pseq  and p.spot=#{spot} and d.startdate>=#{startdate}
 		]]>	
+		<if test="price2==100000 or price2==320000 or price2==450000" >
+		 <![CDATA[	
+		and d.price2 >= #{price2} and d.price2<= #{price}
+		]]>	
+		</if>
+		 <if test="period == 1 or period == 2" >
+		and d.enddate-d.startdate = #{period}
+		</if>
 	</select>
+	
+	<select id="getSearchCountTotal" resultType="int">
+		select count(*) as cnt from product p, product_detail d where p.pseq=d.pseq 
+		<![CDATA[	and p.spot like '%' ||  #{spot} || '%'	]]>
+	</select>
+	
 	<select id="getSearchCount" resultType="int">
 		select count(*) as cnt from product p, product_detail d where p.pseq=d.pseq 
-		and p.spot=#{spot} and d.startdate>= #{startdate}
+		<![CDATA[	and p.spot like '%' ||  #{spot} || '%'	]]>
+		
+		<if test="startdate != null">
+			and d.startdate>= #{startdate}
+		</if>
+		
+		<if test="price2==100000 or price2==320000 or price2==450000" >
+		 <![CDATA[	
+		and d.price2 >= #{price2} and d.price2<= #{price}
+		]]>	
+		</if>
+		 <if test="period == 1 or period == 2" >
+		and d.enddate-d.startdate = #{period}
+		</if>
 	</select>
 	<select id="getSearchThema" resultType="com.js.domain.ProductVO">
 		<![CDATA[	
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -143,7 +170,7 @@
 	</select>
 	<select id="getTotalSearch" resultType="com.js.domain.ProductVO">
 		<![CDATA[	
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
@@ -152,20 +179,25 @@
 		where p.pseq=d.pseq  and p.spot like '%' ||  #{spot} || '%'
 		]]>	
 	</select>
-	<select id="getTotalSearchCount" resultType="int">
-		select count(*) as cnt from product p, product_detail d where p.pseq=d.pseq 
-		and p.spot like '%' ||  #{spot} || '%'
-	</select>
-	<select id="getTotalSearchp_p_price" resultType="com.js.domain.ProductVO">
-		<![CDATA[	
-		select (d.enddate-d.startdate+1) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
+	
+	<select id="getTotalSearch_p" resultType="com.js.domain.ProductVO">
+		
+		select (d.enddate-d.startdate) as period, p.pseq, p.name, p.kind, p.content, p.img, p.place, 
 		p.hash, p.thema, p.spot, p.pick, d.pcode, d.pseq dpseq, 
 		d.kind dkind, d.name dname, d.content dcontent, d.price1, 
 		d.price2, d.price3, d.hash, d.guide, d.startdate, d.enddate, 
 		d.airline, d.rentent, d.rentcar, d.hgrade, d.hotel, d.count 
 		from product p, product_detail d 
-		where p.pseq=d.pseq and p.spot like '%' ||#{spot}|| '%' and 
-		d.price2 >= #{price2} and d.price2<= #{price}
+		<where> 
+		<![CDATA[p.pseq=d.pseq and p.spot like '%' ||#{spot}|| '%' ]]>	
+		 <if test="price2==100000 or price2==320000 or price2==450000" >
+		 <![CDATA[	
+		and d.price2 >= #{price2} and d.price2<= #{price}
 		]]>	
+		</if>
+		 <if test="period == 1 or period == 2" >
+		and d.enddate-d.startdate = #{period}
+		</if>
+		</where>
 	</select>
 </mapper>

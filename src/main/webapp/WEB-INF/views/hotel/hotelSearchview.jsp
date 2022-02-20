@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"													
     pageEncoding="UTF-8"%>													
 													
-	<%@include file="../header.jsp" %>												
-	
+	<%@include file="../header.jsp" %>		
+											
+<style>
+input[type=checkbox] { display:none;  margin:10px; } 
+</style>
+
 	<section>												
 	<div class="container-fluid" style="border-top: 1px solid #000;">												
 		<div class="container"											
@@ -18,21 +22,28 @@
 													
 	<div class="container">												
 		<div class="row" style="">											
+		<input type="hidden" name="spot" id="spots" value="${spot }">
 			<div class="col-md-2 accord"style="margin-top: 50px;">
-				<div class=" col-md-12 pvside">									
+				<div class=" col-md-12 pvside">					
 					<a href="javascript:void(0)" class="accordion">가격</a>							
-					<div class="panel pvpanel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">								
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">5~15만원</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">15~29만원</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">29~45만원</a></p>						
+					<div class="panel pvpanel" style="display: show; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
+						<p><input type="checkbox" class="checkbox ck2" name="price" id="btn6" value="1">
+								<label class="btn" for="btn6">5~15만원</label><p>
+						<p><input type="checkbox" class="checkbox ck2" name="price" id="btn7" value="2">
+								<label class="btn" for="btn7">15~29만원</label><p>		
+						<p><input type="checkbox" class="checkbox ck2" name="price" id="btn8" value="3">
+								<label class="btn" for="btn8">29~45만원</label><p>						
 					</div>								
 				</div>
-				<div class=" col-md-12 pvside">									
+				<div class=" col-md-12 pvside">					
 					<a href="javascript:void(0)" class="accordion">숙소등급</a>							
-					<div class="panel" style="display: none; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">								
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">3성급</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">4성급</a></p>
-						<p><a style="border: 1px solid #ccc; padding: 5px;border-radius: 5px;">5성급</a></p>							
+					<div class="panel pvpanel" style="display: show; margin: 10px 0 0 0;padding-bottom: 10px;cursor: pointer;">
+						<p><input type="checkbox" class="checkbox ck2" name="hgrade" id="btn9" value="1">
+								<label class="btn" for="btn9">3성급</label><p>
+						<p><input type="checkbox" class="checkbox ck2" name="hgrade" id="btn10" value="2">
+								<label class="btn" for="btn10">4성급</label><p>		
+						<p><input type="checkbox" class="checkbox ck2" name="hgrade" id="btn11" value="3">
+								<label class="btn" for="btn11">5성급</label><p>						
 					</div>								
 				</div>
 			</div>
@@ -42,7 +53,7 @@
 							<p>데이터가 없습니다</p>
 							</c:when>
 							<c:otherwise>
-							<p class="" style="font-weight: 600; font-size: 15pt;"> 호텔/펜션 ()</p>
+							<p class="" style="font-weight: 600; font-size: 15pt;"> 호텔/펜션 (${count4 })</p>
 							<c:forEach items="${list}" var="list">	
 							<div class="col-md-12" style="background:#fff; padding:20px;">				
 									<div class="col-md-10">
@@ -154,5 +165,37 @@
             });  													
         });  													
     </script>  													
-													
+<script>
+	
+	 $("#btn6").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/hotel/hotelSearchview.do?price=50000&price2=150000&spot="+spot
+	 })
+	 $("#btn7").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/hotel/hotelSearchview.do?price=150000&price2=290000&spot="+spot
+	 })
+	 $("#btn8").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/hotel/hotelSearchview.do?price=290000&price2=450000&spot="+spot
+	 })
+	 $("#btn9").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/hotel/hotelSearchview.do?hgrade=3성급&spot="+spot
+	 })
+	 $("#btn10").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/hotel/hotelSearchview.do?hgrade=4성급&spot="+spot
+	 })
+	 $("#btn11").on("click",function() {
+		 var spot = $("#spots").val();
+		 console.log(spot);
+		 location.href="/hotel/hotelSearchview.do?hgrade=5성급&spot="+spot
+	 })
+	 </script>												
     	<%@include file="../footer.jsp" %>												
