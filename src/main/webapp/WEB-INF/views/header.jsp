@@ -95,8 +95,8 @@
             <div class="row">
             	<div class="col-md-1">
             	</div>
-               <div class="col-md-2" style="height: 100px;">
-               <h1 class="logo"><a href="/"><img src="/resources/images/jslogo.png" alt="" style="width:195px; height:100px; margin-top: -50px;"/></a></h1>
+               <div class="col-md-2"style="text-align: center;">
+               <h1 class="logo"><a href="/"><img src="/resources/images/logo111.png" alt="" style="width:150px; height:85px; margin-top: -50px;"/></a></h1>
             </div>
             <div class="search_box col-md-4">
             <form name="search" id="search" method="get" action="/product/totalSearch.do">

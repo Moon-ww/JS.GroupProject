@@ -360,7 +360,7 @@
 		/* window.scrollBy({ top: 200, left: 0, behavior: 'smooth' }); */
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})
-	$("#place").on("click", function() {
+	$("#places").on("click", function() {
 		/* window.scrollBy({ top: 200, left: 0, behavior: 'smooth' }); */
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})
@@ -407,15 +407,5 @@
 	    },
 	})
 </script>
-<!-- <script type="text/javascript">
-	$("#place").click(function(){
-		  $('#placeSelectList').toggle();
-	})
-	function selectPlace(item) {
-	   var strText = $(item).text();
-	   // strText 에 전체 문자열이 입력된다.
-	   $("input[id='place']").val(strText);
-	   $('#placeSelectList').hide();
-	}
-</script> -->
+
    <%@ include file="../footer.jsp" %>

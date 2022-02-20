@@ -3,7 +3,22 @@
     
     <%@ include file="header.jsp" %>
 
-<!-- 제가 한번 git을 써보겠습니다. -->	
+<style>
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    right: 600px;
+    top: 505px;
+    left: auto;
+    width:0;
+    height:0;
+}
+.swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: 130px;
+    top: 505px;
+    right: auto;
+    width:0;
+    height:0;
+}
+</style>
 
 <section>
 <div class="container-fluid">
@@ -37,25 +52,25 @@
 		  <!-- 보여지는 영역 -->
 		  <div class="swiper-wrapper">
 		    <!-- div class="swiper-slide" 를 추가하면된다 -->
-		    <div class="swiper-slide">
-		      <img src="/resources/images/Screenshot_1.png" alt="." />
+		    <div class="swiper-slide" id="s1">
+		      <img src="/resources/images/Screenshot_1.jpg" alt="." />
 		    </div>
-		    <div class="swiper-slide">
-		      <img src="/resources/images/Screenshot_2.png" alt="." />
+		    <div class="swiper-slide" id="s2">
+		      <img src="/resources/images/Screenshot_2.jpg" alt="." />
 		    </div>
-		    <div class="swiper-slide">
-		      <img src="/resources/images/Screenshot_3.png" alt="." />
+		    <div class="swiper-slide" id="s3">
+		      <img src="/resources/images/Screenshot_3.jpg" alt="." />
 		    </div>
-		    <div class="swiper-slide">
-		      <img src="/resources/images/Screenshot_4.png" alt="." />
+		    <div class="swiper-slide" id="s4">
+		      <img src="/resources/images/Screenshot_4.jpg" alt="." />
 		    </div>
 		   </div>
 		  <!-- 페이징 버튼 처리 -->
 		  <!-- <div class="swiper-pagination"></div> -->
 		
 		  <!-- 방향 버튼 상황에 따라 추가 삭제가능 -->
-		  <!-- <div class="swiper-button-prev"></div>
-		  <div class="swiper-button-next"></div> -->
+		  <div class="swiper-button-prev"><span style="border:1px solid #f6f6f6;color:#fff;padding: 7px 14px;border-right:none;"><</span></div>
+		  <div class="swiper-button-next"><span style="border:1px solid #f6f6f6;color:#fff;padding: 7px 14px;">></span></div>
 		</div>
 	</div>
 	</div>
@@ -154,7 +169,7 @@
    			<div class="col-md-1">
    			</div>
    		
-     		<div class="col-md-10">
+     		<div class="col-md-10"style="margin-bottom:100px;">
      			<h2 class="category" style="margin: 50px 0 30px 0px;">내 나라 구석구석</h2>
      			<ul class="mycountry">
      				<li>
@@ -186,7 +201,52 @@
      			</ul>
      		</div>
    		
-     		<div class="col-md-1">
+     		<div class="container">
+     			<div class="row">
+     				<div class="col-md-3" style="height: 262px;padding: 40px 50px;border-top:2px solid #000;">
+     					<div class="title0"style="margin-bottom:30px;">
+     					<strong>JS 투어 <br>고객센터</strong>
+     					</div>
+     					<strong class="tel">1592-1919</strong>
+     					<a href="/cs/faq.do">자주 찾는 질문 ></a>
+     				</div>
+     				<div class="col-md-6" style="padding: 70px 0;border-top:2px solid #000;">
+     				<div class="col-md-6">
+     				<ul style="float:left;">
+     				<li><strong>여행 문의</strong> 
+     				<ul>
+     				<li>평일: 09:00~18:00</li> 
+     				<li>※ 코로나 바이러스19로 인한 근무 시간<br> 축소로 주말 및 야간 상담 서비스가
+                    임시<br> 중단 됩니다.더 나은 서비스로 찾아뵐 수<br> 있도록 하겠습니다.</li>
+                    </ul>
+                    </li>
+                    </ul>
+                    </div>
+                    <div class="col-md-6">
+                    <ul>
+                    <li><strong>상담번호 안내</strong> 
+                    <ul>
+                    <li>1번 예약상담 및 조회</li> 
+                    <li>2번 마일리지, 제휴카드, <br>상품권 및 기타문의</li>
+                    </ul>
+                    </li>
+                    </ul>
+     				</div>
+     				</div>
+     				<div class="col-md-3" style="padding: 50px 0;border-top:2px solid #000;">
+     					<ul>
+     					<li>
+     					<strong>국내여행/기업출장/교육여행 단체 문의</strong> 
+     					<ul>
+     					<li>평일: 09:00~18:00</li>
+     					</ul> 
+     					<strong class="b-right">법인고객 전용상담 <span class="">1592-1945</span></strong> 
+     					<strong class="b-right"style="margin-bottom:13px;">안심카드결제 ARS <span class="">1443-1009</span></strong> 
+     					<a href="javascript:void(0)" style="border:1px solid #ccc;padding:7px;border-radius: 4px;">카드/제휴혜택</a>
+     					</li>
+     					</ul>
+     				</div>
+     			</div>
      		</div>
 	</div>
 </div>
@@ -216,7 +276,7 @@
     //자동 스크를링
     autoplay : {
         //시간 1000 이 1초
-        delay : 3500,
+        delay : 5000,
         disableOnInteraction : false,
     },
     //페이징
@@ -232,8 +292,25 @@
         nextEl : '.swiper-button-next',
         //이전페이지 설정
         prevEl : '.swiper-button-prev',
-    },
-});
+        },//navgation
+        
+        on: {
+        	activeIndexChange: function () {
+        		if(this.realIndex==0) {
+        		$(".mainvisual").css('background','url(/resources/images/bg1.jpg'); 
+        		}
+        		else if(this.realIndex==1) {
+            		$(".mainvisual").css('background','url(/resources/images/bg2.jpg'); 
+            		}
+        		else if(this.realIndex==2) {
+            		$(".mainvisual").css('background','url(/resources/images/bg3.jpg'); 
+            		}
+        		else if(this.realIndex==3) {
+            		$(".mainvisual").css('background','url(/resources/images/bg4.jpg'); 
+            		}
+            }
+          }
+});//swiper end
 </script>
 <script type="text/javascript">
 	const swiper3 = new Swiper('.swiper3', {
@@ -258,7 +335,7 @@
 	    //자동 스크를링
 	    autoplay : {
 	        //시간 1000 이 1초
-	        delay : 3500,
+	        delay : 3000,
 	        disableOnInteraction : false,
 	    },
 	    //페이징
@@ -372,5 +449,7 @@ window.onclick = function(event) {
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})
 </script>
+	<script>
 	
+	</script>
    <%@ include file="footer.jsp" %>

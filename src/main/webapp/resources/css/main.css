@@ -24,9 +24,9 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
-a {
-	
+a, a:focus {
 	color:#000;
+	text-decoration: none;
 }
 .header-middle {
 	background:#000000;
@@ -691,4 +691,23 @@ ul > li > a:hover {
 ul div a:hover {
 	
 	font-weight: 600;
+}
+.tel {
+    font-size: 24px;
+    color: #111;
+    line-height: 1;
+    margin-bottom: 14px;
+    display: block;
+}
+.title0 {
+    font-size: 22px;
+    line-height: 27px;
+    color: #111;
+}
+.b-right {
+	font-size: 15px;
+	display: block;
+	line-height: 1;
+	margin-bottom: 3px;
+	margin-top:30px;
 }

@@ -355,7 +355,7 @@
 		/* window.scrollBy({ top: 200, left: 0, behavior: 'smooth' }); */
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})
-	$("#place").on("click", function() {
+	$("#spots").on("click", function() {
 		/* window.scrollBy({ top: 200, left: 0, behavior: 'smooth' }); */
 		document.querySelector('#scroll').scrollIntoView({ behavior: 'smooth' });
 	})
