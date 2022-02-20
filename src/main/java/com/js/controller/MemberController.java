@@ -81,22 +81,18 @@ public class MemberController {
 	@GetMapping("/member/emailsend.do")
 	public void EmailAction(String email, HttpServletRequest request,HttpServletResponse response) throws IOException {
 			
-			String host = "smtp.naver.com";
-	        String user = "antkehfk2@naver.com"; 
-	        String password = "answodnd1@";
-	        
-	       
+			String user = "cheorns007@gmail.com";
+	        String password = "hfniujgvvwnxhdfv";
 	        String to_email = email;
 	        
-	        
-	        Properties props = new Properties();
-	        props.put("mail.smtp.host", host);
-	        props.put("mail.smtp.port", 465);
-	        props.put("mail.smtp.auth", "true");
-	        props.put("mail.smtp.ssl.enable", "true");
+	        Properties props = new Properties(); 
+	        props.put("mail.smtp.host", "smtp.gmail.com"); 
+	        props.put("mail.smtp.port", 465); 
+	        props.put("mail.smtp.auth", "true"); 
+	        props.put("mail.smtp.ssl.enable", "true"); 
+	        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 	        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
-	        
-	        
+
 	        StringBuffer temp =new StringBuffer();
 	        Random rnd = new Random();
 	        for(int i=0;i<10;i++)
@@ -118,8 +114,8 @@ public class MemberController {
 	            }
 	        }
 	        String AuthenticationKey = temp.toString();
-	        System.out.println(AuthenticationKey);
-	        System.out.println(to_email);
+	        System.out.println("인증번호 : "+AuthenticationKey);
+	        System.out.println("수신인 : "+to_email);
 	        
 	        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 	            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
@@ -127,23 +123,21 @@ public class MemberController {
 	            }
 	        });
 	        
-	        
 	        try {
 	            MimeMessage msg = new MimeMessage(session);
 	            msg.setFrom(new InternetAddress(user, "JS Tour"));
 	            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 	            
-	           
 	            msg.setSubject("JS Tour 인증메일입니다.");
-	            
 	            msg.setText("인증번호 : "+temp);
 	            
 	            Transport.send(msg);
-	            System.out.println("wellcome");
+	            System.out.println("이메일 전송 성공");
 	            
 	        }catch (Exception e) {
 	            e.printStackTrace();// TODO: handle exception
 	        }
+	        
 	        HttpSession saveKey = request.getSession();
 	        saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
 
