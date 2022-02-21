@@ -38,7 +38,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 	@Override
 	public void ordercancel(MypageVO mypage) {
-		
+		mapper.ordercancel(mypage);
 	}
 	@Override
 	public MypageVO getmileList(String id) {
@@ -79,6 +79,16 @@ public class MypageServiceImpl implements MypageService {
 	public List<LikesVO> getdibsList2(LikesVO likes) {
 		
 		return	mapper.getdibsList2(likes);
+	}
+	@Override
+	public void dibsdelete(LikesVO likes) {
+		
+		mapper.dibsdelete(likes);
+	}
+	@Override
+	public void dibsdeleteall(LikesVO likes) {
+		
+		mapper.dibsdeleteall(likes);
 	}
 	@Override
 	public MemberVO oneList(String id) {

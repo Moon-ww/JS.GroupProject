@@ -47,7 +47,7 @@
 
                  <!-- Nav tabs -->
                  <div style="padding: 20px 0;">
-                	<button style="padding: 7px 15px; background: white; border: 1px solid #ccc;">전체 삭제</button>
+                	<a href="/mypage/dibsdeleteall.do" class="btn btn-default">전체 삭제</a>
                  </div>
                  <div class="tab-content">
                  <!--  -->
@@ -75,6 +75,7 @@
 		    						<fmt:parseDate var="startdate" value="${list.startdate }" pattern="yy-MM-dd"/>
 								<td><fmt:formatDate value="${startdate }" pattern="yy-MM-dd"/></td>
 								<td><fmt:formatNumber value="${list.price2}"/>원</td>
+								<td><a href="/mypage/dibsdelete.do?pcode=${list.pcode }" class="btn btn-default">찜해제</a></td>
 		    				</tr>
 		    				</c:forEach>
 		    				</c:otherwise>

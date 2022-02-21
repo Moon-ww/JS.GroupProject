@@ -43,7 +43,7 @@ public class MypageController {
 	}
 	//예약취소
 	@GetMapping("/ordercancel.do")
-	public String ordercance(Model model, MypageVO mypage) {
+	public String ordercancel(Model model, MypageVO mypage) {
 		service.ordercancel(mypage);
 		return "redirect:/mypage/reservList.do";
 	}
@@ -55,6 +55,22 @@ public class MypageController {
 		model.addAttribute("list", service.getdibsList(likes));
 		model.addAttribute("list2", service.getdibsList2(likes));
 	}
+		//찜 삭제
+		@GetMapping("/dibsdelete.do")
+		public String dibsdelete(Model model, Principal principal, LikesVO likes) {
+			String id = principal.getName();
+			likes.setId(id);
+			service.dibsdelete(likes);
+			return "redirect:/mypage/dibs.do";
+		}
+		//찜 전체 삭제
+		@GetMapping("/dibsdeleteall.do")
+		public String dibsdeleteall(Model model, Principal principal, LikesVO likes) {
+			String id = principal.getName();
+			likes.setId(id);
+			service.dibsdeleteall(likes);
+			return "redirect:/mypage/dibs.do";
+		}
 	//뷰페이지에서 찜삭제하기
 	@GetMapping("/dibsDelete2.do")
 	public String dibsDelete2(Principal principal, Model model, LikesVO likes) {

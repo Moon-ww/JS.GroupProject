@@ -21,7 +21,8 @@ public interface MypageService {
 	public LikesVO getdibs(LikesVO likes);
 	public LikesVO getdibs2(LikesVO likes);
 	public int register(LikesVO likes);
-
+	public void dibsdelete(LikesVO likes);
+	public void dibsdeleteall(LikesVO likes);
 	public MemberVO oneList(String id);
 	public String onePw(String id);
 	public void update(MemberVO mvo);
