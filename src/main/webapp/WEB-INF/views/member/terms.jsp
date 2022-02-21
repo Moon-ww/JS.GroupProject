@@ -40,7 +40,7 @@
            <h2 style="padding-bottom:20px; border-bottom: solid 3px #000;">新規登録約款</h2>
           	 <form name="list" id="list" method="post" action="join.do">
            		<h3>◼利用規約に同意(必須)</h3>
-	                	<textarea style="padding:18px; width:100%; height:200px;">皆さんを歓迎します。
+					<textarea style="padding:18px; width:100%; height:200px;">皆さんを歓迎します。
 モモネイルサービス及び製品(以下「サービス」といいます)をご利用いただきありがとうございます。 本規約は、様々なモモサービスの利用に関連して、モモネイルのサービスを提供するモモネイルとこれを利用するネイバーサービス会員(以下、「会員」といいます)または非会員との関係を説明し、併せて皆さんのモモネイルサービスの利用に役立つ有益な情報を含んでいます。
 モモネイルサービスをご利用になるか、モモネイルサービスの会員になる場合、皆さんは本規約や関連運営方針を確認したり同意することになりますので、しばらくお時間を割いてご注意ください。
 様々なネイバーサービスをお楽しみください。
@@ -54,8 +54,8 @@
 	                	<input type="checkbox" name="agree" id="agree1" value="y">　同意します
 	                	<p id="agreemsg" style="padding-bottom:30px;"></p> <!-- 출력할 공간 확보 -->
 	                	
-	         	 <h3>◼個人情報の収集と利用に同意(必須)</h3>
-	                	<textarea style="padding:18px; width:100%; height:200px;">個人情報保護法に基づき、モモネイルに会員登録を申請される方に収集する個人情報の項目、個人情報の収集及び利用目的、個人情報の保有及び利用期間、同意拒否権及び同意拒否時の不利益に関する事項をご案内いたしますので、詳しくお読みの上、同意してください。
+	         	<h3>◼個人情報の収集と利用に同意(必須)</h3>
+	        	<textarea style="padding:18px; width:100%; height:200px;">個人情報保護法に基づき、モモネイルに会員登録を申請される方に収集する個人情報の項目、個人情報の収集及び利用目的、個人情報の保有及び利用期間、同意拒否権及び同意拒否時の不利益に関する事項をご案内いたしますので、詳しくお読みの上、同意してください。
 
 1.収集する個人情報
 利用者は会員登録しなくても、情報検索、ニュース閲覧などほとんどのモモネイルサービスを会員と同じように利用できます。 利用者がメール、カレンダー、カフェ、ブログ等の個人化、または会員制サービスのために会員登録をする場合、モモネイルはサービス利用のために必要最小限の個人情報を収集します。
@@ -74,22 +74,26 @@
 - イベント情報及び参加機会の提供、広告性情報の提供などマーケティング及びプロモーション目的で個人情報を利用します。
 - サービスの利用記録とアクセス頻度分析、サービスの利用に対する統計、サービス分析および統計に合わせたサービス提供および広告掲載などに個人情報を利用します。
 - セキュリティ、プライバシー、安全の側面から、利用者が安心して利用できるサービス利用環境の構築のために、個人情報を利用します。
-	                	</textarea>
+	            </textarea>
 	                	
-	                	<input type="checkbox" name="agree" id="agree2" value="y">　同意します
-	                	<p id="agreemsg" style="padding-bottom:30px;"></p>   
-	                	
-	            <h3>◼プロモーション情報受信に同意(選択)</h3>
-	                	<textarea style="padding:18px; width:100%; height:120px;">モモネイルで提供するイベント特典など様々な情報を携帯電話(ネイバーアプリの通知またはメール)、Eメールで受け取ることができます。 一部のサービス(別途の会員システムで運営したり、モモネイル登録後に追加加入して利用するサービスなど)の場合、個別サービスについて別途に受信同意を得ることができ、この時も受信同意について別途に案内して同意を得ることができます。
-	                	</textarea>
-	                	<input type="hidden" name="YN" id="YN">
-	                	<input type="checkbox" name="prop" id="prop">　同意します
+               	<input type="checkbox" name="agree" id="agree2" value="y">　同意します
+               	<p id="agreemsg" style="padding-bottom:30px;"></p>   
+               	
+           		<h3>◼プロモーション情報受信に同意(選択)</h3>
+               	<textarea style="padding:18px; width:100%; height:120px;">
+モモネイルで提供するイベント特典など様々な情報を携帯電話(ネイバーアプリの通知またはメール)、
+Eメールで受け取ることができます。 一部のサービス(別途の会員システムで運営したり、
+モモネイル登録後に追加加入して利用するサービスなど)の場合、個別サービスについて
+別途に受信同意を得ることができ、この時も受信同意について別途に案内して同意を得ることができます。
+               	</textarea>
+               	<input type="hidden" name="YN" id="YN">
+               	<input type="checkbox" name="prop" id="prop">　同意します
 	        
 			<div class="checkfin"style="width: 100%;margin: 30px 0 30px 0;">
 				<input type="checkbox" id="all" name="all"/> <b>　全て同意</b>
 			</div>
 				<a href="javascript:void(0)" class="btn btn-primary mb-4" id="btn_ok" style="color: #fff; width: 50%;float: left;">확인</a>
-				<a href="/" class="btn btn-info mb-4" style="color: #fff; width: 50%;">취소</a>
+				<a href="/" class="btn btn-secondary mb-4" style="color: #fff; width: 50%;">취소</a>
 			</form>
 			</div>
 			 

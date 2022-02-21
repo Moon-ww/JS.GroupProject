@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.js.domain.MemberVO;
 import com.js.domain.OrderVO;
+import com.js.domain.TravelerVO;
 import com.js.mapper.MemberMapper;
 
 import lombok.AllArgsConstructor;
@@ -71,4 +72,15 @@ public class MemberServiceImpl implements MemberService {
 
 		return mapper.getOneh(id);
 	}
+	@Override			
+	public void ordersDetailInsert(TravelerVO tvo) {		
+		
+		mapper.ordersDetailInsert(tvo);	
+	}		
+	@Override
+	public void orderOseqUpdate(String id) {
+		
+		mapper.orderOseqUpdate(id);
+	}
+
 }

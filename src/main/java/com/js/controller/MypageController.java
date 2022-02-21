@@ -32,6 +32,7 @@ public class MypageController {
 	@Setter(onMethod_ =@Autowired)
 	private MypageService service;
 	
+	//예약내역
 	@GetMapping("/reservList.do")
 	public void reservList(Model model, Principal principal) {
 		String id = principal.getName();
@@ -40,11 +41,13 @@ public class MypageController {
 		model.addAttribute("list3", service.getList3(id));
 		
 	}
+	//예약취소
 	@GetMapping("/ordercancel.do")
 	public String ordercance(Model model, MypageVO mypage) {
 		service.ordercancel(mypage);
 		return "redirect:/mypage/reservList.do";
 	}
+	//찜
 	@GetMapping("/dibs.do")
 	public void dibsList(Model model, Principal principal, LikesVO likes) {
 		String id = principal.getName();
@@ -53,48 +56,43 @@ public class MypageController {
 		model.addAttribute("list2", service.getdibsList2(likes));
 	}
 	//뷰페이지에서 찜삭제하기
-		@GetMapping("/dibsDelete2.do")
-		public String dibsDelete2(Principal principal, Model model, LikesVO likes) {
+	@GetMapping("/dibsDelete2.do")
+	public String dibsDelete2(Principal principal, Model model, LikesVO likes) {
+		String id = principal.getName();
+		likes.setId(id);
+		service.dibscancel(likes);
+		
+		return "redirect:/product/productDetailview.do";
+	}
 			
-			
-				String id = principal.getName();
-				likes.setId(id);
-				service.dibscancel(likes);
-			
-			return "redirect:/product/productDetailview.do";
-		}
-			/*
-			 * //찜 전체삭제
-			 * 
-			 * @GetMapping("/dibsAllDelete.do") public String dibsAllDelete(Principal
-			 * principal) { String id = null; if(principal != null) { id =
-			 * principal.getName(); } likeservice.ALLremove(id); return
-			 * "redirect:/mypage/dibs.do"; }
-			 */
-	
+	/*
+	 * //찜 전체삭제
+	 * 
+	 * @GetMapping("/dibsAllDelete.do") public String dibsAllDelete(Principal
+	 * principal) { String id = null; if(principal != null) { id =
+	 * principal.getName(); } service.ALLremove(id); return
+	 * "redirect:/mypage/dibs.do"; }
+	 */
+			 
+	//마일리지
 	@GetMapping("/mileage.do")
 	public void mileage(Model model, Principal principal) {
 		String id = principal.getName();
 		model.addAttribute("list", service.getmileList(id));
 	}
-	
+	//마일리지 안내
 	@GetMapping("/mileageGuide.do")
 	public void mileageGuide(Model model, Principal principal) {
 		String id = principal.getName();
 		model.addAttribute("list", service.getmileList(id));
 	}
-	
+	//1:1문의
 	@GetMapping("/qnaList.do")
 	public void qnaList(Model model, Principal principal) {
 		String id = principal.getName();
 		model.addAttribute("list", service.getqnaList(id));
 	}
-	
-	@GetMapping("/review.do")
-	public void reviewList() {
-		
-	}
-	
+	//개인정보
 	@GetMapping("/mypage.do")
 	public void mypage(Principal principal, Model model) {
 		String id = principal.getName();

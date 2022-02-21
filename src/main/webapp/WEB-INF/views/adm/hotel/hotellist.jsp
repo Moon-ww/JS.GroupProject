@@ -134,7 +134,7 @@
 					    		<c:forEach items="${list }" var="list">
 							    <tr>
 							    	<td>${list.hseq }</td>
-							    	<td><a href="hotelview.do?hseq=${list.hseq }">${list.name }</a></td>
+							    	<td>${list.name }</td>
 							    	<td>${list.location }</td>
 							    	<td>${list.hgrade }</td>
 							    	<td>${list.roomcount }</td>

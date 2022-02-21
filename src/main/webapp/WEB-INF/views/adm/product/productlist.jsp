@@ -134,7 +134,7 @@
 													    <tr>
 													    	<td>${list.pseq }</td>
 													    	<td>${list.kind }</td>
-													    	<td><a href="admin_product_view.do?pseq=${list.pseq }">${list.name }</a></td>
+													    	<td>${list.name }</td>
 													    	<td>${list.spot}</td>
 													    	<td><a href="/adm/product/poptionlist.do?pseq=${list.pseq }" class="pbtn btn btn-secondary">옵션</a> <a href="/adm/product/productmodify.do?pseq=${list.pseq }" class="pbtn btn btn-info">수정</a> <a href="/adm/admin_product_delete.do?pseq=${list.pseq }" class="pbtn btn btn-danger">삭제</a></td>
 													    	<%-- <td><fmt:parseDate var="startdate" value="${list.startdate }" pattern="yyyy-MM-dd"/>

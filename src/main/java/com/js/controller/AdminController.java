@@ -52,18 +52,7 @@ public class AdminController {
 	private OrderService service6;
 	private CsService service7;
 
-	// 로그인
-	@GetMapping("/adminlogin")
-	public void adminloginform() {
-
-	}
-
-	// 로그아웃
-	@GetMapping("/adminlogout")
-	public String adminlogout() {
-
-		return "redirect:/";
-	}
+	
 
 	// 관리자페이지 메인 (판매현황)
 	@GetMapping("/adminmain.do")
@@ -529,10 +518,7 @@ public class AdminController {
 		for (String status : StatusArr) {
 			System.out.println(status);
 			service6.ordersave(status);
-			/*
-			 * String id = service3.getid(status); order.setId(id);
-			 * System.out.println(order.getId());
-			 */
+			
 			OrderVO order = service3.getid(status);
 			service3.Mileagedelete(order);
 		}

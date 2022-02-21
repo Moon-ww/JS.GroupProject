@@ -23,26 +23,27 @@ public class CsController {
 	@Setter(onMethod_ =@Autowired)
 	private CsService service;
 	
+	//자주하는질문
 	@GetMapping("/faq.do")
 	public void FaqList(Model model) {
 	model.addAttribute("list", service.getFaqList());
 	System.out.println(model);
 	}
-	
+	//1:1문의
 	@GetMapping("/qna.do")
 	public void QnaList() {
 		
 	}
+	//1:1문의 작성
 	@PostMapping("/qnawrite.do")
 	public String QnaWrite(QnaVO qna) {
 		service.insert(qna);
 		return "redirect:/";
 	}
-	
+	//공지사항
 	@GetMapping("/notice.do")
 	public void NoticeList(Model model) {
 		model.addAttribute("list",service.getNoticeList());
-		//System.out.println(model);
 		model.addAttribute("list2",service.getNoticeList2());
 		model.addAttribute("list3",service.getNoticeList3());
 		model.addAttribute("list4",service.getNoticeList4());

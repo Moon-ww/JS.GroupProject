@@ -19,15 +19,14 @@
    <div class="row">
       <div>
          <h3 style="padding-bottom: 19px; padding-top: 39px; border-bottom: 1px solid;">예약하기</h3>
-         <form class="form-horizontal" name="frm" method="post" enctype="" action="">
-         <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+         
          <div class="col-md-9">
             <div class="content">
 
                   
                   
                   <div class="aaaTitle" style="margin-top:20px;">${list2.name}</div>
-                  <input type="hidden" name="pname" id="pname" value="${list2.dname}">
+                  
                   <table class="aaa">
                      <tr>
                         <th>여행기간</th>
@@ -69,32 +68,35 @@
                         <th>이용호텔</th>
                         <td>${list2.hotel}</td>
                      </tr>
-                  </table>
-                  
-                  <div class="aaaTitle" style="margin-top: 73px;">예약자 정보</div>
-                  <table class="aaa">
-                     <tr>
-                        <th>성명</th>
-                        <td><input type="text" name="name" class="form-control2" value="${mlist.name }" id="name"></td>
-                        <th>생년월일</th>
-                        <td><input type="text" name="birth" class="form-control2" value="${mlist.birth}" id="birth"></td>
-                     </tr>
-                     <tr>
-                        <th>휴대폰 번호</th>
-                        <td><input type="text" name="phone" class="form-control2" value="${mlist.phone}" id="phone"></td>
-                        <th>이메일</th>
-                        <td><input type="text" name="email" class="form-control2" value="${mlist.email}" id="email"></td>
-                     </tr>
-                     <input type="hidden" name="qnt" value="${qnt }">
-                     <input type="hidden" name="id" id="" value="${mlist.id }">
-                      <input type="hidden" name="pcode" id="" value="${list2.pcode }">
-                      <input type="hidden" name="total" id="" value="${total }">
-                  </table>
                      
+                  </table>
+                  <div class="aaaTitle" style="margin-top: 73px;">예약자 정보</div>
+                  <form class="form-horizontal" name="frm" method="post">
+                <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+                     <table class="aaa">
+                        <tr>
+                           <th>성명</th>
+                           <td><input type="text" name="name" class="form-control2" value="${mlist.name }" id="name"></td>
+                           <th>생년월일</th>
+                           <td><input type="text" name="birth" class="form-control2" value="${mlist.birth}" id="birth"></td>
+                        </tr>
+                        <tr>
+                           <th>휴대폰 번호</th>
+                           <td><input type="text" name="phone" class="form-control2" value="${mlist.phone}" id="phone"></td>
+                           <th>이메일</th>
+                           <td><input type="text" name="email" class="form-control2" value="${mlist.email}" id="email"></td>
+                        </tr>
+<%--                            <input type="hidden" name="qnt" value="${qnt }"> --%>
+<%--                            <input type="hidden" name="id" id="" value="${mlist.id }"> --%>
+<%--                             <input type="hidden" name="pcode" id="" value="${list2.pcode }"> --%>
+<%--                             <input type="hidden" name="total" id="" value="${total }"> --%>
+<%--                             <input type="hidden" name="pname" id="pname" value="${list2.dname}"> --%>
+                     </table>
+                    
                      <div class="" style="margin-bottom: 30px;">
                      
                    <span><div class="aaaTitle" style="margin-top: 73px; margin-top: 73px; position: relative;">여행자 정보</div></span>
-                     
+                     </form>
                      <style>
                      
                      input[type="checkbox"]{
@@ -122,20 +124,18 @@
                            }
                      
                      </style>
-                     
-                     
-                     <c:if test="${qnt == 1}">
-                     
-                     <div style="margin-bottom: 13px;">
-                     <strong style="font-size: 15px; margin-left: 2px;">성인 1</strong>
+                      <form class="form-horizontal" name="frm1" method="post">
                      <div style="display: inline-block; float: right;">
                      <span>
                      <input type="checkbox" id="chkBkrYN">
                      <label for="chkBkrYN" style="position: absolute; right: 116px; top: 658px;"></label>
                      <span style="position: absolute; right: 24px; top: 658px;">예약자와 동일</span>
                      </span>
-                     </div>      
-                              
+                     </div>     
+                     
+                     <c:forEach var="i" begin="1" end="${qnt}">
+                     <div style="margin: 15px 0;">
+                     <strong style="font-size: 15px; margin-left: 2px;">성인 ${i}</strong>
                      </div>
                   <table class="aaa">
                      <tr>
@@ -151,212 +151,8 @@
                         <td><input type="text" name="email1" class="form-control2" value="" id="email1"></td>
                      </tr>
                   </table>
-                     
-                     
-                     </c:if>
-                     <c:if test="${qnt == 2}">
-                     
-                        <div style="margin-bottom: 13px;">
-                           <strong style="font-size: 15px;">성인 1</strong>
-                           <div style="display: inline-block; float: right;">
-                           <span>
-                           <input type="checkbox" id="chkBkrYN">
-                           <label for="chkBkrYN" style="position: absolute; right: 116px; top: 658px;"></label>
-                           <span style="position: absolute; right: 24px; top: 658px;">예약자와 동일</span>
-                           </span>
-                           </div>      
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name1" class="form-control2" value="" id="name1"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth1" class="form-control2" value="" id="birth1"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone1" class="form-control2" value="" id="phone1"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email1" class="form-control2" value="" id="email1"></td>
-                              </tr>
-                           </table>
-                        
-                        <div style="margin: 13px 0;">
-                           <strong style="font-size: 15px;">성인 2</strong>
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name2" class="form-control2" value="" id="name2"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth2" class="form-control2" value="" id="birth2"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone2" class="form-control2" value="" id="phone2"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email2" class="form-control2" value="" id="email2"></td>
-                              </tr>
-                           </table>
-                     
-                     </c:if>
-                     
-                     <c:if test="${qnt == 3}">
-                     
-                        <div style="margin-bottom: 13px;">
-                           <strong style="font-size: 15px;">성인 1</strong>
-                           <div style="display: inline-block; float: right;">
-                           <span>
-                           <input type="checkbox" id="chkBkrYN">
-                           <label for="chkBkrYN" style="position: absolute; right: 116px; top: 658px;"></label>
-                           <span style="position: absolute; right: 24px; top: 658px;">예약자와 동일</span>
-                           </span>
-                           </div>      
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name1" class="form-control2" value="" id="name1"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth1" class="form-control2" value="" id="birth1"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone1" class="form-control2" value="" id="phone1"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email1" class="form-control2" value="" id="email1"></td>
-                              </tr>
-                           </table>
-                        
-                        <div style="margin: 13px 0;">
-                           <strong style="font-size: 15px;">성인 2</strong>
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name2" class="form-control2" value="" id="name2"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth2" class="form-control2" value="" id="birth2"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone2" class="form-control2" value="" id="phone2"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email2" class="form-control2" value="" id="email2"></td>
-                              </tr>
-                           </table>
-                        
-                        <div style="margin: 13px 0;">
-                           <strong style="font-size: 15px;">성인 3</strong>
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name3" class="form-control2" value="" id="name3"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth3" class="form-control2" value="" id="birth3"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone3" class="form-control2" value="" id="phone3"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email3" class="form-control2" value="" id="email3"></td>
-                              </tr>
-                           </table>
-                     
-                     </c:if>
-                     
-                     <c:if test="${qnt == 4}">
-                     
-                        <div style="margin-bottom: 13px;">
-                           <strong style="font-size: 15px;">성인 1</strong>
-                           <div style="display: inline-block; float: right;">
-                           <span>
-                           <input type="checkbox" id="chkBkrYN">
-                           <label for="chkBkrYN" style="position: absolute; right: 116px; top: 658px;"></label>
-                           <span style="position: absolute; right: 24px; top: 658px;">예약자와 동일</span>
-                           </span>
-                           </div>      
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name1" class="form-control2" value="" id="name1"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth1" class="form-control2" value="" id="birth1"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone1" class="form-control2" value="" id="phone1"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email1" class="form-control2" value="" id="email1"></td>
-                              </tr>
-                           </table>
-                        
-                        <div style="margin: 13px 0;">
-                           <strong style="font-size: 15px;">성인 2</strong>
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name2" class="form-control2" value="" id="name2"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth2" class="form-control2" value="" id="birth2"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone2" class="form-control2" value="" id="phone2"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email2" class="form-control2" value="" id="email2"></td>
-                              </tr>
-                           </table>
-                        
-                        <div style="margin: 13px 0;">
-                           <strong style="font-size: 15px;">성인3</strong>
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name3" class="form-control2" value="" id="name3"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth3" class="form-control2" value="" id="birth3"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone3" class="form-control2" value="" id="phone3"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email3" class="form-control2" value="" id="email3"></td>
-                              </tr>
-                           </table>
-                        
-                        <div style="margin: 13px 0;">
-                           <strong style="font-size: 15px;">성인 4</strong>
-                        </div>
-                        
-                           <table class="aaa">
-                              <tr>
-                                 <th>성명</th>
-                                 <td><input type="text" name="name4" class="form-control2" value="" id="name4"></td>
-                                 <th>생년월일</th>
-                                 <td><input type="text" name="birth4" class="form-control2" value="" id="birth4"></td>
-                              </tr>
-                              <tr>
-                                 <th>휴대폰 번호</th>
-                                 <td><input type="text" name="phone4" class="form-control2" value="" id="phone4"></td>
-                                 <th>이메일</th>
-                                 <td><input type="text" name="email4" class="form-control2" value="" id="email4"></td>
-                              </tr>
-                           </table>
-                     
-                     </c:if> 
+                     </c:forEach>
+                      </form>
                      
                      
                      
@@ -367,7 +163,7 @@
                   </div>
                
             </div>
-            </form>
+            
          </div>
          <!-- col-md-10 end -->
          <div class="col-md-3 detail-right" style="margin-top: 19px;">
@@ -399,7 +195,14 @@
                   </table>
                   
                   <div class="col-sm-12" style="margin-top: 44px; text-align: center;">
-                           <a href="javascript:history.go(-1)" class="btn btn-default">취소</a> <a href="javascript:void(0)" id="check_module" class="btn btn-default xxx">예약하기</a> <input type="hidden" name="id" id="" value="${mlist.id }"> <input type="hidden" name="pcode" id="" value="${list2.pcode }">
+                           <a href="javascript:history.go(-1)" class="btn btn-default">취소</a> <a href="javascript:void(0)" id="check_module" class="btn btn-default xxx">예약하기</a> 
+                           <input type="hidden" name="id" id="" value="${mlist.id }"> 
+                           <input type="hidden" name="pcode" id="" value="${list2.pcode }">
+                           <input type="hidden" name="qnt" value="${qnt }">
+                     <input type="hidden" name="id" id="" value="${mlist.id }">
+                      <input type="hidden" name="pcode" id="" value="${list2.pcode }">
+                      <input type="hidden" name="total" id="" value="${total }">
+<%--                       <input type="hidden" name="name" id="" value="${mlist.name}"> --%>
                         </div>
             
          </div>
@@ -407,7 +210,8 @@
    </div>
 </div>
 <!--  -->
-   
+
+
     
 <script>
 
@@ -524,10 +328,101 @@ $(function(){
             });
             </script> -->
 <script type="text/javascript">
+
+function jsos(){
+   
+   var oVO = {
+       "id":"${mlist.id}",
+       "name":"${mlist.name}",
+       "email":"${mlist.email}",
+       "phone":"${mlist.phone}",
+      "pcode":"${list2.pcode}",
+       "pname":"${list2.dname}",
+       "qnt":"${qnt}",
+       "total":"${total}"
+   };
+   console.log(oVO.id);
+   console.log(oVO.name);
+   console.log(oVO.pname);
+   
+   var csrfHeaderName = "${_csrf.headerName}";               
+    var csrfTokenValue = "${_csrf.token}";
+    
+    $(document).ajaxSend(function(e, xhr, options){
+        xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+     })
+    
+     
+    $.ajax({
+       type:'post',
+       data:JSON.stringify(oVO),
+       contentType:'application/json; charset=utf-8',
+       url:'/member/orderinsert.do',
+//        dataType:'json',
+       success:function(data) {
+          
+       },error:function(error) {
+          
+       }
+    })
+}
+
 $(".xxx").click(function () {
-   document.frm.action="/member/orderinsert.do";
-   document.frm.submit();
-   //location.href = "/member/ordercomplete.do"
-})
+   
+   jsos();
+   
+   var rowNum = ${qnt};
+   console.log(rowNum);
+    var TravelerSetting = function (name1, phone1, birth1, email1) {
+        this.name1 = name1;
+        this.phone1 = phone1;
+        this.birth1 = birth1;
+        this.email1 = email1;
+    }
+
+    var param = [];
+    for(i=0; i<rowNum; i++) {
+        var travelerSetting = new TravelerSetting(
+            $("input[name='name1']").eq(i).val(),
+            $("input[name='phone1']").eq(i).val(),
+            $("input[name='birth1']").eq(i).val(),
+            $("input[name='email1']").eq(i).val()
+        )
+        param.push(travelerSetting);
+    }
+        
+//         var oVO = {
+// //               "qnt":"${qnt}",
+// //               "id":"${mlist.id}",
+// //               "pcode":"${list2.pcode}",
+// //               "total":"${total}",
+// //               "pname":"${list2.dname}",
+//               "param" : param
+//         };
+
+        console.log(param);
+        
+        var csrfHeaderName = "${_csrf.headerName}";               
+        var csrfTokenValue = "${_csrf.token}";
+        
+        $(document).ajaxSend(function(e, xhr, options){
+            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+         })
+        
+         
+        $.ajax({
+           type:'post',
+           data:JSON.stringify(param),
+           contentType:'application/json; charset=utf-8', //보내는타입
+           url:'/member/orderdetailinsert.do',
+           //dataType:"json", //받는타입
+           success:function() {
+              location.href="/member/ordercomplete.do";
+           },error:function(error) {
+              
+           }
+        })
+   
+});
 </script>
        <%@include file="../footer.jsp" %>

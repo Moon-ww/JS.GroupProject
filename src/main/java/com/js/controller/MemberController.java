@@ -2,6 +2,7 @@ package com.js.controller;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.js.domain.HotelVO;
 import com.js.domain.MemberVO;
 import com.js.domain.OrderVO;
+import com.js.domain.TravelerVO;
 import com.js.service.HotelService;
 import com.js.service.MemberService;
 import com.js.service.ProductService;
@@ -50,21 +53,24 @@ public class MemberController {
 	@Setter(onMethod_ =@Autowired)
 	private PasswordEncoder pwencoder;
 	
+	//회원가입 화면
 	@GetMapping("/join.do")
 	public void memberjoinview() {
 		
 	}
+	//이용약관 화면
 	@GetMapping("/terms.do")
 	public void terms() {
 		
 	}
-
+	//아이디중복검사
 	@GetMapping("/memberIDcheck.do")
 	public @ResponseBody int memberidcheck(@RequestParam("id") String id) {
 		int result = service.idcheck(id);
 		log.info("result : "+result);
 		return result;
 	}
+	//회원가입
 	@PostMapping("/memberinsert.do")
 	public String memberinsert(MemberVO member) {
 		String inputpass = pwencoder.encode(member.getPw());
@@ -77,7 +83,7 @@ public class MemberController {
 	public void customlogin() {
 	}
 
-    /* 이메일 인증 */
+    // 이메일 인증
 	@GetMapping("/member/emailsend.do")
 	public void EmailAction(String email, HttpServletRequest request,HttpServletResponse response) throws IOException {
 			
@@ -148,7 +154,7 @@ public class MemberController {
 	        response.setContentType("application/x-json, charset=utf-8");
 	        response.getWriter().print(obj);
 		}
-	/* 인증번호 */
+	//인증번호
 	@GetMapping("/member/cncompare.do")
 	public void CncompareAction(String cn, HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String AuthenKey = (String) request.getSession().getAttribute("AuthenticationKey");
@@ -168,6 +174,7 @@ public class MemberController {
 	      response.setContentType("application/x-json,charset=utf-8");
 	      response.getWriter().print(obj);
 	}
+	//상품예약 화면
 	@GetMapping("/reservationviewp.do")
 	public void reservationview(Model model, String pcode, String id, int qnt, int total) {
 		model.addAttribute("qnt",qnt);
@@ -176,30 +183,53 @@ public class MemberController {
 		model.addAttribute("list2", service2.productDetailView(pcode));
 		System.out.println(service2.productDetailView(pcode));
 	}
+	//호텔예약 화면
 	@GetMapping("/reservationviewh.do")
 	public void reservationviewh(Model model, @RequestParam("id") String id, @RequestParam("hseq") int hseq) {
 		model.addAttribute("mlist", service.getOneh(id));
 		HotelVO vo = service3.getDetailViewHotel(hseq);
 		model.addAttribute("hoteldetail", vo);
 	}
-	@PostMapping("/orderinsert.do")
-	public String orderinsert(Model model, OrderVO order, String id) {
-		order.setMileage( Math.round(( order.getTotal() /  order.getQnt() ) * 0.01));
-		service.Order(order);
-		service.Mileageinsert(order);
-		return "redirect:/member/orders.do";
+	//예약자
+	@PostMapping("/orderinsert.do")		
+	public void orderinsert(Model model, @RequestBody OrderVO order) {		
+			
+		System.out.println("컨트롤러아이디:"+order.getId());	
+		order.setMileage( Math.round(( order.getTotal() /  order.getQnt() ) * 0.01));	
+		service.Order(order);	
+		service.Mileageinsert(order);	
+			
 	}
-	
-	@GetMapping("/orders.do") 
-	 public String orders() {
-	 return "redirect:/member/ordercomplete.do";
-	 }
-	
-	@GetMapping("/ordercomplete.do")
-	public void orsercomp(Model model, OrderVO order, Principal principal) {
+	//여행자
+	@PostMapping("/orderdetailinsert.do")		
+	@ResponseBody 		
+	public String orderdetailinsert( @RequestBody List<TravelerVO> tvo, Principal principal) {		
+			
+		TravelerVO tvoInsert = null;	
+			
+		for(int i=0; i<tvo.size(); i++) {	
+		tvoInsert = new TravelerVO();	
+		tvoInsert.setName1(tvo.get(i).getName1());	
+		tvoInsert.setBirth1(tvo.get(i).getBirth1());	
+		tvoInsert.setEmail1(tvo.get(i).getEmail1());	
+		tvoInsert.setPhone1(tvo.get(i).getPhone1());	
+			
+		service.ordersDetailInsert(tvoInsert);	
 		String id = principal.getName();
-		model.addAttribute("list", service.getOrderinfo(id)); 
-	}
+		service.orderOseqUpdate(id);
+			System.out.println("ajax성공");
+		}	
+			
+		return "성공";	
+	}		
+	//예약완료		
+	@GetMapping("/ordercomplete.do")		
+	public void orsercomp(Model model, OrderVO order, Principal principal) {		
+		String id = principal.getName();	
+		model.addAttribute("list", service.getOrderinfo(id)); 	
+	}		
+			
+
 }
 
 

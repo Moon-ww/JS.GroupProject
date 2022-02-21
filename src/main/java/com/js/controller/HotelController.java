@@ -27,6 +27,7 @@ public class HotelController {
 	private HotelService service;
 	private MypageService service2;
 	
+	//호텔리스트
 	@GetMapping("/hotellist.do")
 	public void HotelList(Model model) {
 		model.addAttribute("list", service.getDetailList());
@@ -34,7 +35,7 @@ public class HotelController {
 		model.addAttribute("list3", service.getDetailList3());
 		model.addAttribute("list4", service.getDetailList4());
 	}
-	
+	//호텔 뷰
 	@GetMapping("/hotelview.do")
 	public void HotelView(Model model, int hseq, LikesVO likes, Principal principal) {
 		model.addAttribute("list", service.getDetailView(hseq));
@@ -44,9 +45,8 @@ public class HotelController {
 			likes.setId(id);	
 			model.addAttribute("list3", service2.getdibs2(likes));
 		}
-		
-		
 	}
+	//호텔 찜하기
 	@GetMapping("/insert.do")
 	public String dibsinsert(LikesVO likes, Principal principal) {
 		String id = principal.getName();
@@ -54,6 +54,7 @@ public class HotelController {
 		service2.register(likes);
 		return "redirect:/hotel/hotelview.do?hseq="+likes.getHseq();
 	}
+	//호텔 찜해제
 	@GetMapping("/cancel.do")
 	public String dibscancel(LikesVO likes, Principal principal) {
 		String id = principal.getName();
@@ -61,6 +62,7 @@ public class HotelController {
 		service2.dibscancel(likes);
 		return "redirect:/hotel/hotelview.do?hseq="+likes.getHseq();
 	}
+	//호텔 검색
 	@GetMapping("/hotelSearchview.do")
 	public void HotelSearchView(Model model, HotelVO hotel, String spot) {
 		model.addAttribute("list", service.getTotalSearch_h(hotel));
